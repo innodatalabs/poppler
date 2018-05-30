@@ -112,7 +112,11 @@ static GBool quiet = gFalse;
 static GBool printVersion = gFalse;
 static GBool printHelp = gFalse;
 
+static char customPopplerDataDir[512] = ""; // [[REDPOPPLER]]
+
 static const ArgDesc argDesc[] = {
+  {"-C",   argString,   customPopplerDataDir, sizeof(customPopplerDataDir),  // [[REDPOPPLER]]
+   "specify location of poppler data directory (with font encoding files)"}, // [[REDPOPPLER]]
   {"-f",      argInt,      &firstPage,     0,
    "first page to print"},
   {"-l",      argInt,      &lastPage,      0,
