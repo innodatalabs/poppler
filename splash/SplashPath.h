@@ -115,6 +115,10 @@ public:
   // Get the current point.
   GBool getCurPt(SplashCoord *x, SplashCoord *y);
 
+  /* [[REDPOPPLER]] */
+  SplashPathPoint const *getPoints() { return pts; }
+  Guchar const *getFlags() { return flags; }
+
 protected:
 
   SplashPath(SplashPath *path);

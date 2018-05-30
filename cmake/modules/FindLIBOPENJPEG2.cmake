@@ -10,13 +10,18 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
+if(LIBOPENJPEG2_INCLUDE_DIRS AND LIBOPENJPEG2_LIBRARIES)
+  # in cache already
+  set(LIBOPENJPEG2_FOUND TRUE)
 
-set(LIBOPENJPEG2_FOUND FALSE)
-set(LIBOPENJPEG2_INCLUDE_DIRS)
-set(LIBOPENJPEG2_LIBRARIES)
+else()
+  set(LIBOPENJPEG2_FOUND FALSE)
+  set(LIBOPENJPEG2_INCLUDE_DIRS)
+  set(LIBOPENJPEG2_LIBRARIES)
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(LIBOPENJPEG2 libopenjp2)
-if (LIBOPENJPEG2_FOUND)
-  add_definitions(-DUSE_OPENJPEG2)
-endif ()
+  find_package(PkgConfig REQUIRED)
+  pkg_check_modules(LIBOPENJPEG2 libopenjp2)
+  if (LIBOPENJPEG2_FOUND)
+    add_definitions(-DUSE_OPENJPEG2)
+  endif ()
+endif()
