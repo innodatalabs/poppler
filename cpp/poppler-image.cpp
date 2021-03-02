@@ -1,9 +1,10 @@
 /*
  * Copyright (C) 2010-2011, Pino Toscano <pino@kde.org>
  * Copyright (C) 2013 Adrian Johnson <ajohnson@redneon.com>
- * Copyright (C) 2017, 2018, Albert Astals Cid <aacid@kde.org>
+ * Copyright (C) 2017-2019, Albert Astals Cid <aacid@kde.org>
  * Copyright (C) 2017, Jeroen Ooms <jeroenooms@gmail.com>
  * Copyright (C) 2018, Zsombor Hollay-Horvath <hollay.horvath@gmail.com>
+ * Copyright (C) 2018, Adam Reichold <adam.reichold@t-online.de>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +21,9 @@
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+/**
+ \file poppler-image.h
+ */
 #include "poppler-image.h"
 
 #include "poppler-image-private.h"
@@ -27,13 +31,13 @@
 #include <config.h>
 #include "ImgWriter.h"
 #if defined(ENABLE_LIBPNG)
-#include "PNGWriter.h"
+#    include "PNGWriter.h"
 #endif
 #if defined(ENABLE_LIBJPEG)
-#include "JpegWriter.h"
+#    include "JpegWriter.h"
 #endif
 #if defined(ENABLE_LIBTIFF)
-#include "TiffWriter.h"
+#    include "TiffWriter.h"
 #endif
 #include "NetPBMWriter.h"
 
@@ -45,15 +49,21 @@
 
 namespace {
 
-struct FileCloser {
-    inline FileCloser(FILE *ff)
-        : f(ff) {}
-    inline ~FileCloser()
-    { (void)close(); }
+struct FileCloser
+{
+    inline FileCloser(FILE *ff) : f(ff) { }
+    inline ~FileCloser() { (void)close(); }
     FileCloser(const FileCloser &) = delete;
-    FileCloser& operator=(const FileCloser &) = delete;
+    FileCloser &operator=(const FileCloser &) = delete;
     inline bool close()
-    { if (f) { const int c = fclose(f); f = nullptr; return c == 0; } return true; }
+    {
+        if (f) {
+            const int c = fclose(f);
+            f = nullptr;
+            return c == 0;
+        }
+        return true;
+    }
 
     FILE *f;
 };
@@ -95,17 +105,7 @@ NetPBMWriter::Format pnm_format(poppler::image::format_enum format)
 
 using namespace poppler;
 
-image_private::image_private(int iwidth, int iheight, image::format_enum iformat)
-    : ref(1)
-    , data(nullptr)
-    , width(iwidth)
-    , height(iheight)
-    , bytes_per_row(0)
-    , bytes_num(0)
-    , format(iformat)
-    , own_data(true)
-{
-}
+image_private::image_private(int iwidth, int iheight, image::format_enum iformat) : ref(1), data(nullptr), width(iwidth), height(iheight), bytes_per_row(0), bytes_num(0), format(iformat), own_data(true) { }
 
 image_private::~image_private()
 {
@@ -125,7 +125,7 @@ image_private *image_private::create_data(int width, int height, image::format_e
         return nullptr;
     }
 
-    std::unique_ptr<image_private> d(new image_private(width, height, format));
+    auto d = std::make_unique<image_private>(width, height, format);
     d->bytes_num = bpr * height;
     d->data = reinterpret_cast<char *>(std::malloc(d->bytes_num));
     if (!d->data) {
@@ -178,14 +178,10 @@ image_private *image_private::create_data(char *data, int width, int height, ima
  format_gray8 and format_bgr24 were introduced in poppler 0.65.
 */
 
-
 /**
  Construct an invalid image.
  */
-image::image()
-    : d(nullptr)
-{
-}
+image::image() : d(nullptr) { }
 
 /**
  Construct a new image.
@@ -197,10 +193,7 @@ image::image()
  \param iheight the height for the image
  \param iformat the format for the bits of the image
  */
-image::image(int iwidth, int iheight, image::format_enum iformat)
-    : d(image_private::create_data(iwidth, iheight, iformat))
-{
-}
+image::image(int iwidth, int iheight, image::format_enum iformat) : d(image_private::create_data(iwidth, iheight, iformat)) { }
 
 /**
  Construct a new image.
@@ -213,16 +206,12 @@ image::image(int iwidth, int iheight, image::format_enum iformat)
  \param iheight the height for the image
  \param iformat the format for the bits of the image
  */
-image::image(char *idata, int iwidth, int iheight, image::format_enum iformat)
-    : d(image_private::create_data(idata, iwidth, iheight, iformat))
-{
-}
+image::image(char *idata, int iwidth, int iheight, image::format_enum iformat) : d(image_private::create_data(idata, iwidth, iheight, iformat)) { }
 
 /**
  Copy constructor.
  */
-image::image(const image &pt)
-    : d(pt.d)
+image::image(const image &img) : d(img.d)
 {
     if (d) {
         ++d->ref;
@@ -363,21 +352,21 @@ bool image::save(const std::string &file_name, const std::string &out_format, in
     }
 #if defined(ENABLE_LIBPNG)
     else if (fmt == "png") {
-        w.reset(new PNGWriter());
+        w = std::make_unique<PNGWriter>();
     }
 #endif
 #if defined(ENABLE_LIBJPEG)
     else if (fmt == "jpeg" || fmt == "jpg") {
-        w.reset(new JpegWriter());
+        w = std::make_unique<JpegWriter>();
     }
 #endif
 #if defined(ENABLE_LIBTIFF)
     else if (fmt == "tiff") {
-        w.reset(new TiffWriter());
+        w = std::make_unique<TiffWriter>();
     }
 #endif
     else if (fmt == "pnm") {
-        w.reset(new NetPBMWriter(pnm_format(d->format)));
+        w = std::make_unique<NetPBMWriter>(pnm_format(d->format));
     }
     if (!w.get()) {
         return false;
@@ -476,29 +465,32 @@ std::vector<std::string> image::supported_image_formats()
 {
     std::vector<std::string> formats;
 #if defined(ENABLE_LIBPNG)
-    formats.push_back("png");
+    formats.emplace_back("png");
 #endif
 #if defined(ENABLE_LIBJPEG)
-    formats.push_back("jpeg");
-    formats.push_back("jpg");
+    formats.emplace_back("jpeg");
+    formats.emplace_back("jpg");
 #endif
 #if defined(ENABLE_LIBTIFF)
-    formats.push_back("tiff");
+    formats.emplace_back("tiff");
 #endif
-    formats.push_back("pnm");
+    formats.emplace_back("pnm");
     return formats;
 }
 
 /**
  Assignment operator.
  */
-image& image::operator=(const image &pt)
+image &image::operator=(const image &img)
 {
-    if (pt.d) {
-        ++pt.d->ref;
+    if (this == &img)
+        return *this;
+
+    if (img.d) {
+        ++img.d->ref;
     }
     image_private *old_d = d;
-    d = pt.d;
+    d = img.d;
     if (old_d && !--old_d->ref) {
         delete old_d;
     }

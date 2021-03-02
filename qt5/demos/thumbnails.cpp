@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2009, Shawn Rutledge <shawn.t.rutledge@gmail.com>
  * Copyright (C) 2009, Pino Toscano <pino@kde.org>
+ * Copyright (C) 2020, Albert Astals Cid <aacid@kde.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,8 +26,7 @@
 
 static const int PageRole = Qt::UserRole + 1;
 
-ThumbnailsDock::ThumbnailsDock(QWidget *parent)
-    : AbstractInfoDock(parent)
+ThumbnailsDock::ThumbnailsDock(QWidget *parent) : AbstractInfoDock(parent)
 {
     m_list = new QListWidget(this);
     setWidget(m_list);
@@ -34,13 +34,10 @@ ThumbnailsDock::ThumbnailsDock(QWidget *parent)
     m_list->setViewMode(QListView::ListMode);
     m_list->setMovement(QListView::Static);
     m_list->setVerticalScrollMode(QListView::ScrollPerPixel);
-    connect(m_list, SIGNAL(itemActivated(QListWidgetItem*)),
-            this, SLOT(slotItemActivated(QListWidgetItem*)));
+    connect(m_list, &QListWidget::itemActivated, this, &ThumbnailsDock::slotItemActivated);
 }
 
-ThumbnailsDock::~ThumbnailsDock()
-{
-}
+ThumbnailsDock::~ThumbnailsDock() { }
 
 void ThumbnailsDock::fillInfo()
 {
@@ -48,7 +45,7 @@ void ThumbnailsDock::fillInfo()
     QSize maxSize;
     for (int i = 0; i < num; ++i) {
         const Poppler::Page *page = document()->page(i);
-        const QImage image = page->thumbnail();
+        const QImage image = page ? page->thumbnail() : QImage();
         if (!image.isNull()) {
             QListWidgetItem *item = new QListWidgetItem();
             item->setText(QString::number(i + 1));
@@ -80,4 +77,3 @@ void ThumbnailsDock::slotItemActivated(QListWidgetItem *item)
 
     setPage(item->data(PageRole).toInt());
 }
-

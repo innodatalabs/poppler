@@ -30,29 +30,31 @@ G_BEGIN_DECLS
  * @POPPLER_ACTION_NONE: no action specified
  * @POPPLER_ACTION_GOTO_DEST: go to destination
  * @POPPLER_ACTION_GOTO_REMOTE: go to destination in another document
- * @POPPLER_ACTION_LAUNCH: launch app (or open document
+ * @POPPLER_ACTION_LAUNCH: launch app (or open document)
  * @POPPLER_ACTION_URI: URI
  * @POPPLER_ACTION_NAMED: predefined action
  * @POPPLER_ACTION_MOVIE: play movies. Since 0.14
  * @POPPLER_ACTION_RENDITION: play multimedia content. Since 0.14
  * @POPPLER_ACTION_OCG_STATE: state of layer. Since 0.14
  * @POPPLER_ACTION_JAVASCRIPT: Javascript. Since 0.18
+ * @POPPLER_ACTION_RESET_FORM: resets form. Since 0.90
  *
  * Action types
  */
 typedef enum
 {
-	POPPLER_ACTION_UNKNOWN,		/* unknown action */
-	POPPLER_ACTION_NONE,            /* no action specified */
-	POPPLER_ACTION_GOTO_DEST,	/* go to destination */
-	POPPLER_ACTION_GOTO_REMOTE,	/* go to destination in new file */
-	POPPLER_ACTION_LAUNCH,		/* launch app (or open document) */
-	POPPLER_ACTION_URI,		/* URI */
-	POPPLER_ACTION_NAMED,		/* named action*/
-	POPPLER_ACTION_MOVIE,		/* movie action */
-	POPPLER_ACTION_RENDITION,       /* rendition action */
-	POPPLER_ACTION_OCG_STATE,       /* Set-OCG-State action */
-	POPPLER_ACTION_JAVASCRIPT	/* Javascript action */
+    POPPLER_ACTION_UNKNOWN, /* unknown action */
+    POPPLER_ACTION_NONE, /* no action specified */
+    POPPLER_ACTION_GOTO_DEST, /* go to destination */
+    POPPLER_ACTION_GOTO_REMOTE, /* go to destination in new file */
+    POPPLER_ACTION_LAUNCH, /* launch app (or open document) */
+    POPPLER_ACTION_URI, /* URI */
+    POPPLER_ACTION_NAMED, /* named action*/
+    POPPLER_ACTION_MOVIE, /* movie action */
+    POPPLER_ACTION_RENDITION, /* rendition action */
+    POPPLER_ACTION_OCG_STATE, /* Set-OCG-State action */
+    POPPLER_ACTION_JAVASCRIPT, /* Javascript action */
+    POPPLER_ACTION_RESET_FORM /* ResetForm action */
 } PopplerActionType;
 
 /**
@@ -89,16 +91,16 @@ typedef enum
  */
 typedef enum
 {
-	POPPLER_DEST_UNKNOWN,
-	POPPLER_DEST_XYZ,
-	POPPLER_DEST_FIT,
-	POPPLER_DEST_FITH,
-	POPPLER_DEST_FITV,
-	POPPLER_DEST_FITR,
-	POPPLER_DEST_FITB,
-	POPPLER_DEST_FITBH,
-	POPPLER_DEST_FITBV,
-	POPPLER_DEST_NAMED
+    POPPLER_DEST_UNKNOWN,
+    POPPLER_DEST_XYZ,
+    POPPLER_DEST_FIT,
+    POPPLER_DEST_FITH,
+    POPPLER_DEST_FITV,
+    POPPLER_DEST_FITR,
+    POPPLER_DEST_FITB,
+    POPPLER_DEST_FITBH,
+    POPPLER_DEST_FITBV,
+    POPPLER_DEST_NAMED
 } PopplerDestType;
 
 /**
@@ -114,10 +116,10 @@ typedef enum
  */
 typedef enum
 {
-        POPPLER_ACTION_MOVIE_PLAY,
-	POPPLER_ACTION_MOVIE_PAUSE,
-	POPPLER_ACTION_MOVIE_RESUME,
-	POPPLER_ACTION_MOVIE_STOP
+    POPPLER_ACTION_MOVIE_PLAY,
+    POPPLER_ACTION_MOVIE_PAUSE,
+    POPPLER_ACTION_MOVIE_RESUME,
+    POPPLER_ACTION_MOVIE_STOP
 } PopplerActionMovieOperation;
 
 /**
@@ -132,22 +134,23 @@ typedef enum
  */
 typedef enum
 {
-	POPPLER_ACTION_LAYER_ON,
-	POPPLER_ACTION_LAYER_OFF,
-	POPPLER_ACTION_LAYER_TOGGLE
+    POPPLER_ACTION_LAYER_ON,
+    POPPLER_ACTION_LAYER_OFF,
+    POPPLER_ACTION_LAYER_TOGGLE
 } PopplerActionLayerAction;
 
 /* Define the PopplerAction types */
-typedef struct _PopplerActionAny        PopplerActionAny;
-typedef struct _PopplerActionGotoDest   PopplerActionGotoDest;
+typedef struct _PopplerActionAny PopplerActionAny;
+typedef struct _PopplerActionGotoDest PopplerActionGotoDest;
 typedef struct _PopplerActionGotoRemote PopplerActionGotoRemote;
-typedef struct _PopplerActionLaunch     PopplerActionLaunch;
-typedef struct _PopplerActionUri        PopplerActionUri;
-typedef struct _PopplerActionNamed      PopplerActionNamed;
-typedef struct _PopplerActionMovie      PopplerActionMovie;
-typedef struct _PopplerActionRendition  PopplerActionRendition;
-typedef struct _PopplerActionOCGState   PopplerActionOCGState;
+typedef struct _PopplerActionLaunch PopplerActionLaunch;
+typedef struct _PopplerActionUri PopplerActionUri;
+typedef struct _PopplerActionNamed PopplerActionNamed;
+typedef struct _PopplerActionMovie PopplerActionMovie;
+typedef struct _PopplerActionRendition PopplerActionRendition;
+typedef struct _PopplerActionOCGState PopplerActionOCGState;
 typedef struct _PopplerActionJavascript PopplerActionJavascript;
+typedef struct _PopplerActionResetForm PopplerActionResetForm;
 
 /**
  * PopplerDest:
@@ -164,152 +167,287 @@ typedef struct _PopplerActionJavascript PopplerActionJavascript;
  * @change_zoom: whether scale factor should be changed
  *
  * Data structure for holding a destination
+ *
+ * Note that @named_dest is the string representation of the named
+ * destination. This is the right form to pass to poppler functions,
+ * e.g. poppler_document_find_dest(), but to get the destination as
+ * it appears in the PDF itself, you need to convert it to a bytestring
+ * with poppler_named_dest_to_bytestring() first.
+ * Also note that @named_dest does not have a defined encoding and
+ * is not in a form suitable to be displayed to the user.
  */
 struct _PopplerDest
 {
-	PopplerDestType type;
+    PopplerDestType type;
 
-	int page_num;
-	double left;
-	double bottom;
-	double right;
-	double top;
-	double zoom;
-	gchar *named_dest;
-	guint change_left : 1;
-	guint change_top : 1;
-	guint change_zoom : 1;
+    int page_num;
+    double left;
+    double bottom;
+    double right;
+    double top;
+    double zoom;
+    gchar *named_dest;
+    guint change_left : 1;
+    guint change_top : 1;
+    guint change_zoom : 1;
 };
 
 /**
  * PopplerActionLayer:
  * @action: a #PopplerActionLayerAction
- * @layers: list of #PopplerLayer<!-- -->s
+ * @layers: (element-type PopplerLayer): list of #PopplerLayer<!-- -->s
  *
  * Action to perform over a list of layers
  */
 struct _PopplerActionLayer
 {
-	PopplerActionLayerAction action;
-	GList *layers;
+    PopplerActionLayerAction action;
+    GList *layers;
 };
 
+/**
+ * PopplerActionAny:
+ * @type: action type
+ * @title: action title
+ *
+ * Fields common to all #PopplerAction<!-- -->s
+ */
 struct _PopplerActionAny
 {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 };
 
+/**
+ * PopplerActionGotoDest:
+ * @type: action type (%POPPLER_ACTION_GOTO_DEST)
+ * @title: action title
+ * @dest: destination
+ *
+ * Go to destination
+ */
 struct _PopplerActionGotoDest
 {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 
-	PopplerDest *dest;
+    PopplerDest *dest;
 };
 
+/**
+ * PopplerActionGotoRemote:
+ * @type: action type (%POPPLER_ACTION_GOTO_REMOTE)
+ * @title: action title
+ * @file_name: file name
+ * @dest: destination
+ *
+ * Go to destination in another document
+ */
 struct _PopplerActionGotoRemote
 {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 
-	gchar *file_name;
-	PopplerDest *dest;
+    gchar *file_name;
+    PopplerDest *dest;
 };
 
+/**
+ * PopplerActionLaunch:
+ * @type: action type (%POPPLER_ACTION_LAUNCH)
+ * @title: action title
+ * @file_name: file name
+ * @params: parameters
+ *
+ * Launch app (or open document)
+ */
 struct _PopplerActionLaunch
 {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 
-	gchar *file_name;
-	gchar *params;
+    gchar *file_name;
+    gchar *params;
 };
 
+/**
+ * PopplerActionUri:
+ * @type: action type (%POPPLER_ACTION_URI)
+ * @title: action title
+ * @uri: URI
+ *
+ * URI
+ */
 struct _PopplerActionUri
 {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 
-	char *uri;
+    char *uri;
 };
 
+/**
+ * PopplerActionNamed:
+ * @type: action type (%POPPLER_ACTION_NAMED)
+ * @title: action title
+ * @named_dest: named destination
+ *
+ * Predefined action
+ */
 struct _PopplerActionNamed
 {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 
-	gchar *named_dest;
+    gchar *named_dest;
 };
 
+/**
+ * PopplerActionMovie:
+ * @type: action type (%POPPLER_ACTION_MOVIE)
+ * @title: action title
+ * @operation: operation
+ * @movie: movie
+ *
+ * Play movies.
+ *
+ * Since: 0.14
+ */
 struct _PopplerActionMovie
 {
-        PopplerActionType           type;
-        gchar                      *title;
+    PopplerActionType type;
+    gchar *title;
 
-        PopplerActionMovieOperation operation;
-	PopplerMovie               *movie;
+    PopplerActionMovieOperation operation;
+    PopplerMovie *movie;
 };
 
+/**
+ * PopplerActionRendition:
+ * @type: action type (%POPPLER_ACTION_RENDITION)
+ * @title: action title
+ * @op: operation
+ * @media: media
+ *
+ * Play multimedia content.
+ *
+ * Since: 0.14
+ */
 struct _PopplerActionRendition
 {
-	PopplerActionType type;
-	gchar            *title;
+    PopplerActionType type;
+    gchar *title;
 
-	gint               op;
-	PopplerMedia      *media;
+    gint op;
+    PopplerMedia *media;
 };
 
+/**
+ * PopplerActionOCGState:
+ * @type: action type (%POPPLER_ACTION_OCG_STATE)
+ * @title: action title
+ * @state_list: (element-type PopplerActionLayer): list of #PopplerActionLayer<!-- -->s
+ *
+ * State of layer.
+ *
+ * Since: 0.14
+ */
 struct _PopplerActionOCGState
 {
-	PopplerActionType type;
-	gchar            *title;
+    PopplerActionType type;
+    gchar *title;
 
-	GList            *state_list;
+    GList *state_list;
 };
 
+/**
+ * PopplerActionJavascript:
+ * @type: action type (%POPPLER_ACTION_JAVASCRIPT)
+ * @title: action title
+ * @script: javascript
+ *
+ * Javascript.
+ *
+ * Since: 0.18
+ */
 struct _PopplerActionJavascript
 {
-	PopplerActionType  type;
-	gchar 		  *title;
+    PopplerActionType type;
+    gchar *title;
 
-	gchar		  *script;
+    gchar *script;
+};
+
+/**
+ * PopplerActionResetForm:
+ * @type: action type (%POPPLER_ACTION_RESET_FORM)
+ * @title: action title
+ * @fields: (element-type utf8) (nullable): list of field names to
+ *   reset / retain
+ * @exclude: whether to reset all but the listed fields
+ *
+ * Resets some or all fields within a PDF form.
+ *
+ * The default behavior resets only the list of @fields, but setting
+ * @exclude to %TRUE will cause the action to reset all fields but those
+ * listed. Providing an empty list of fields resets the entire form.
+ *
+ * Since: 0.90
+ */
+struct _PopplerActionResetForm
+{
+    PopplerActionType type;
+    gchar *title;
+
+    GList *fields;
+    gboolean exclude;
 };
 
 /**
  * PopplerAction:
  *
- * A data structure for holding actions
+ * A generic wrapper for actions that exposes only #PopplerActionType.
  */
-union _PopplerAction
-{
-	PopplerActionType type;
-	PopplerActionAny any;
-	PopplerActionGotoDest goto_dest;
-	PopplerActionGotoRemote goto_remote;
-	PopplerActionLaunch launch;
-	PopplerActionUri uri;
-	PopplerActionNamed named;
-	PopplerActionMovie movie;
-	PopplerActionRendition rendition;
-	PopplerActionOCGState ocg_state;
-	PopplerActionJavascript javascript;
+union _PopplerAction {
+    PopplerActionType type;
+    PopplerActionAny any;
+    PopplerActionGotoDest goto_dest;
+    PopplerActionGotoRemote goto_remote;
+    PopplerActionLaunch launch;
+    PopplerActionUri uri;
+    PopplerActionNamed named;
+    PopplerActionMovie movie;
+    PopplerActionRendition rendition;
+    PopplerActionOCGState ocg_state;
+    PopplerActionJavascript javascript;
+    PopplerActionResetForm reset_form;
 };
 
-#define POPPLER_TYPE_ACTION             (poppler_action_get_type ())
-#define POPPLER_ACTION(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), POPPLER_TYPE_ACTION, PopplerAction))
+#define POPPLER_TYPE_ACTION (poppler_action_get_type())
+#define POPPLER_ACTION(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), POPPLER_TYPE_ACTION, PopplerAction))
 
-GType          poppler_action_get_type (void) G_GNUC_CONST;
+POPPLER_PUBLIC
+GType poppler_action_get_type(void) G_GNUC_CONST;
 
-void           poppler_action_free     (PopplerAction *action);
-PopplerAction *poppler_action_copy     (PopplerAction *action);
+POPPLER_PUBLIC
+void poppler_action_free(PopplerAction *action);
+POPPLER_PUBLIC
+PopplerAction *poppler_action_copy(PopplerAction *action);
 
+#define POPPLER_TYPE_DEST (poppler_dest_get_type())
+POPPLER_PUBLIC
+GType poppler_dest_get_type(void) G_GNUC_CONST;
 
-#define POPPLER_TYPE_DEST              (poppler_dest_get_type ())
-GType          poppler_dest_get_type   (void) G_GNUC_CONST;
+POPPLER_PUBLIC
+void poppler_dest_free(PopplerDest *dest);
+POPPLER_PUBLIC
+PopplerDest *poppler_dest_copy(PopplerDest *dest);
 
-void           poppler_dest_free       (PopplerDest   *dest);
-PopplerDest   *poppler_dest_copy       (PopplerDest   *dest);
+POPPLER_PUBLIC
+char *poppler_named_dest_from_bytestring(const guint8 *data, gsize length);
+
+POPPLER_PUBLIC
+guint8 *poppler_named_dest_to_bytestring(const char *name, gsize *length);
 
 G_END_DECLS
 

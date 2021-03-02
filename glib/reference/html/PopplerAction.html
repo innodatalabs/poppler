@@ -6,9 +6,9 @@
 <meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
 <link rel="home" href="index.html" title="Poppler Reference Manual">
 <link rel="up" href="ch01.html" title="Poppler">
-<link rel="prev" href="PopplerPage.html" title="PopplerPage">
+<link rel="prev" href="poppler-Poppler-Page.html" title="PopplerPage">
 <link rel="next" href="PopplerAttachment.html" title="PopplerAttachment">
-<meta name="generator" content="GTK-Doc V1.28 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.33.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -20,7 +20,7 @@
 </td>
 <td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
 <td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
-<td><a accesskey="p" href="PopplerPage.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="p" href="poppler-Poppler-Page.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
 <td><a accesskey="n" href="PopplerAttachment.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
 </tr></table>
 <div class="refentry">
@@ -36,8 +36,8 @@
 <a name="PopplerAction.functions"></a><h2>Functions</h2>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
-<col width="150px" class="functions_return">
-<col class="functions_name">
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
 </colgroup>
 <tbody>
 <tr>
@@ -79,8 +79,8 @@
 <a name="PopplerAction.other"></a><h2>Types and Values</h2>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
-<col width="150px" class="name">
-<col class="description">
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
 </colgroup>
 <tbody>
 <tr>
@@ -125,6 +125,10 @@
 </tr>
 <tr>
 <td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="PopplerAction.html#PopplerActionResetForm" title="struct PopplerActionResetForm">PopplerActionResetForm</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
 <td class="function_name"><a class="link" href="PopplerAction.html#PopplerActionOCGState" title="struct PopplerActionOCGState">PopplerActionOCGState</a></td>
 </tr>
 <tr>
@@ -159,6 +163,11 @@
 <pre class="screen">    <a href="/usr/share/gtk-doc/html/gobject/gobject-Boxed-Types.html">GBoxed</a>
     <span class="lineart">├──</span> PopplerAction
     <span class="lineart">╰──</span> PopplerDest
+    <a href="/usr/share/gtk-doc/html/gobject/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
+    <span class="lineart">├──</span> PopplerActionLayerAction
+    <span class="lineart">├──</span> PopplerActionMovieOperation
+    <span class="lineart">├──</span> PopplerActionType
+    <span class="lineart">╰──</span> PopplerDestType
 </pre>
 </div>
 <div class="refsect1">
@@ -277,27 +286,36 @@ poppler_dest_free (<em class="parameter"><code><a class="link" href="PopplerActi
 <a name="PopplerAction.other_details"></a><h2>Types and Values</h2>
 <div class="refsect2">
 <a name="PopplerAction-union"></a><h3>PopplerAction</h3>
-<p>A data structure for holding actions</p>
+<p>A generic wrapper for actions that exposes only <a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a>.</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="PopplerDest-struct"></a><h3>PopplerDest</h3>
 <pre class="programlisting">typedef struct {
-	PopplerDestType type;
+    PopplerDestType type;
 
-	int page_num;
-	double left;
-	double bottom;
-	double right;
-	double top;
-	double zoom;
-	gchar *named_dest;
-	guint change_left : 1;
-	guint change_top : 1;
-	guint change_zoom : 1;
+    int page_num;
+    double left;
+    double bottom;
+    double right;
+    double top;
+    double zoom;
+    gchar *named_dest;
+    guint change_left : 1;
+    guint change_top : 1;
+    guint change_zoom : 1;
 } PopplerDest;
 </pre>
 <p>Data structure for holding a destination</p>
+<p>Note that <em class="parameter"><code>named_dest</code></em>
+ is the string representation of the named
+destination. This is the right form to pass to poppler functions,
+e.g. <a class="link" href="PopplerDocument.html#poppler-document-find-dest" title="poppler_document_find_dest ()"><code class="function">poppler_document_find_dest()</code></a>, but to get the destination as
+it appears in the PDF itself, you need to convert it to a bytestring
+with <a class="link" href="poppler-PDF-Utility-functions.html#poppler-named-dest-to-bytestring" title="poppler_named_dest_to_bytestring ()"><code class="function">poppler_named_dest_to_bytestring()</code></a> first.
+Also note that <em class="parameter"><code>named_dest</code></em>
+ does not have a defined encoding and
+is not in a form suitable to be displayed to the user.</p>
 <div class="refsect3">
 <a name="PopplerDest.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
@@ -370,113 +388,464 @@ poppler_dest_free (<em class="parameter"><code><a class="link" href="PopplerActi
 <div class="refsect2">
 <a name="PopplerActionAny"></a><h3>struct PopplerActionAny</h3>
 <pre class="programlisting">struct PopplerActionAny {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 };
 </pre>
+<p>Fields common to all <a class="link" href="PopplerAction.html" title="PopplerAction"><span class="type">PopplerAction</span></a>s</p>
+<div class="refsect3">
+<a name="PopplerActionAny.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionAny.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionAny.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="PopplerActionGotoDest"></a><h3>struct PopplerActionGotoDest</h3>
 <pre class="programlisting">struct PopplerActionGotoDest {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 
-	PopplerDest *dest;
+    PopplerDest *dest;
 };
 </pre>
+<p>Go to destination</p>
+<div class="refsect3">
+<a name="PopplerActionGotoDest.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionGotoDest.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type (<a class="link" href="PopplerAction.html#POPPLER-ACTION-GOTO-DEST:CAPS"><code class="literal">POPPLER_ACTION_GOTO_DEST</code></a>)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionGotoDest.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerDest"><span class="type">PopplerDest</span></a> *<em class="structfield"><code><a name="PopplerActionGotoDest.dest"></a>dest</code></em>;</p></td>
+<td class="struct_member_description"><p>destination</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="PopplerActionGotoRemote"></a><h3>struct PopplerActionGotoRemote</h3>
 <pre class="programlisting">struct PopplerActionGotoRemote {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 
-	gchar *file_name;
-	PopplerDest *dest;
+    gchar *file_name;
+    PopplerDest *dest;
 };
 </pre>
+<p>Go to destination in another document</p>
+<div class="refsect3">
+<a name="PopplerActionGotoRemote.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionGotoRemote.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type (<a class="link" href="PopplerAction.html#POPPLER-ACTION-GOTO-REMOTE:CAPS"><code class="literal">POPPLER_ACTION_GOTO_REMOTE</code></a>)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionGotoRemote.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionGotoRemote.file-name"></a>file_name</code></em>;</p></td>
+<td class="struct_member_description"><p>file name</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerDest"><span class="type">PopplerDest</span></a> *<em class="structfield"><code><a name="PopplerActionGotoRemote.dest"></a>dest</code></em>;</p></td>
+<td class="struct_member_description"><p>destination</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="PopplerActionLaunch"></a><h3>struct PopplerActionLaunch</h3>
 <pre class="programlisting">struct PopplerActionLaunch {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 
-	gchar *file_name;
-	gchar *params;
+    gchar *file_name;
+    gchar *params;
 };
 </pre>
+<p>Launch app (or open document)</p>
+<div class="refsect3">
+<a name="PopplerActionLaunch.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionLaunch.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type (<a class="link" href="PopplerAction.html#POPPLER-ACTION-LAUNCH:CAPS"><code class="literal">POPPLER_ACTION_LAUNCH</code></a>)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionLaunch.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionLaunch.file-name"></a>file_name</code></em>;</p></td>
+<td class="struct_member_description"><p>file name</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionLaunch.params"></a>params</code></em>;</p></td>
+<td class="struct_member_description"><p>parameters</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="PopplerActionUri"></a><h3>struct PopplerActionUri</h3>
 <pre class="programlisting">struct PopplerActionUri {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 
-	char *uri;
+    char *uri;
 };
 </pre>
+<p>URI</p>
+<div class="refsect3">
+<a name="PopplerActionUri.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionUri.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type (<a class="link" href="PopplerAction.html#POPPLER-ACTION-URI:CAPS"><code class="literal">POPPLER_ACTION_URI</code></a>)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionUri.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><span class="type">char</span> *<em class="structfield"><code><a name="PopplerActionUri.uri"></a>uri</code></em>;</p></td>
+<td class="struct_member_description"><p>URI</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="PopplerActionNamed"></a><h3>struct PopplerActionNamed</h3>
 <pre class="programlisting">struct PopplerActionNamed {
-	PopplerActionType type;
-	gchar *title;
+    PopplerActionType type;
+    gchar *title;
 
-	gchar *named_dest;
+    gchar *named_dest;
 };
 </pre>
+<p>Predefined action</p>
+<div class="refsect3">
+<a name="PopplerActionNamed.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionNamed.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type (<a class="link" href="PopplerAction.html#POPPLER-ACTION-NAMED:CAPS"><code class="literal">POPPLER_ACTION_NAMED</code></a>)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionNamed.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionNamed.named-dest"></a>named_dest</code></em>;</p></td>
+<td class="struct_member_description"><p>named destination</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="PopplerActionMovie"></a><h3>struct PopplerActionMovie</h3>
 <pre class="programlisting">struct PopplerActionMovie {
-        PopplerActionType           type;
-        gchar                      *title;
+    PopplerActionType type;
+    gchar *title;
 
-        PopplerActionMovieOperation operation;
-	PopplerMovie               *movie;
+    PopplerActionMovieOperation operation;
+    PopplerMovie *movie;
 };
 </pre>
+<p>Play movies.</p>
+<div class="refsect3">
+<a name="PopplerActionMovie.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionMovie.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type (<a class="link" href="PopplerAction.html#POPPLER-ACTION-MOVIE:CAPS"><code class="literal">POPPLER_ACTION_MOVIE</code></a>)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionMovie.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionMovieOperation" title="enum PopplerActionMovieOperation"><span class="type">PopplerActionMovieOperation</span></a> <em class="structfield"><code><a name="PopplerActionMovie.operation"></a>operation</code></em>;</p></td>
+<td class="struct_member_description"><p>operation</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="poppler-Poppler-Movie.html#PopplerMovie"><span class="type">PopplerMovie</span></a> *<em class="structfield"><code><a name="PopplerActionMovie.movie"></a>movie</code></em>;</p></td>
+<td class="struct_member_description"><p>movie</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-14.html#api-index-0.14">0.14</a></p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="PopplerActionRendition"></a><h3>struct PopplerActionRendition</h3>
 <pre class="programlisting">struct PopplerActionRendition {
-	PopplerActionType type;
-	gchar            *title;
+    PopplerActionType type;
+    gchar *title;
 
-	gint               op;
-	PopplerMedia      *media;
+    gint op;
+    PopplerMedia *media;
 };
 </pre>
+<p>Play multimedia content.</p>
+<div class="refsect3">
+<a name="PopplerActionRendition.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionRendition.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type (<a class="link" href="PopplerAction.html#POPPLER-ACTION-RENDITION:CAPS"><code class="literal">POPPLER_ACTION_RENDITION</code></a>)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionRendition.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="PopplerActionRendition.op"></a>op</code></em>;</p></td>
+<td class="struct_member_description"><p>operation</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="poppler-Poppler-Media.html#PopplerMedia"><span class="type">PopplerMedia</span></a> *<em class="structfield"><code><a name="PopplerActionRendition.media"></a>media</code></em>;</p></td>
+<td class="struct_member_description"><p>media</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-14.html#api-index-0.14">0.14</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="PopplerActionResetForm"></a><h3>struct PopplerActionResetForm</h3>
+<pre class="programlisting">struct PopplerActionResetForm {
+    PopplerActionType type;
+    gchar *title;
+
+    GList *fields;
+    gboolean exclude;
+};
+</pre>
+<p>Resets some or all fields within a PDF form.</p>
+<p>The default behavior resets only the list of <em class="parameter"><code>fields</code></em>
+, but setting
+<em class="parameter"><code>exclude</code></em>
+ to <a href="../glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> will cause the action to reset all fields but those
+listed. Providing an empty list of fields resets the entire form.</p>
+<div class="refsect3">
+<a name="PopplerActionResetForm.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionResetForm.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type (<a class="link" href="PopplerAction.html#POPPLER-ACTION-RESET-FORM:CAPS"><code class="literal">POPPLER_ACTION_RESET_FORM</code></a>)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionResetForm.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="PopplerActionResetForm.fields"></a>fields</code></em>;</p></td>
+<td class="struct_member_description"><p>list of field names to
+reset / retain. </p></td>
+<td class="struct_member_annotations"><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="PopplerActionResetForm.exclude"></a>exclude</code></em>;</p></td>
+<td class="struct_member_description"><p>whether to reset all but the listed fields</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-90.html#api-index-0.90">0.90</a></p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="PopplerActionOCGState"></a><h3>struct PopplerActionOCGState</h3>
 <pre class="programlisting">struct PopplerActionOCGState {
-	PopplerActionType type;
-	gchar            *title;
+    PopplerActionType type;
+    gchar *title;
 
-	GList            *state_list;
+    GList *state_list;
 };
 </pre>
+<p>State of layer.</p>
+<div class="refsect3">
+<a name="PopplerActionOCGState.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionOCGState.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type (<a class="link" href="PopplerAction.html#POPPLER-ACTION-OCG-STATE:CAPS"><code class="literal">POPPLER_ACTION_OCG_STATE</code></a>)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionOCGState.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="PopplerActionOCGState.state-list"></a>state_list</code></em>;</p></td>
+<td class="struct_member_description"><p>list of <a class="link" href="PopplerAction.html#PopplerActionLayer" title="PopplerActionLayer"><span class="type">PopplerActionLayer</span></a>s. </p></td>
+<td class="struct_member_annotations"><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> PopplerActionLayer]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-14.html#api-index-0.14">0.14</a></p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="PopplerActionJavascript"></a><h3>struct PopplerActionJavascript</h3>
 <pre class="programlisting">struct PopplerActionJavascript {
-	PopplerActionType  type;
-	gchar 		  *title;
+    PopplerActionType type;
+    gchar *title;
 
-	gchar		  *script;
+    gchar *script;
 };
 </pre>
+<p>Javascript.</p>
+<div class="refsect3">
+<a name="PopplerActionJavascript.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="PopplerAction.html#PopplerActionType" title="enum PopplerActionType"><span class="type">PopplerActionType</span></a> <em class="structfield"><code><a name="PopplerActionJavascript.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>action type (<a class="link" href="PopplerAction.html#POPPLER-ACTION-JAVASCRIPT:CAPS"><code class="literal">POPPLER_ACTION_JAVASCRIPT</code></a>)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionJavascript.title"></a>title</code></em>;</p></td>
+<td class="struct_member_description"><p>action title</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerActionJavascript.script"></a>script</code></em>;</p></td>
+<td class="struct_member_description"><p>javascript</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-18.html#api-index-0.18">0.18</a></p>
 </div>
 <hr>
 <div class="refsect2">
@@ -522,7 +891,7 @@ poppler_dest_free (<em class="parameter"><code><a class="link" href="PopplerActi
 <tr>
 <td class="enum_member_name"><p><a name="POPPLER-ACTION-LAUNCH:CAPS"></a>POPPLER_ACTION_LAUNCH</p></td>
 <td class="enum_member_description">
-<p>launch app (or open document</p>
+<p>launch app (or open document)</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
@@ -565,6 +934,13 @@ poppler_dest_free (<em class="parameter"><code><a class="link" href="PopplerActi
 <td class="enum_member_name"><p><a name="POPPLER-ACTION-JAVASCRIPT:CAPS"></a>POPPLER_ACTION_JAVASCRIPT</p></td>
 <td class="enum_member_description">
 <p>Javascript. Since 0.18</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="POPPLER-ACTION-RESET-FORM:CAPS"></a>POPPLER_ACTION_RESET_FORM</p></td>
+<td class="enum_member_description">
+<p>resets form. Since 0.90</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
@@ -726,8 +1102,8 @@ bounding box within the window</p>
 <div class="refsect2">
 <a name="PopplerActionLayer"></a><h3>PopplerActionLayer</h3>
 <pre class="programlisting">typedef struct {
-	PopplerActionLayerAction action;
-	GList *layers;
+    PopplerActionLayerAction action;
+    GList *layers;
 } PopplerActionLayer;
 </pre>
 <p>Action to perform over a list of layers</p>
@@ -747,8 +1123,8 @@ bounding box within the window</p>
 </tr>
 <tr>
 <td class="struct_member_name"><p><a href="../glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="PopplerActionLayer.layers"></a>layers</code></em>;</p></td>
-<td class="struct_member_description"><p>list of <a class="link" href="PopplerLayer.html" title="PopplerLayer"><span class="type">PopplerLayer</span></a>s</p></td>
-<td class="struct_member_annotations"> </td>
+<td class="struct_member_description"><p>list of <a class="link" href="poppler-Poppler-Layer.html#PopplerLayer"><span class="type">PopplerLayer</span></a>s. </p></td>
+<td class="struct_member_annotations"><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> PopplerLayer]</span></td>
 </tr>
 </tbody>
 </table></div>
@@ -796,6 +1172,6 @@ bounding box within the window</p>
 </div>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.28</div>
+<hr>Generated by GTK-Doc V1.33.1</div>
 </body>
 </html>

@@ -17,6 +17,9 @@
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+/**
+ \file poppler-page-transition.h
+ */
 #include "poppler-page-transition.h"
 
 #include "PageTransition.h"
@@ -26,10 +29,7 @@ using namespace poppler;
 class poppler::page_transition_private
 {
 public:
-    page_transition_private(Object *trans)
-        : pt(trans)
-    {
-    }
+    page_transition_private(Object *trans) : pt(trans) { }
 
     PageTransition pt;
 };
@@ -45,7 +45,7 @@ public:
 /**
  \enum poppler::page_transition::type_enum
 
- The possibe types of a %page transition.
+ The possible types of a %page transition.
 */
 
 /**
@@ -60,19 +60,12 @@ public:
  The direction of an animation in a %page transition.
 */
 
-
-page_transition::page_transition(Object *params)
-    : d(new page_transition_private(params))
-{
-}
+page_transition::page_transition(Object *params) : d(new page_transition_private(params)) { }
 
 /**
  Copy constructor.
  */
-page_transition::page_transition(const page_transition &pt)
-    : d(new page_transition_private(*pt.d))
-{
-}
+page_transition::page_transition(const page_transition &pt) : d(new page_transition_private(*pt.d)) { }
 
 /**
  Destructor.
@@ -117,7 +110,7 @@ bool page_transition::is_rectangular() const
     return d->pt.isRectangular();
 }
 
-page_transition& page_transition::operator=(const page_transition &pt)
+page_transition &page_transition::operator=(const page_transition &pt)
 {
     if (&pt != this) {
         page_transition_private *new_d = new page_transition_private(*pt.d);

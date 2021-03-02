@@ -7,15 +7,45 @@ GPLv2 and later (or something more permissive that can be "upgraded" to GPLv2
 and later). If you do not agree to this license, please explain the problem / bug
 and how you would solve it in words instead of code.
 
-By default all patches attached to the bugzilla or sent to the mailing list will
-be assumed to agree with the licensing expressed here.
+By default all patches attached to the gitlab instance or sent to the mailing list
+will be assumed to agree with the licensing expressed here.
 
 Channels of contact
 -------------------
 Poppler has three main channels of contact:
  * The poppler mailing list http://lists.freedesktop.org/mailman/listinfo/poppler
- * The poppler bug tracker (bugzilla) http://bugs.freedesktop.org
- * The #poppler channel at the freenode network
+ * The poppler gitlab instance https://gitlab.freedesktop.org/poppler/poppler/
+ * The #poppler channel at the IRC freenode network
 Do not hesitate to drop by talk to people there.
+
+clang-format
+------------
+We introduced clang-format mandatory usage in July 2020.
+If you want git blame to ignore the revision in which we did the mass change you can do
+   git config blame.ignoreRevsFile .git-blame-ignore-revs
+on your clone
+
+To get the clang-format warnings locally instead at CI time we recommend you
+to copy the hooks/pre-commit to your .git
+    cp hooks/pre-commit .git/hooks/
+
+We are using clang-format 11 on CI. Unfortunately clang-format is not totally
+compatible with older versions of itself. If CI gives you trouble but your local
+clang-format disagrees, just apply the changes suggested by CI and then commit
+with the --no-verify flag. If you get stuck, don't hesitate to ask the reviewer
+to help and they will reformat your commits :)
+
+Merge requests
+--------------
+
+When creating a new merge request on gitlab make sure it has a clear title and
+the description includes any extra details that might be helpful for the
+reviewer, such as what the aim of the change is and decisions made during
+implementation.
+
+Also, check "Allow commits from members who can merge to the target branch" as
+that enables rebase on landing. See the gitlab docs for details:
+
+https://docs.gitlab.com/ee/user/project/merge_requests/allow_collaboration.html
 
 And keep hacking on poppler!

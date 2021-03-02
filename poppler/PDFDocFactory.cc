@@ -7,6 +7,8 @@
 // Copyright 2010 Hib Eris <hib@hiberis.nl>
 // Copyright 2010 Albert Astals Cid <aacid@kde.org>
 // Copyright 2017 Adrian Johnson <ajohnson@redneon.com>
+// Copyright 2018 Adam Reichold <adam.reichold@t-online.de>
+// Copyright 2019, 2021 Oliver Sander <oliver.sander@tu-dresden.de>
 //
 //========================================================================
 
@@ -14,13 +16,12 @@
 
 #include "PDFDocFactory.h"
 
-#include "goo/GooList.h"
 #include "goo/GooString.h"
 #include "PDFDoc.h"
 #include "LocalPDFDocBuilder.h"
 #include "StdinPDFDocBuilder.h"
 #ifdef ENABLE_LIBCURL
-#include "CurlPDFDocBuilder.h"
+#    include "CurlPDFDocBuilder.h"
 #endif
 #include "ErrorCodes.h"
 
@@ -28,46 +29,45 @@
 // PDFDocFactory
 //------------------------------------------------------------------------
 
-PDFDocFactory::PDFDocFactory(GooList *pdfDocBuilders)
+PDFDocFactory::PDFDocFactory(std::vector<PDFDocBuilder *> *pdfDocBuilders)
 {
-  if (pdfDocBuilders) {
-    builders = pdfDocBuilders;
-  } else {
-    builders = new GooList();
-  }
+    if (pdfDocBuilders) {
+        builders = pdfDocBuilders;
+    } else {
+        builders = new std::vector<PDFDocBuilder *>();
+    }
+    builders->push_back(new LocalPDFDocBuilder());
+    builders->push_back(new StdinPDFDocBuilder());
 #ifdef ENABLE_LIBCURL
-  builders->insert(0, new CurlPDFDocBuilder());
+    builders->push_back(new CurlPDFDocBuilder());
 #endif
-  builders->insert(0, new StdinPDFDocBuilder());
-  builders->insert(0, new LocalPDFDocBuilder());
 }
 
 PDFDocFactory::~PDFDocFactory()
 {
-  if (builders) {
-    deleteGooList(builders, PDFDocBuilder);
-  }
+    if (builders) {
+        for (auto entry : *builders) {
+            delete entry;
+        }
+        delete builders;
+    }
 }
 
-PDFDoc *
-PDFDocFactory::createPDFDoc(const GooString &uri, GooString *ownerPassword,
-                                    GooString *userPassword, void *guiDataA)
+std::unique_ptr<PDFDoc> PDFDocFactory::createPDFDoc(const GooString &uri, GooString *ownerPassword, GooString *userPassword, void *guiDataA)
 {
-  for (int i = builders->getLength() - 1; i >= 0 ; i--) {
-    PDFDocBuilder *builder = (PDFDocBuilder *) builders->get(i);
-    if (builder->supports(uri)) {
-      return builder->buildPDFDoc(uri, ownerPassword, userPassword, guiDataA);
+    for (int i = builders->size() - 1; i >= 0; i--) {
+        PDFDocBuilder *builder = (*builders)[i];
+        if (builder->supports(uri)) {
+            return builder->buildPDFDoc(uri, ownerPassword, userPassword, guiDataA);
+        }
     }
-  }
 
-  error(errInternal, -1, "Cannot handle URI '{0:t}'.", &uri);
-  GooString *fileName = uri.copy();
-  return PDFDoc::ErrorPDFDoc(errOpenFile, fileName);
+    error(errInternal, -1, "Cannot handle URI '{0:t}'.", &uri);
+    GooString *fileName = uri.copy();
+    return PDFDoc::ErrorPDFDoc(errOpenFile, fileName);
 }
 
 void PDFDocFactory::registerPDFDocBuilder(PDFDocBuilder *pdfDocBuilder)
 {
-  builders->append(pdfDocBuilder);
+    builders->push_back(pdfDocBuilder);
 }
-
-

@@ -21,24 +21,18 @@
 #ifndef SPLASHFONTFILEID_H
 #define SPLASHFONTFILEID_H
 
-#ifdef USE_GCC_PRAGMAS
-#pragma interface
-#endif
-
-#include "goo/gtypes.h"
-
 //------------------------------------------------------------------------
 // SplashFontFileID
 //------------------------------------------------------------------------
 
-class SplashFontFileID {
+class SplashFontFileID
+{
 public:
-
-  SplashFontFileID();
-  virtual ~SplashFontFileID();
-  SplashFontFileID(const SplashFontFileID &) = delete;
-  SplashFontFileID& operator=(const SplashFontFileID &) = delete;
-  virtual GBool matches(SplashFontFileID *id) = 0;
+    SplashFontFileID();
+    virtual ~SplashFontFileID();
+    SplashFontFileID(const SplashFontFileID &) = delete;
+    SplashFontFileID &operator=(const SplashFontFileID &) = delete;
+    virtual bool matches(SplashFontFileID *id) = 0;
 };
 
 #endif

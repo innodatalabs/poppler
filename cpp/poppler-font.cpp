@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2009, Pino Toscano <pino@kde.org>
  * Copyright (C) 2015, Tamas Szekeres <szekerest@gmail.com>
+ * Copyright (C) 2018, Adam Reichold <adam.reichold@t-online.de>
+ * Copyright (C) 2019, Oliver Sander <oliver.sander@tu-dresden.de>
+ * Copyright (C) 2020, Suzuki Toshiya <mpsuzuki@hiroshima-u.ac.jp>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +20,12 @@
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+/**
+ \file poppler-font.h
+ */
 #include "poppler-font.h"
+
+#include "poppler-font-private.h"
 
 #include "poppler-document-private.h"
 
@@ -26,54 +34,6 @@
 #include <algorithm>
 
 using namespace poppler;
-
-class poppler::font_info_private
-{
-public:
-    font_info_private()
-        : type(font_info::unknown)
-        , is_embedded(false)
-        , is_subset(false)
-    {
-    }
-    font_info_private(FontInfo *fi)
-        : type((font_info::type_enum)fi->getType())
-        , is_embedded(fi->getEmbedded())
-        , is_subset(fi->getSubset())
-    {
-        if (fi->getName()) {
-            font_name = fi->getName()->getCString();
-        }
-        if (fi->getFile()) {
-            font_file = fi->getFile()->getCString();
-        }
-    }
-
-    std::string font_name;
-    std::string font_file;
-    font_info::type_enum type : 5;
-    bool is_embedded : 1;
-    bool is_subset : 1;
-};
-
-
-class poppler::font_iterator_private
-{
-public:
-    font_iterator_private(int start_page, document_private *dd)
-        : font_info_scanner(dd->doc, start_page)
-        , total_pages(dd->doc->getNumPages())
-        , current_page((std::max)(start_page, 0))
-    {
-    }
-    ~font_iterator_private()
-    {
-    }
-
-    FontInfoScanner font_info_scanner;
-    int total_pages;
-    int current_page;
-};
 
 /**
  \class poppler::font_info poppler-font.h "poppler/cpp/poppler-font.h"
@@ -87,27 +47,17 @@ public:
  The various types of fonts available in a PDF %document.
 */
 
-
 /**
  Constructs an invalid font information.
  */
-font_info::font_info()
-    : d(new font_info_private())
-{
-}
+font_info::font_info() : d(new font_info_private()) { }
 
-font_info::font_info(font_info_private &dd)
-    : d(&dd)
-{
-}
+font_info::font_info(font_info_private &dd) : d(&dd) { }
 
 /**
  Copy constructor.
  */
-font_info::font_info(const font_info &fi)
-    : d(new font_info_private(*fi.d))
-{
-}
+font_info::font_info(const font_info &fi) : d(new font_info_private(*fi.d)) { }
 
 /**
  Destructor.
@@ -160,7 +110,7 @@ font_info::type_enum font_info::type() const
 /**
  Assignment operator.
  */
-font_info& font_info::operator=(const font_info &fi)
+font_info &font_info::operator=(const font_info &fi)
 {
     if (this != &fi) {
         *d = *fi.d;
@@ -188,11 +138,7 @@ delete it;
 \endcode
  */
 
-
-font_iterator::font_iterator(int start_page, document_private *dd)
-    : d(new font_iterator_private(start_page, dd))
-{
-}
+font_iterator::font_iterator(int start_page, document_private *dd) : d(new font_iterator_private(start_page, dd)) { }
 
 /**
  Destructor.
@@ -203,7 +149,7 @@ font_iterator::~font_iterator()
 }
 
 /**
- Returns the fonts of the current page and advances to the next one.
+ \returns the fonts of the current page and advances to the next one.
  */
 std::vector<font_info> font_iterator::next()
 {
@@ -213,15 +159,17 @@ std::vector<font_info> font_iterator::next()
 
     ++d->current_page;
 
-    GooList *items = d->font_info_scanner.scan(1);
-    if (!items) {
-        return std::vector<font_info>();
+    /* FontInfoScanner::scan() receives a number how many pages to
+     * be scanned from the *current page*, not from the beginning.
+     * We restrict the font scanning to the current page only.
+     */
+    const std::vector<FontInfo *> items = d->font_info_scanner.scan(1);
+    std::vector<font_info> fonts;
+    fonts.reserve(items.size());
+    for (FontInfo *entry : items) {
+        fonts.push_back(font_info(*new font_info_private(entry)));
+        delete entry;
     }
-    std::vector<font_info> fonts(items->getLength());
-    for (int i = 0; i < items->getLength(); ++i) {
-        fonts[i] = font_info(*new font_info_private((FontInfo *)items->get(i)));
-    }
-    deleteGooList(items, FontInfo);
     return fonts;
 }
 

@@ -6,6 +6,7 @@
 //
 // Copyright 2010 Hib Eris <hib@hiberis.nl>
 // Copyright 2010, 2017 Albert Astals Cid <aacid@kde.org>
+// Copyright 2021 Oliver Sander <oliver.sander@tu-dresden.de>
 //
 //========================================================================
 
@@ -19,22 +20,17 @@
 // StdinPDFDocBuilder
 //------------------------------------------------------------------------
 
-PDFDoc *
-StdinPDFDocBuilder::buildPDFDoc(const GooString &uri, GooString *ownerPassword,
-                                    GooString *userPassword, void *guiDataA)
+std::unique_ptr<PDFDoc> StdinPDFDocBuilder::buildPDFDoc(const GooString &uri, GooString *ownerPassword, GooString *userPassword, void *guiDataA)
 {
-  CachedFile *cachedFile = new CachedFile(new StdinCacheLoader(), nullptr);
-  return new PDFDoc(new CachedFileStream(cachedFile, 0, gFalse,
-                                         cachedFile->getLength(), Object(objNull)),
-                    ownerPassword, userPassword);
+    CachedFile *cachedFile = new CachedFile(new StdinCacheLoader(), nullptr);
+    return std::make_unique<PDFDoc>(new CachedFileStream(cachedFile, 0, false, cachedFile->getLength(), Object(objNull)), ownerPassword, userPassword);
 }
 
-GBool StdinPDFDocBuilder::supports(const GooString &uri)
+bool StdinPDFDocBuilder::supports(const GooString &uri)
 {
-  if (uri.cmpN("fd://0", 6) == 0) {
-    return gTrue;
-  } else {
-    return gFalse;
-  }
+    if (uri.cmpN("fd://0", 6) == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
-

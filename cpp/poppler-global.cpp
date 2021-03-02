@@ -4,7 +4,9 @@
  * Copyright (C) 2014, 2015 Hans-Peter Deifel <hpdeifel@gmx.de>
  * Copyright (C) 2015, Tamas Szekeres <szekerest@gmail.com>
  * Copyright (C) 2016 Jakub Alba <jakubalba@gmail.com>
- * Copyright (C) 2018, Albert Astals Cid <aacid@kde.org>
+ * Copyright (C) 2018, 2020, Albert Astals Cid <aacid@kde.org>
+ * Copyright (C) 2018 Suzuki Toshiya <mpsuzuki@hiroshima-u.ac.jp>
+ * Copyright (C) 2018, 2020, Adam Reichold <adam.reichold@t-online.de>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,9 +23,13 @@
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+/**
+ \file poppler-global.h
+ */
 #include "poppler-global.h"
 
 #include "poppler-private.h"
+#include "poppler-document-private.h"
 
 #include "DateInfo.h"
 
@@ -38,22 +44,20 @@
 
 #include "config.h"
 
-namespace
-{
+namespace {
 
 struct MiniIconv
 {
-    MiniIconv(const char *to_code, const char *from_code)
-        : i_(iconv_open(to_code, from_code))
-    {}
+    MiniIconv(const char *to_code, const char *from_code) : i_(iconv_open(to_code, from_code)) { }
     ~MiniIconv()
-    { if (is_valid()) iconv_close(i_); }
+    {
+        if (is_valid())
+            iconv_close(i_);
+    }
     MiniIconv(const MiniIconv &) = delete;
-    MiniIconv& operator=(const MiniIconv &) = delete;
-    bool is_valid() const
-    { return i_ != (iconv_t)-1; }
-    operator iconv_t() const
-    { return i_; }
+    MiniIconv &operator=(const MiniIconv &) = delete;
+    bool is_valid() const { return i_ != (iconv_t)-1; }
+    operator iconv_t() const { return i_; }
     iconv_t i_;
 };
 
@@ -162,7 +166,7 @@ using namespace poppler;
 /**
  \var poppler::permission_enum poppler::perm_fill_forms
 
- The permission to allow the the filling of interactive form fields
+ The permission to allow the filling of interactive form fields
  (including signature fields).
 
  \note this permission can be set even when the \ref poppler::perm_add_notes "perm_add_notes"
@@ -197,28 +201,15 @@ using namespace poppler;
  The case sensitivity.
 */
 
+noncopyable::noncopyable() { }
 
-noncopyable::noncopyable()
-{
-}
+noncopyable::~noncopyable() { }
 
-noncopyable::~noncopyable()
-{
-}
+ustring::ustring() { }
 
+ustring::ustring(size_type len, value_type ch) : std::basic_string<value_type>(len, ch) { }
 
-ustring::ustring()
-{
-}
-
-ustring::ustring(size_type len, value_type ch)
-    : std::basic_string<value_type>(len, ch)
-{
-}
-
-ustring::~ustring()
-{
-}
+ustring::~ustring() { }
 
 byte_array ustring::to_utf8() const
 {
@@ -226,14 +217,18 @@ byte_array ustring::to_utf8() const
         return byte_array();
     }
 
-    MiniIconv ic("UTF-8", "UTF-16");
+#ifdef WORDS_BIGENDIAN
+    MiniIconv ic("UTF-8", "UTF-16BE");
+#else
+    MiniIconv ic("UTF-8", "UTF-16LE");
+#endif
     if (!ic.is_valid()) {
         return byte_array();
     }
     const value_type *me_data = data();
-    byte_array str(size()*sizeof(value_type));
+    byte_array str(size() * sizeof(value_type));
     char *str_data = &str[0];
-    size_t me_len_char = size()*sizeof(value_type);
+    size_t me_len_char = size() * sizeof(value_type);
     size_t str_len_left = str.size();
     size_t ir = iconv(ic, (ICONV_CONST char **)&me_data, &me_len_char, &str_data, &str_len_left);
     if ((ir == (size_t)-1) && (errno == E2BIG)) {
@@ -274,13 +269,17 @@ ustring ustring::from_utf8(const char *str, int len)
         }
     }
 
-    MiniIconv ic("UTF-16", "UTF-8");
+#ifdef WORDS_BIGENDIAN
+    MiniIconv ic("UTF-16BE", "UTF-8");
+#else
+    MiniIconv ic("UTF-16LE", "UTF-8");
+#endif
     if (!ic.is_valid()) {
         return ustring();
     }
 
     // +1, because iconv inserts byte order marks
-    ustring ret(len+1, 0);
+    ustring ret(len + 1, 0);
     char *ret_data = reinterpret_cast<char *>(&ret[0]);
     char *str_data = const_cast<char *>(str);
     size_t str_len_char = len;
@@ -288,7 +287,7 @@ ustring ustring::from_utf8(const char *str, int len)
     size_t ir = iconv(ic, (ICONV_CONST char **)&str_data, &str_len_char, &ret_data, &ret_len_left);
     if ((ir == (size_t)-1) && (errno == E2BIG)) {
         const size_t delta = ret_data - reinterpret_cast<char *>(&ret[0]);
-        ret_len_left += ret.size()*sizeof(ustring::value_type);
+        ret_len_left += ret.size() * sizeof(ustring::value_type);
         ret.resize(ret.size() * 2);
         ret_data = reinterpret_cast<char *>(&ret[0]) + delta;
         ir = iconv(ic, (ICONV_CONST char **)&str_data, &str_len_char, &ret_data, &ret_len_left);
@@ -296,7 +295,7 @@ ustring ustring::from_utf8(const char *str, int len)
             return ustring();
         }
     }
-    ret.resize(ret.size() - ret_len_left/sizeof(ustring::value_type));
+    ret.resize(ret.size() - ret_len_left / sizeof(ustring::value_type));
 
     return ret;
 }
@@ -310,11 +309,11 @@ ustring ustring::from_latin1(const std::string &str)
     const char *c = str.data();
     ustring ret(l, 0);
     for (size_type i = 0; i < l; ++i) {
-        ret[i] = *c++;
+        ret[i] = static_cast<unsigned char>(*c);
+        c++;
     }
     return ret;
 }
-
 
 /**
  Converts a string representing a PDF date to a value compatible with time_t.
@@ -325,15 +324,14 @@ time_type poppler::convert_date(const std::string &date)
     return dateStringToTime(&gooDateStr);
 }
 
-std::ostream& poppler::operator<<(std::ostream& stream, const byte_array &array)
+std::ostream &poppler::operator<<(std::ostream &stream, const byte_array &array)
 {
     stream << "[";
     const std::ios_base::fmtflags f = stream.flags();
     std::hex(stream);
     const char *data = &array[0];
     const byte_array::size_type out_len = std::min<byte_array::size_type>(array.size(), 50);
-    for (byte_array::size_type i = 0; i < out_len; ++i)
-    {
+    for (byte_array::size_type i = 0; i < out_len; ++i) {
         if (i != 0) {
             stream << " ";
         }
@@ -345,6 +343,22 @@ std::ostream& poppler::operator<<(std::ostream& stream, const byte_array &array)
     }
     stream << "]";
     return stream;
+}
+
+/**
+ * Sets a custom data directory for initialization of global parameters
+ *
+ * If no instances of \see document currently exist, this will save the
+ * given path as a custom data directory to be used when the first instance
+ * of the \see document is constructed.
+ *
+ * \returns true on success, false on failure
+ *
+ * \since 0.73.0
+ */
+bool poppler::set_data_dir(const std::string &new_data_dir)
+{
+    return GlobalParamsIniter::setCustomDataDir(new_data_dir);
 }
 
 /**

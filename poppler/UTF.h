@@ -7,15 +7,13 @@
 // Copyright (C) 2012, 2017 Adrian Johnson <ajohnson@redneon.com>
 // Copyright (C) 2016 Jason Crain <jason@aquaticape.us>
 // Copyright (C) 2018 Klarälvdalens Datakonsult AB, a KDAB Group company, <info@kdab.com>. Work sponsored by the LiMux project of the city of Munich
+// Copyright (C) 2018 Nelson Benítez León <nbenitezl@gmail.com>
+// Copyright (C) 2019, 2020 Albert Astals Cid <aacid@kde.org>
 //
 //========================================================================
 
 #ifndef UTF_H
 #define UTF_H
-
-#ifdef USE_GCC_PRAGMAS
-#pragma implementation
-#endif
 
 #include <cstdint>
 #include <climits>
@@ -28,7 +26,7 @@
 //   utf16_len  - number of UTF-16 characters
 //   ucs4_out   - if not NULL, allocates and returns UCS-4 string. Free with gfree.
 //   returns number of UCS-4 characters
-int UTF16toUCS4(const Unicode *utf16, int utf16_len, Unicode **ucs4_out);
+int UTF16toUCS4(const Unicode *utf16, int utf16Len, Unicode **ucs4_out);
 
 // Convert a PDF Text String to UCS-4
 //   s          - PDF text string
@@ -78,5 +76,18 @@ int utf16ToUtf8(const uint16_t *utf16, char *utf8, int maxUtf8 = INT_MAX, int ma
 
 // Allocate utf8 string and convert utf16 into it.
 char *utf16ToUtf8(const uint16_t *utf16, int *len = nullptr);
+
+// Convert a UCS-4 string to pure ASCII (7bit)
+//   in       - UCS-4 string bytes
+//   len      - number of UCS-4 characters
+//   ucs4_out - if not NULL, allocates and returns UCS-4 string. Free with gfree.
+//   out_len  - number of UCS-4 characters in ucs4_out.
+//   in_idx   - if not NULL, the int array returned by the out fourth parameter of
+//              unicodeNormalizeNFKC() function. Optional, needed for @indices out parameter.
+//   indices  - if not NULL, @indices is assigned the location of a newly-allocated array
+//              of length @out_len + 1, for each character in the ascii string giving the index
+//              of the corresponding character in the text of the line (thanks to this info
+//              being passed in @in_idx parameter).
+void unicodeToAscii7(const Unicode *in, int len, Unicode **ucs4_out, int *out_len, const int *in_idx, int **indices);
 
 #endif

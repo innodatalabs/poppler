@@ -2,6 +2,8 @@
  * Copyright (C) 2010, Pino Toscano <pino@kde.org>
  * Copyright (C) 2015 William Bader <williambader@hotmail.com>
  * Copyright (C) 2018, Zsombor Hollay-Horvath <hollay.horvath@gmail.com>
+ * Copyright (C) 2019, Julián Unrrein <junrrein@gmail.com>
+ * Copyright (C) 2020, Albert Astals Cid <aacid@kde.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +20,9 @@
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+/**
+ \file poppler-page-renderer.h
+ */
 #include "poppler-page-renderer.h"
 
 #include "poppler-document-private.h"
@@ -25,11 +30,12 @@
 #include "poppler-image.h"
 
 #include <config.h>
+#include <poppler-config.h>
 
 #include "PDFDoc.h"
 #if defined(HAVE_SPLASH)
-#include "SplashOutputDev.h"
-#include "splash/SplashBitmap.h"
+#    include "SplashOutputDev.h"
+#    include "splash/SplashBitmap.h"
 #endif
 
 using namespace poppler;
@@ -37,70 +43,58 @@ using namespace poppler;
 class poppler::page_renderer_private
 {
 public:
-    page_renderer_private()
-        : paper_color(0xffffffff)
-        , hints(0)
-        , image_format(image::format_enum::format_argb32)
-        , line_mode(page_renderer::line_mode_enum::line_default)
-    {
-    }
+    page_renderer_private() : paper_color(0xffffffff), hints(0), image_format(image::format_enum::format_argb32), line_mode(page_renderer::line_mode_enum::line_default) { }
 
 #if defined(HAVE_SPLASH)
-    static bool conv_color_mode(image::format_enum mode,
-                                SplashColorMode &splash_mode);
-    static bool conv_line_mode(page_renderer::line_mode_enum mode,
-                               SplashThinLineMode &splash_mode);
+    static bool conv_color_mode(image::format_enum mode, SplashColorMode &splash_mode);
+    static bool conv_line_mode(page_renderer::line_mode_enum mode, SplashThinLineMode &splash_mode);
 #endif
 
     argb paper_color;
     unsigned int hints;
     image::format_enum image_format;
     page_renderer::line_mode_enum line_mode;
-
 };
 
-
 #if defined(HAVE_SPLASH)
-bool page_renderer_private::conv_color_mode(image::format_enum mode,
-                                            SplashColorMode &splash_mode)
+bool page_renderer_private::conv_color_mode(image::format_enum mode, SplashColorMode &splash_mode)
 {
     switch (mode) {
-        case image::format_enum::format_mono:
-            splash_mode = splashModeMono1;
-            break;
-        case image::format_enum::format_gray8:
-            splash_mode = splashModeMono8;
-            break;
-        case image::format_enum::format_rgb24:
-            splash_mode = splashModeRGB8;
-            break;
-        case image::format_enum::format_bgr24:
-            splash_mode = splashModeBGR8;
-            break;
-        case image::format_enum::format_argb32:
-            splash_mode = splashModeXBGR8;
-            break;
-        default:
-            return false;
+    case image::format_enum::format_mono:
+        splash_mode = splashModeMono1;
+        break;
+    case image::format_enum::format_gray8:
+        splash_mode = splashModeMono8;
+        break;
+    case image::format_enum::format_rgb24:
+        splash_mode = splashModeRGB8;
+        break;
+    case image::format_enum::format_bgr24:
+        splash_mode = splashModeBGR8;
+        break;
+    case image::format_enum::format_argb32:
+        splash_mode = splashModeXBGR8;
+        break;
+    default:
+        return false;
     }
     return true;
 }
 
-bool page_renderer_private::conv_line_mode(page_renderer::line_mode_enum mode,
-                                           SplashThinLineMode &splash_mode)
+bool page_renderer_private::conv_line_mode(page_renderer::line_mode_enum mode, SplashThinLineMode &splash_mode)
 {
     switch (mode) {
-        case page_renderer::line_mode_enum::line_default:
-            splash_mode = splashThinLineDefault;
-            break;
-        case page_renderer::line_mode_enum::line_solid:
-            splash_mode = splashThinLineSolid;
-            break;
-        case page_renderer::line_mode_enum::line_shape:
-            splash_mode = splashThinLineShape;
-            break;
-        default:
-            return false;
+    case page_renderer::line_mode_enum::line_default:
+        splash_mode = splashThinLineDefault;
+        break;
+    case page_renderer::line_mode_enum::line_solid:
+        splash_mode = splashThinLineSolid;
+        break;
+    case page_renderer::line_mode_enum::line_shape:
+        splash_mode = splashThinLineShape;
+        break;
+    default:
+        return false;
     }
     return true;
 }
@@ -120,14 +114,10 @@ bool page_renderer_private::conv_line_mode(page_renderer::line_mode_enum mode,
  A flag of an option taken into account when rendering
 */
 
-
 /**
  Constructs a new %page renderer.
  */
-page_renderer::page_renderer()
-    : d(new page_renderer_private())
-{
-}
+page_renderer::page_renderer() : d(new page_renderer_private()) { }
 
 /**
  Destructor.
@@ -267,10 +257,7 @@ void page_renderer::set_line_mode(page_renderer::line_mode_enum mode)
 
  \see can_render
  */
-image page_renderer::render_page(const page *p,
-                                 double xres, double yres,
-                                 int x, int y, int w, int h,
-                                 rotation_enum rotate) const
+image page_renderer::render_page(const page *p, double xres, double yres, int x, int y, int w, int h, rotation_enum rotate) const
 {
     if (!p) {
         return image();
@@ -283,8 +270,7 @@ image page_renderer::render_page(const page *p,
     SplashColorMode colorMode;
     SplashThinLineMode lineMode;
 
-    if (!d->conv_color_mode(d->image_format, colorMode) ||
-        !d->conv_line_mode(d->line_mode, lineMode)) {
+    if (!d->conv_color_mode(d->image_format, colorMode) || !d->conv_line_mode(d->line_mode, lineMode)) {
         return image();
     }
 
@@ -292,15 +278,12 @@ image page_renderer::render_page(const page *p,
     bgColor[0] = d->paper_color & 0xff;
     bgColor[1] = (d->paper_color >> 8) & 0xff;
     bgColor[2] = (d->paper_color >> 16) & 0xff;
-    SplashOutputDev splashOutputDev(colorMode, 4, gFalse, bgColor, gTrue, lineMode);
-    splashOutputDev.setFontAntialias(d->hints & text_antialiasing ? gTrue : gFalse);
-    splashOutputDev.setVectorAntialias(d->hints & antialiasing ? gTrue : gFalse);
-    splashOutputDev.setFreeTypeHinting(d->hints & text_hinting ? gTrue : gFalse, gFalse);
+    SplashOutputDev splashOutputDev(colorMode, 4, false, bgColor, true, lineMode);
+    splashOutputDev.setFontAntialias(d->hints & text_antialiasing ? true : false);
+    splashOutputDev.setVectorAntialias(d->hints & antialiasing ? true : false);
+    splashOutputDev.setFreeTypeHinting(d->hints & text_hinting ? true : false, false);
     splashOutputDev.startDoc(pdfdoc);
-    pdfdoc->displayPageSlice(&splashOutputDev, pp->index + 1,
-                             xres, yres, int(rotate) * 90,
-                             gFalse, gTrue, gFalse,
-                             x, y, w, h);
+    pdfdoc->displayPageSlice(&splashOutputDev, pp->index + 1, xres, yres, int(rotate) * 90, false, true, false, x, y, w, h, nullptr, nullptr, nullptr, nullptr, true);
 
     SplashBitmap *bitmap = splashOutputDev.getBitmap();
     const int bw = bitmap->getWidth();

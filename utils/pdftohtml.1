@@ -15,7 +15,9 @@ because the original program does not have a manual page.
 .PP
 .B pdftohtml
 is a program that converts PDF documents into HTML. It generates its output in
-the current working directory.
+the current working directory.  If
+.I PDF-file
+is \'-', it reads the PDF file from stdin.
 .SH OPTIONS
 A summary of options are included below.
 .TP
@@ -43,6 +45,9 @@ generate complex output
 .B \-s
 generate single HTML that includes all pages
 .TP
+.B \-dataurls
+use data URLs instead of external images in HTML. No available in all platforms
+.TP
 .B \-i
 ignore images
 .TP
@@ -57,6 +62,9 @@ zoom the PDF document (default 1.5)
 .TP
 .B \-xml
 output for XML post-processing
+.TP
+.B \-noroundcoord
+do not round coordinates (with XML output only)
 .TP
 .B \-enc <string>
 output text encoding name
