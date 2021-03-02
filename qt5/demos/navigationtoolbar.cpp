@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2008-2009, Pino Toscano <pino@kde.org>
  * Copyright (C) 2013, Fabio D'Urso <fabiodurso@hotmail.it>
+ * Copyright (C) 2019, Albert Astals Cid <aacid@kde.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,13 +25,13 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QComboBox>
 
-NavigationToolBar::NavigationToolBar(QWidget *parent)
-    : QToolBar(parent)
+NavigationToolBar::NavigationToolBar(QWidget *parent) : QToolBar(parent)
 {
     m_firstAct = addAction(tr("First"), this, SLOT(slotGoFirst()));
     m_prevAct = addAction(tr("Previous"), this, SLOT(slotGoPrev()));
     m_pageCombo = new QComboBox(this);
-    connect(m_pageCombo, SIGNAL(activated(int)), this, SLOT(slotComboActivated(int)));
+    // TODO replace with qOverload once we start requiring Qt 5.7
+    connect(m_pageCombo, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &NavigationToolBar::slotComboActivated);
     addWidget(m_pageCombo);
     m_nextAct = addAction(tr("Next"), this, SLOT(slotGoNext()));
     m_lastAct = addAction(tr("Last"), this, SLOT(slotGoLast()));
@@ -52,24 +53,24 @@ NavigationToolBar::NavigationToolBar(QWidget *parent)
     m_zoomCombo->addItem(tr("300%"));
     m_zoomCombo->addItem(tr("400%"));
     m_zoomCombo->setCurrentIndex(6); // "100%"
-    connect(m_zoomCombo, SIGNAL(currentIndexChanged(QString)), this, SLOT(slotZoomComboChanged(QString)));
+    // TODO replace with qOverload once we start requiring Qt 5.7
+    connect(m_zoomCombo, static_cast<void (QComboBox::*)(const QString &)>(&QComboBox::currentIndexChanged), this, &NavigationToolBar::slotZoomComboChanged);
     addWidget(m_zoomCombo);
 
     m_rotationCombo = new QComboBox(this);
     // NOTE: \302\260 = degree symbol
-    m_rotationCombo->addItem(trUtf8("0\302\260"));
-    m_rotationCombo->addItem(trUtf8("90\302\260"));
-    m_rotationCombo->addItem(trUtf8("180\302\260"));
-    m_rotationCombo->addItem(trUtf8("270\302\260"));
-    connect(m_rotationCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(slotRotationComboChanged(int)));
+    m_rotationCombo->addItem(tr("0\302\260"));
+    m_rotationCombo->addItem(tr("90\302\260"));
+    m_rotationCombo->addItem(tr("180\302\260"));
+    m_rotationCombo->addItem(tr("270\302\260"));
+    // TODO replace with qOverload once we start requiring Qt 5.7
+    connect(m_rotationCombo, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &NavigationToolBar::slotRotationComboChanged);
     addWidget(m_rotationCombo);
 
     documentClosed();
 }
 
-NavigationToolBar::~NavigationToolBar()
-{
-}
+NavigationToolBar::~NavigationToolBar() { }
 
 void NavigationToolBar::documentLoaded()
 {
@@ -140,4 +141,3 @@ void NavigationToolBar::slotRotationComboChanged(int idx)
 {
     emit rotationChanged(idx * 90);
 }
-

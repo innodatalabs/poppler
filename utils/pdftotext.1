@@ -24,7 +24,9 @@ to
 .IR file.txt .
 If 
 .I text-file
-is \'-', the text is sent to stdout.
+is \'-', the text is sent to stdout.  If
+.I PDF-file
+is \'-', it reads the PDF file from stdin.
 .SH OPTIONS
 .TP
 .BI \-f " number"
@@ -62,6 +64,11 @@ Keep the text in content stream order.  This is a hack which often
 "undoes" column formatting, etc.  Use of raw mode is no longer
 recommended.
 .TP
+.B \-nodiag
+Discard diagonal text (i.e., text that is not close to one of the
+0, 90, 180, or 270 degree axes). This is useful for skipping
+watermarks drawn on body text.
+.TP
 .B \-htmlmeta
 Generate a simple HTML file, including the meta information.  This
 simply wraps the text in <pre> and </pre> and prepends the meta
@@ -75,11 +82,14 @@ word in the file.
 Generate an XHTML file containing bounding box information for each
 block, line, and word in the file.
 .TP
+.B \-cropbox
+Use the crop box rather than the media box with \-bbox and \-bbox-layout.
+.TP
 .BI \-enc " encoding-name"
 Sets the encoding to use for text output. This defaults to "UTF-8".
 .TP
 .B \-listenc
-Lits the available encodings
+Lists the available encodings
 .TP
 .BI \-eol " unix | dos | mac"
 Sets the end-of-line convention to use for text output.

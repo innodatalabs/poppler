@@ -7,8 +7,8 @@
 <link rel="home" href="index.html" title="Poppler Reference Manual">
 <link rel="up" href="ch01.html" title="Poppler">
 <link rel="prev" href="PopplerAction.html" title="PopplerAction">
-<link rel="next" href="PopplerFormField.html" title="PoppplerFormField">
-<meta name="generator" content="GTK-Doc V1.28 (XML mode)">
+<link rel="next" href="PopplerFormField.html" title="PopplerFormField">
+<meta name="generator" content="GTK-Doc V1.33.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -36,8 +36,8 @@
 <a name="PopplerAttachment.functions"></a><h2>Functions</h2>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
-<col width="150px" class="functions_return">
-<col class="functions_name">
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
 </colgroup>
 <tbody>
 <tr>
@@ -46,6 +46,51 @@
 </td>
 <td class="function_name">
 <span class="c_punctuation">(</span><a class="link" href="PopplerAttachment.html#PopplerAttachmentSaveFunc" title="PopplerAttachmentSaveFunc ()">*PopplerAttachmentSaveFunc</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="../glib/glib-Strings.html#GString"><span class="returnvalue">GString</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="PopplerAttachment.html#poppler-attachment-get-checksum" title="poppler_attachment_get_checksum ()">poppler_attachment_get_checksum</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="../glib/glib-GDateTime.html#GDateTime"><span class="returnvalue">GDateTime</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="PopplerAttachment.html#poppler-attachment-get-ctime" title="poppler_attachment_get_ctime ()">poppler_attachment_get_ctime</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="PopplerAttachment.html#poppler-attachment-get-description" title="poppler_attachment_get_description ()">poppler_attachment_get_description</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="../glib/glib-GDateTime.html#GDateTime"><span class="returnvalue">GDateTime</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="PopplerAttachment.html#poppler-attachment-get-mtime" title="poppler_attachment_get_mtime ()">poppler_attachment_get_mtime</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="PopplerAttachment.html#poppler-attachment-get-name" title="poppler_attachment_get_name ()">poppler_attachment_get_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="../glib/glib-Basic-Types.html#gsize"><span class="returnvalue">gsize</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="PopplerAttachment.html#poppler-attachment-get-size" title="poppler_attachment_get_size ()">poppler_attachment_get_size</a> <span class="c_punctuation">()</span>
 </td>
 </tr>
 <tr>
@@ -71,8 +116,8 @@
 <a name="PopplerAttachment.other"></a><h2>Types and Values</h2>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
-<col width="150px" class="name">
-<col class="description">
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
 </colgroup>
 <tbody><tr>
 <td class="datatype_keyword"> </td>
@@ -149,6 +194,167 @@ bytes to be written. </p></td>
 <p> <a href="../glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if successful, <a href="../glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> (with <em class="parameter"><code>error</code></em>
 set) if failed.</p>
 </div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="poppler-attachment-get-checksum"></a><h3>poppler_attachment_get_checksum ()</h3>
+<pre class="programlisting">const <a href="../glib/glib-Strings.html#GString"><span class="returnvalue">GString</span></a> *
+poppler_attachment_get_checksum (<em class="parameter"><code><a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a> *attachment</code></em>);</pre>
+<div class="refsect3">
+<a name="poppler-attachment-get-checksum.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>attachment</p></td>
+<td class="parameter_description"><p>a <a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="poppler-attachment-get-checksum.returns"></a><h4>Returns</h4>
+<p> The attachment's checksum.</p>
+</div>
+<p class="since">Since: 20.09.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="poppler-attachment-get-ctime"></a><h3>poppler_attachment_get_ctime ()</h3>
+<pre class="programlisting"><a href="../glib/glib-GDateTime.html#GDateTime"><span class="returnvalue">GDateTime</span></a> *
+poppler_attachment_get_ctime (<em class="parameter"><code><a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a> *attachment</code></em>);</pre>
+<div class="refsect3">
+<a name="poppler-attachment-get-ctime.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>attachment</p></td>
+<td class="parameter_description"><p>a <a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="poppler-attachment-get-ctime.returns"></a><h4>Returns</h4>
+<p>The attachment's creation date and time
+as a <a href="../glib/glib-GDateTime.html#GDateTime"><span class="type">GDateTime</span></a>, or <a href="../glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if the creation date and time is not available. </p>
+<p><span class="annotation">[<acronym title="The data is owned by the callee, which is responsible of freeing it."><span class="acronym">transfer none</span></acronym>][<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></p>
+</div>
+<p class="since">Since: 20.09.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="poppler-attachment-get-description"></a><h3>poppler_attachment_get_description ()</h3>
+<pre class="programlisting">const <a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+poppler_attachment_get_description (<em class="parameter"><code><a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a> *attachment</code></em>);</pre>
+<div class="refsect3">
+<a name="poppler-attachment-get-description.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>attachment</p></td>
+<td class="parameter_description"><p>a <a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="poppler-attachment-get-description.returns"></a><h4>Returns</h4>
+<p> The attachment's descriptive text.</p>
+</div>
+<p class="since">Since: 20.09.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="poppler-attachment-get-mtime"></a><h3>poppler_attachment_get_mtime ()</h3>
+<pre class="programlisting"><a href="../glib/glib-GDateTime.html#GDateTime"><span class="returnvalue">GDateTime</span></a> *
+poppler_attachment_get_mtime (<em class="parameter"><code><a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a> *attachment</code></em>);</pre>
+<div class="refsect3">
+<a name="poppler-attachment-get-mtime.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>attachment</p></td>
+<td class="parameter_description"><p>a <a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="poppler-attachment-get-mtime.returns"></a><h4>Returns</h4>
+<p>The attachment's modification date and
+time as a <a href="../glib/glib-GDateTime.html#GDateTime"><span class="type">GDateTime</span></a>, or <a href="../glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if the modification date and time is not
+available. </p>
+<p><span class="annotation">[<acronym title="The data is owned by the callee, which is responsible of freeing it."><span class="acronym">transfer none</span></acronym>][<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></p>
+</div>
+<p class="since">Since: 20.09.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="poppler-attachment-get-name"></a><h3>poppler_attachment_get_name ()</h3>
+<pre class="programlisting">const <a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+poppler_attachment_get_name (<em class="parameter"><code><a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a> *attachment</code></em>);</pre>
+<div class="refsect3">
+<a name="poppler-attachment-get-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>attachment</p></td>
+<td class="parameter_description"><p>a <a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="poppler-attachment-get-name.returns"></a><h4>Returns</h4>
+<p> The attachment's name.</p>
+</div>
+<p class="since">Since: 20.09.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="poppler-attachment-get-size"></a><h3>poppler_attachment_get_size ()</h3>
+<pre class="programlisting"><a href="../glib/glib-Basic-Types.html#gsize"><span class="returnvalue">gsize</span></a>
+poppler_attachment_get_size (<em class="parameter"><code><a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a> *attachment</code></em>);</pre>
+<div class="refsect3">
+<a name="poppler-attachment-get-size.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>attachment</p></td>
+<td class="parameter_description"><p>a <a class="link" href="PopplerAttachment.html" title="PopplerAttachment"><span class="type">PopplerAttachment</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="poppler-attachment-get-size.returns"></a><h4>Returns</h4>
+<p> The attachment's size.</p>
+</div>
+<p class="since">Since: 20.09.0</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -253,11 +459,70 @@ whatever the save function generates.</p>
 <a name="PopplerAttachment.other_details"></a><h2>Types and Values</h2>
 <div class="refsect2">
 <a name="PopplerAttachment-struct"></a><h3>PopplerAttachment</h3>
-<pre class="programlisting">typedef struct _PopplerAttachment PopplerAttachment;</pre>
+<pre class="programlisting">typedef struct {
+    gchar *name;
+    gchar *description;
+    gsize size;
+
+    /* GTime is deprecated, but is part of our ABI here (see #715, #765). */
+    GTime mtime;
+    GTime ctime;
+
+    GString *checksum;
+} PopplerAttachment;
+</pre>
+<div class="refsect3">
+<a name="PopplerAttachment.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerAttachment-struct.name"></a>name</code></em>;</p></td>
+<td class="struct_member_description"><p>The filename. Deprecated in poppler 20.09.0. Use
+<a class="link" href="PopplerAttachment.html#poppler-attachment-get-name" title="poppler_attachment_get_name ()"><code class="function">poppler_attachment_get_name()</code></a> instead.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="PopplerAttachment-struct.description"></a>description</code></em>;</p></td>
+<td class="struct_member_description"><p>Descriptive text. Deprecated in poppler 20.09.0. Use
+<a class="link" href="PopplerAttachment.html#poppler-attachment-get-description" title="poppler_attachment_get_description ()"><code class="function">poppler_attachment_get_description()</code></a> instead.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Basic-Types.html#gsize"><span class="type">gsize</span></a> <em class="structfield"><code><a name="PopplerAttachment-struct.size"></a>size</code></em>;</p></td>
+<td class="struct_member_description"><p>The size of the file. Deprecated in poppler 20.09.0. Use
+<a class="link" href="PopplerAttachment.html#poppler-attachment-get-size" title="poppler_attachment_get_size ()"><code class="function">poppler_attachment_get_size()</code></a> instead.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Date-and-Time-Functions.html#GTime"><span class="type">GTime</span></a> <em class="structfield"><code><a name="PopplerAttachment-struct.mtime"></a>mtime</code></em>;</p></td>
+<td class="struct_member_description"><p>The date and time when the file was last modified. Deprecated in
+poppler 20.09.0. Use <a class="link" href="PopplerAttachment.html#poppler-attachment-get-mtime" title="poppler_attachment_get_mtime ()"><code class="function">poppler_attachment_get_mtime()</code></a> instead.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Date-and-Time-Functions.html#GTime"><span class="type">GTime</span></a> <em class="structfield"><code><a name="PopplerAttachment-struct.ctime"></a>ctime</code></em>;</p></td>
+<td class="struct_member_description"><p>The date and time when the file was created. Deprecated in poppler
+20.09.0. Use <a class="link" href="PopplerAttachment.html#poppler-attachment-get-ctime" title="poppler_attachment_get_ctime ()"><code class="function">poppler_attachment_get_ctime()</code></a> instead.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="../glib/glib-Strings.html#GString"><span class="type">GString</span></a> *<em class="structfield"><code><a name="PopplerAttachment-struct.checksum"></a>checksum</code></em>;</p></td>
+<td class="struct_member_description"><p>A 16-byte checksum of the file. Deprecated in poppler 20.09.0. Use
+<a class="link" href="PopplerAttachment.html#poppler-attachment-get-checksum" title="poppler_attachment_get_checksum ()"><code class="function">poppler_attachment_get_checksum()</code></a> instead.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
 </div>
 </div>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.28</div>
+<hr>Generated by GTK-Doc V1.33.1</div>
 </body>
 </html>

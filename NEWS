@@ -1,3 +1,734 @@
+Release 21.03.0:
+        core:
+         * Fix parsing text in some broken pdf files. Issue #1040
+         * Fix memory issue when using threads. Issue #1050
+         * TextSelectionDumper: Fix getText() for space after word
+         * Change signature of OutputDev:tilingPatternFill
+         * Make PDFDocBuilder return a std::unique_ptr
+         * Improve well formed check for shading functions
+         * Fix leak in case of fread failing
+         * Fix memory leak in broken file in JBIG2Stream::readGenericBitmap
+         * PSOutputDev: Fix stack overflow in broken files
+
+        glib:
+         * poppler_annot_free_text_get_callout_line: Fix wrong static cast
+         * poppler-structure-element: fix memleak
+         * Improve documentation
+         * demo: keep same visual appearance between displayed and copied text
+
+        utils:
+         * pdftotext: Add -cropbox option
+         * pdftoppm: Add -progress option
+         * pdftoppm: Fix rounding bug in computation of output bitmap size. Issue #927
+
+        qt6:
+         * Add missing poppler-qt6.pc.cmake
+
+Release 21.02.0:
+        core:
+         * GfxCal*ColorSpace: introduce Bradford transform for chromatic adaptation
+         * Fix memory leak if saving the file fails
+         * Internal code improvements
+         * Fix various issues handling broken files
+         * Make checkedAdd work for long long in MSVC
+
+        qt5:
+         * Properly export NewSignatureData class
+         * Fix regression in QIODeviceOutStream + MSVC
+
+        qt6:
+         * Properly export NewSignatureData class
+         * Fix regression in QIODeviceOutStream + MSVC
+
+        utils:
+         * pdftohtml: Fix error() parameter type
+
+Release 21.01.0:
+        core:
+         * Faster routines for jpeg decoding
+         * Fix reading signatures in encrypted files
+         * Add white point correction when lcms is used
+         * JBIG2Stream: Fix byte counting
+         * Fix potential data loss if we try to fetch a non existing Ref after modifying the document
+         * Specifically use DeviceGray instead of DefaultGray for softmasks
+         * Fix various issues handling broken files
+
+        utils:
+         * pdftocairo: Setmode binary for windows
+         * pdfsig: Add hability to digitally sign files
+         * pdftoppm: add options to set DeviceGray/DeviceRGB/DeviceCMYK
+         * pdftops: add options to set DeviceGray/DeviceRGB/DeviceCMYK
+         * pdfimages: Account for rotation in PPI calculation
+
+        qt5:
+         * Add hability to digitally sign files
+
+        qt6:
+         * Add hability to digitally sign files
+
+        build system:
+         * Enable clang-tidy bugprone-signed-char-misuse
+
+Release 20.12.1:
+        core:
+         * PSOutputDev: fixing regression in the rasterization code. Issue #1002
+         * Add missing profile copy operation in GfxICCBasedColorSpace::copy()
+         * Fix issue in broken files
+
+        build system:
+         * Use modern CMake linking for Qt and boost
+
+Release 20.12.0:
+        core:
+         * Draw better circles for circle annotations
+         * Fix annotation line width if no appearance stream or style are given
+         * Tweak rendering of highlight annotations
+         * Fix border rendering of some annotations
+         * Fix rendering of some files. Issue #976 Issue #567
+         * PSOutputDev: provide options to set the rasterization color space and ICC profile
+         * PSOutputDev: for splashModeCMYK8 and language level >=2 activate overprint emulation
+         * PSOutputDev: use the DeviceN8 bitmap for rasterization with CMYK-output + overprint
+         * Use the font name without subset tag when querying for a system font
+         * Splash: Fix wrong x adjustment during clipping
+         * Splash: Fix blitImage in uncolored tiling patterns
+         * timeToDateString: We forgot the ' after the minutes
+         * Move psLevel to PSOutputDev creation
+         * Fix several issues in broken files
+
+        utils:
+         * pdftops: provide options to set the rasterization color space and ICC profile
+         * pdftops: for splashModeCMYK8 and language level >=2 activate overprint emulation
+
+        cpp:
+         * New fuzzers
+
+        glib:
+         * New fuzzers
+
+        qt5:
+         * New fuzzers
+
+        build system:
+         * gcc: Enable -fno-operator-names
+         * Remove obsolete bool-to-binary macro
+         * Remove obsolete version-check macro for pkgconfig
+         * Remove .pc files for private back-ends
+         * Remove redundant unit-test macro
+
+Release 20.11.0:
+        core:
+         * More work on rendering of standalone Annot Widgets. Issue #806
+         * Fix crashes in embedded file handling on broken files. Issue #967
+         * Fix uninitialized memory read on broken files
+         * Save a bit of memory in Dict data
+
+        cpp:
+         * Fix crashes in embedded file handling on broken files. Issue #966
+
+        utils:
+         * pdftohtml: HTML and XML output includes font opacity.
+
+        qt5:
+         * Rename ArthurOutputDev to QPainterOutputDev
+
+        build system:
+         * Fix linker error when gtk is not in a default location
+         * Add some checks for gtk-doc support
+         * Reorganize GObject introspection config
+         * Enable CMAKE_LINK_DEPENDS_NO_SHARED
+
+Release 20.10.0:
+        core:
+         * Filter out repeated forms
+         * Implement EmbedStream::reset()
+         * CairoOutputDev: evict just font faces owned solely by cache.
+         * Splash: Rename Yd to Ydown, Xu to Xup, etc.
+         * Splash: fix crash in out-of-memory situation.
+         * Fix some undefined behaviour situation with forged files
+
+Release 20.09.0:
+        core:
+         * Compability fix for Forms
+         * Fix fetching of Objects failing in some cases
+         * Fix clearing date in Annot setModified/setDate
+         * TextSelectionPainter: support glyphless fonts
+         * Splash: Don't try read past end of image
+         * avoid abort() on large memory allocation
+         * Fix memory leak on broken files
+         * Fix potential invalid memory read
+         * Small code improvements
+
+        qt5:
+         * Document TextAnnotation::inplaceAlign
+         * Make Annotation::setModification/CreationDate work on existing annots
+         * Be a bit more stubborn converting dates that come from xml
+         * Clean as many null characters from the end as possible when converting strings
+
+        glib:
+         * Add accessor functions for PopplerAttachment
+         * Deprecate PopplerAttachment GTime fields
+         * Deprecate PopplerDocument date properties
+
+        utils:
+         * pdftoppm: report error and exit if output file cannot be written
+         * Document that PDF-file can be '-' to read it from stdin
+
+        build system:
+         * cmake: Modern way to link against libpng, zlib and libtiff
+         * cmake: Remove stray support for lcms1 in pdftocairo
+
+Release 20.08.0:
+        core:
+         * Sub-page objects: initialize clip max values considering the render resolution. Issue #937
+         * Splash: Set initial line width to 1. Issue #674
+         * Fix stack overflow with specially crafted files
+         * GfxShading: Simplify holding the Function
+         * Splash: Fix x86 + windows asm build
+
+        qt5:
+         * Deprecate Document::toc
+         * Deprecate AnnotationUtils
+
+Release 0.90.1:
+        core:
+         * Fix regression on PS conversion.
+           Regression only happened on applications that are locale enabled
+           i.e. Okular but not pdftops, when using a quite new lcms and
+           the user locale uses , as decimal separator instead of .
+         * Add UTF16LE support to TextStringToUCS4.
+           Even if the standard clearly says it should be UTF16BE
+
+        qt6:
+         * Add work in progress qt6 port. Ignore for now :)
+
+Release 0.90.0:
+        core:
+         * Color profile tweaks
+         * Small signature improvements
+         * BBoxOutputDev: Fix calculation when type3 fonts are involved
+         * Fix potential crash when reading Forms
+         * Fix infinite loop in broken file
+
+        glib:
+         * Fix adding annots in rotated pages
+         * Add ability to reset forms
+         * Several fixes to the documentation
+
+        qt5:
+         * Make it clear we require Qt 5.5
+         * demo: Fix crash on broken files
+         * Small documentation improvements
+
+        utils:
+         * pdftoppm: Add option to set display profile
+         * pdftops: Add a -rasterize option with values always, never, or whenneeded
+
+        build system:
+         * Require cmake 3.5
+         * More modern cmake way to link against curl
+
+Release 0.89.0:
+        core:
+         * Add support for ResetForm action. Issue #225
+         * Fix crash in PDFDoc::getSignatureFields when there's no Forms at all
+         * Fix exporting to PS of some files with CID fonts
+         * Use ICC profiles in PS output (if new enough lcms is used)
+         * Allow almost-singular tiling pattern matrices. Issue #894
+         * Fix memory leak when failing to load some fonts
+         * CairoOutputDev: Use stroke opacity when clipping to a stroke path
+         * CairoOutputDev: Fix tiling patterns when pattern cell is too far. Issue #190
+
+        glib:
+         * Add poppler_movie_get_aspect
+
+        cpp:
+         * Add the font infos to the text_box object
+
+Release 0.88.0:
+        core:
+         * Support Widget Annotation Buttons not linked to any Form
+         * SplashOuputDev: Use stroking opacity when clipping to a stroke path
+         * Handle 1 bit RGB images in ICC colorspace
+         * Internal code improvements
+
+        qt5:
+         * Add Document::signatures. Returns signatures not attached to any page
+         * ArthurOutputDev: Fix font hinting
+         * ArthurOutputDev: Set the opacity when filling with axial gradients
+         * ArthurOutputDev: Implement the clipToStrokePath method
+         * ArthurOutputDev: Use stroking opacity when clipping to a stroke path
+
+        glib:
+         * Add poppler_page_get_bounding_box
+         * Add poppler_form_field_get_alternate_ui_name
+         * Implement rotation for 'flagNoRotate' annots. Issue #767
+
+        cpp:
+         * Add non_raw_non_physical layout for page::text()
+
+        utils:
+         * pdftohtml: Fix noRoundedCoordinates->noroundcoord in man page
+         * pdfsig: Show also signatures that aren't attached to any page
+
+Release 0.87.0:
+        core:
+         * Fix leak in broken files
+         * Internal code improvements
+
+        qt5:
+         * Add option to get form choice for export value
+         * ArthurOutputDev: Avoid division by zero in updateLineDash. Issue #695
+
+        glib:
+         * Internal code improvements
+
+         utils:
+         * pdftohtml: Fix memory leak in HtmlOutputDev::getLinkDest
+
+Release 0.86.1:
+        core:
+         * Fix regression in Browse Link handling
+         * Internal code improvements
+
+Release 0.86.0:
+        core:
+         * Fix link content exfiltration attack
+         * Splash: Implement gouraudTriangleShadedFill for some non parametrized shadings. Issue #881
+         * Fix case unsensitive search for Old Hungarian, Warang Citi, Medefaidrin and Adlam
+         * Internal code improvements
+
+        glib:
+         * Automatic handle of page's cropbox on annots. Issue #129
+         * Fix memory leak if poppler_document_new_from_file fails
+         * Minor speed optimization on poppler_page_get_annot_mapping
+
+         utils:
+         * pdfdetach: add 'savefile' option
+         * pdftoppm/pdftocairo: Fix more odd/even mismatch
+
+        qt5:
+         * Fix loading from iodevice
+
+Release 0.85.0:
+        core:
+         * Fix case unsensitive search for Deseret and Osage. Issue #853
+         * Fix crash in unicodeToAscii7
+         * CairoOutputDev: make initialisation thread-safe
+         * Fix crash on broken files. Issues #869, #870
+         * Internal code improvements
+
+        utils:
+         * pdftoppm/pdftocairo: Fix -e/-o printing the wrong pages. Issue #873
+         * pdftohtml: Fix issue with the font size sometimes being huge
+
+        qt5:
+         * Fix FormField::name encoding
+         * Accept UTF-16 uiNames for form fields
+         * Fix search for "complex" characters
+         * Allow to load document from QIODevice
+
+        glib:
+         * make the frontend initialization thread safe.
+
+Release 0.84.0:
+        core:
+         * Fix crash when converting from Unicode to ASCII-7
+         * Splash::scaleImageYdXu: Protect against crash if srcWidth is too big
+         * JBIG2Stream: fix potential crash in malformed documents
+         * JBIG2Stream: fix leak in reset() if called several times
+         * Internal code improvements
+
+        utils:
+         * pdfimages: Add error message if first page is larger then number of pages.
+         * pdfinfo: Improved paper size recognition
+         * pdfsig: Fix exit code when dumping signatures
+         * pdftocairo: Error out when even/odd selects 0 pages
+         * pdftohtml: Fix memory leak
+         * pdftoppm: Add an option to scale before rotate
+         * pdftoppm: Add -hide-annotations option
+         * pdftoppm: Error out when even/odd selects 0 pages
+         * pdftops: Improve -optimizecolorspace
+
+        qt5:
+         * Code cleanups
+
+        glib:
+         * Fix compiler warrnings
+
+Release 0.83.0:
+        core:
+         * Improve when a file is recognized as Linearized
+         * Improve const-ness of the code
+         * Make code a bit more readable/maintanable
+         * Fix uninitialized memory uses in broken files
+
+        utils:
+         * pdffonts: Make code a bit more readable/maintanable
+         * pdftohtml: Make code a bit more readable/maintanable
+
+        qt5:
+         * Remove a bunch of unused internal functions
+         * trUtf8 -> tr (less warnings)
+
+        build system:
+         * make-glib-api-docs: switch to python3
+
+Release 0.82.0:
+        core:
+         * Fix not being able to open some files. Issue #832
+         * Fix crashes in malformed files
+         * Fix memory leak on broken files
+         * Minor performance improvements
+         * Minor code improvements
+
+        glib:
+         * Add poppler_document_new_from_bytes
+         * PopplerAttachment: Silence deprecation warnings for ctime/mtime
+
+        build system:
+         * pdf-inspector: Support builddir != srcdir
+         * Install Cairo* headers if Cairo has been found
+
+Release 0.81.0:
+        core:
+         * Splash: Always enable support for CMYK rasterization
+         * CairoOutputDev: Check scaled dimensions for 0. Issue #737
+         * BaseCryptStream: Fix potential uninitialized memory read
+         * SplashBitmap: Fix wrong width condition for splashModeDeviceN8
+         * Fix crashes in malformed files
+
+Release 0.80.0:
+        core:
+         * Annotations: Implement support for setting a different text in the appearance stream than the real text
+         * Splash: Optionally use small_vector from boost
+         * Fix memory leaks on broken files
+         * Fix abort on broken files
+         * Small code simplifications
+         * Remove USE_FIXEDPOINT support. Issue #821
+
+        qt5:
+         * Fix MSVC build
+         * Add subsitute-font information
+         * Fix since marker of some functions
+         * Fix leak when aborting text extraction
+         * Small code simplifications
+
+        glib:
+         * Make print scaling getter visible
+         * Make Duplex/NumCopies/PrintPageRange preference available in API
+         * Complement Movie API
+
+        utils:
+         * pdftotext: Add -nodiag flag to remove diagonal text on output
+
+        build system:
+         * Mark external lib include dirs as SYSTEM
+
+Release 0.79.0:
+        core:
+         * Fix regression on TextSelectionPainter
+         * Fix parsing of DefaultAppearance
+         * Fix memory leak in PostScriptFunction
+         * Fix crashes in fuzzed files
+
+        qt5:
+         * Implemented support for setIcon by changing appearance
+         * Added option to set the form available to print
+         * QString::null is deprecated, use QString()
+         * Replace deprecated qStableSort with std::stable_sort
+
+        build system:
+         * Turn README into README.md and expand it
+
+Release 0.78.0:
+        core:
+         * Fix line annotation arrows for usage in dimensioning
+         * Handle Ink annots without an InkList but with an AP
+         * Fix typos preventing parsing of Movie start and duration
+         * Fix crash on malformed files
+
+        glib:
+         * Add poppler_document_create_dests_tree()
+         * Don't use the deprecated g_type_class_add_private()
+         * Document the differences between render() and render_for_printing()
+         * Fix introspection for poppler_document_new_from_data
+         * Don't create PopplerInputStream with length 0. Issue #414
+         * Document G_IO_ERROR as a possible error condition
+         * docs: Add index for API new in 0.78
+
+        build system:
+         * Fixes cross compilation of gir in Void Linux
+         * Add -Wshadow to the default warning flags
+         * install pkg-config pc files if pkg-config is found
+
+Release 0.77.0:
+        core:
+         * Fix crash on signature handling. Issue #766
+         * Fix small memory leak in SignatureHandler::getCertificateInfo
+         * Splash: Restrict filling of overlapping boxes. Issue #750
+         * Fix crash on malformed files
+
+        qt5:
+         * Fix optional content handling with exclusive layers
+
+        cpp:
+         * Make render_page thread-safe
+
+        utils:
+         * pdfsig: Fix small memory leak
+         * pdftotext: Fix typo in manpage
+
+Release 0.76.1:
+        core:
+         * Make the mul tables be calculated at compile time with constexpr.
+         * splash: Fix compile with SPLASH_CMYK enabled
+         * Some typo fixing in error messages
+
+        qt5:
+         * Fix regression in annotation handling
+
+        build system:
+         * Fix some typos in build system output and comments
+
+Release 0.76.0:
+        core:
+         * Fix regression on case-insensitive search. Issue #743
+         * Remove GooList, use std::vector instead
+         * Fix radiobutton reporting wrong state. Issue #159
+         * Handle UTF16-LE strings
+         * Don't error out if there's no DA in FreeText annotation
+         * cairo: Compute correct coverage values for box filter.
+         * cairo: Constrain number of cycles in rescale filter. 
+         * Read more fields from ViewerPreferences
+         * Introduce and use Ref::INVALID
+         * Fix crashes in broken files
+         * Fix mismatched free/delete
+         * Add missing include guards
+
+        utils:
+         * pdftohtml: Properly initialize HtmlOutputDev::page to avoid SIGSEGV upon error exit. Issue #742
+
+Release 0.75.0:
+        core:
+         * Fix rendering of some annotations
+         * Fix crashes in broken files
+         * Small internal code improvements
+
+        cpp:
+         * Improve documentation
+         * tests: Add showing version information to poppler-dump
+
+        utils:
+         * pdfattach: new util
+         * pdftohtml: add -dataurls parameter
+         * pdftoppm: add -sep and -forcenum parameters
+         * pdftohtml: make singleHtml and stout not mutually exclusive
+         * pdfsig: fix use after free
+
+Release 0.74.0:
+        core:
+         * Remove support for obsolete systems. Issue #709
+         * Include timezone in timeToDateString()
+         * Fix/silence some warnings
+         * Fix issues with broken files
+
+        build system:
+         * Fix linking in FreeBSD
+         * Fix fseeko configure check on Android for API level < 24
+         * Remove unused MacroPushRequiredVars.cmake
+
+        qt5:
+         * Add API that lazily builds an outline by wrapping the internal objects
+         * Demo: Use new API to build Table Of Contents lazily
+
+        glib:
+         * Improve documentation
+         * Fix cast from 'GTime *' (aka 'int *') to 'time_t *' (aka 'long *')
+
+        utils:
+         * pdfsig: add -nssdir option
+
+        cpp:
+         * Add a way to get all the named destinations in a document.
+
+Release 0.73.0:
+        core:
+         * Fix regression reading some encrypted files. Issue #690
+         * Add X509CertificateInfo classes
+         * Add new 'IgnoreDiacritics' option to ::findText(). Issue #637
+         * Open files with CLOEXEC flag set
+         * Remove Gulong, Guint, Gushort, Guchar typedefs
+         * Fix handling of some broken files.
+
+        cpp:
+         * Make initialization of globalParams threadsafe
+         * Fix page::text_list encoding issue
+         * Improve handling of UTF-16 by considering Endianess
+         * Add API to specify a custom data directory
+
+        qt5:
+         * Expose X509CertificateInfo
+         * Add the possibility of getting version
+         * Add new 'IgnoreDiacritics' search flag. Issue #637
+         * Make initialization of globalParams threadsafe
+         * ArthurOutputDev: Remove all Splash code usage
+
+        glib:
+         * add new 'POPPLER_FIND_IGNORE_DIACRITICS' find flag. Issue #637
+         * Fix named destinations. Issue #631
+         * Make PrintScaling preference available in API. Bug #92779
+
+        build system:
+         * Rename ENABLE_XPDF_HEADERS to ENABLE_UNSTABLE_API_ABI_HEADERS
+         * support enabling NSS on mingw
+         * Windows: only set SOVERSION for shared libs
+
+Release 0.72.0:
+        core:
+         * Fix checkbox lacking AP not bein able to change state. Issue #655
+         * Draw line annotation endings (arrow, circle, ...)
+         * cairo: Don't use UNIQUE_ID for PS output, to avoid using PS memory on cairo >= 1.5.10
+         * Be more stubborn looking for a nssdb. Issue #669
+         * GooString::fromInt: Repair the return value.
+         * Minor performance improvements
+         * Avoid cycles in PDF parsing
+         * Stream::makeFilter: Fix memory leak
+         * Fix various issues with malformed files
+         * Rename GooString::getCString to GooString::c_str
+         * Regenerate UnicodeDecompTables.h from python 3.7.1
+
+        utils:
+         * pdfdetach: Check for valid embedded file before trying to save it. Issue #661
+         * pdfdetach: Check for valid file name of embedded file before using it to determine save path. Issue #660
+         * Fix typos in utils.
+
+        glib:
+         * Fix missing PopplerAttachment destructor call
+         * Support getting form widget additional actions.
+         * docs: Small improvements
+
+        qt5:
+         * Internally compile with -DQT_NO_SIGNALS_SLOTS_KEYWORDS
+
+Release 0.71.0:
+        core:
+         * Replace the implementation of GooString by std::string but keep the exact interface intact.
+         * Replace GBool, gTrue, and gFalse by bool, true, false, resp.
+         * Splash: Fix crash if document is malformed (too wide)
+
+        qt5:
+         * Fix crash when adding Highlight Annotations
+         * Default to hidden symbols
+         * Fix two leaks in a test
+
+        glib:
+         * demo: Fix build on Windows
+         * demo: Align property labels to top of cell
+
+        cpp:
+         * Fix typos in documentation
+
+        build system:
+         * Enable searching for GTK on Windows
+         * Remove unused files
+         * Add fuzzer target from oss-fuzz project
+
+Release 0.70.1
+        glib:
+         * Install missing file
+
+Release 0.70.0
+        core:
+         * FreeText annotations: default to font from default appearance string
+         * Splash: Speed improvements
+         * Fix security issues found by oss-fuzz
+         * Improve page lable parsing
+         * Use std some std classes instead of self grown ones
+         * Various internal improvements
+
+        qt5:
+         * Add Page::index() method
+         * Improve method to get the page from a label string
+
+        glib:
+         * Fix crash on missing embedded file
+         * Add support for PDF subtype property
+         * Only export symbols in the public API
+
+        utils:
+         * pdftohtml: Improve font handling
+
+Release 0.69.0
+        core:
+         * Add annotation font color
+         * Splash: Some speed improvements
+         * PSOutputDev: add native support for type 7 shadings when using level 3
+         * Add support for PDF subtype property
+         * Link: Fix memory leak regarding next actions
+         * Fix handling of Signature Info Location and Reason
+         * Fix errors in computation of type3 glyphs transformation matrix
+         * Reimplement Dict class in a more modern way
+         * Fix security issues found by oss-fuzz
+         * Fix memory issues in GfxImageColorMap copy ctor
+         * Don't abort if the SampleFunction has too many samples. Issue #634
+         * Document the OutputDev::clip and OutputDev::oeClip methods
+         * fix macOS compilation due to boolean define in jpeglib
+         * Split GDir and GDirEntry out of gfile.h. Issue #370
+
+        qt5:
+         * Add annotation font color
+
+        cpp:
+
+        utils:
+         * pdfinfo: Show PDF subtype
+         * pdftotext: Fix only outputs first page content with -bbox-layout option. Issue #88
+         * pdftotext: Fix memory leak in printLine
+
+
+        build system:
+         * Require C++14
+
+Release 0.68.0
+        core:
+         * Add Reason and Location to SignatureInfo. Bug #107299
+         * Fix memory misuse on signature handling
+         * Fix security issues found by oss-fuzz
+         * Don't give a warning when Marked value is false. Bug #107430
+
+        qt5:
+         * Add Reason and Location to SignatureInfo. Bug #107299
+
+        cpp:
+         * Add rotation() to text_box. Bug #106562
+         * Fix build with MSVC
+
+        utils:
+         * pdftoppm: Add -jpegopt optimize option support
+         * pdftocairo: Add -jpegopt optimize option support
+         * pdftohtml: Add option to not round coordinates
+         * pdftohtml: Fix possible crash. Bug #107316
+
+        build system:
+         * Use OpenJpeg cmake config file instead of pkgconfig
+         * Remove wchar_t- on MSVC
+
+
+Release 0.67.0
+        core:
+         * Fix lots of security/leak issues found by oss-fuzz
+         * Splash: Optimize some files, making them 20% faster (now for AABGR8)
+
+        utils:
+         * pdfsig: Compile with libc != glibc. Bug #106783
+
+Release 0.66.0
+        core:
+         * Fix lots of security/leak issues found by oss-fuzz
+         * Splash: Optimize some files, making them 20% faster
+         * Splash: Correctly manipulate spot colors if SPOT_NCOMPS != 4
+         * Fix compilation with some strict compilers
+
 Release 0.65.0
         core:
          * SplashOutputDev: Add the invisible character check beginType3Char. Bug #106244

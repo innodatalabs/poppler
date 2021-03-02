@@ -27,7 +27,9 @@ to
 .I file.eps
 with the \-eps option).  If
 .I PS-file
-is \'-', the PostScript is sent to stdout.
+is \'-', the PostScript is sent to stdout.  If
+.I PDF-file
+is \'-', Pdftops reads the PDF file from stdin.
 .SH OPTIONS
 .TP
 .BI \-f " number"
@@ -134,6 +136,32 @@ pdftops may need to rasterize transparencies and pattern image masks in the PDF.
 If the PostScript will be printed, leave \-aaRaster disabled and set \-r to the resolution of the printer.
 If the PostScript will be viewed, enabling \-aaRaster may make rasterized text easier to read.
 .TP
+.BI \-rasterize " always | never | whenneeded"
+By default, pdftops rasterizes pages as needed, for example, if they contain transparencies.
+To force rasterization, set \-rasterize to "always". Use this to eliminate fonts.
+To prevent rasterization, set \-rasterize to "never". This may produce files that display incorrectly.
+.TP
+.BI \-processcolorformat " MONO8 | CMYK8 | RGB8"
+Sets the process color format as it is used during rasterization and transparency reduction.
+The default depends on the other settings: For \-level1 the default is MONO8, for \-level{1,2,3}sep
+or \-overprint the default is CMYK8, and in all other cases RGB8 is the default. If \-processcolorprofile
+is given then \-processcolorformat is inferred from the specified ICC profile.
+.TP
+.BI \-processcolorprofile " filename"
+Sets the ICC profile that is assumed during rasterization and transparency reduction.
+.TP
+.BI \-defaultgrayprofile " defaultgrayprofilefile"
+If poppler is compiled with colour management support, this option sets the DefaultGray color space
+to the ICC profile stored in defaultgrayprofilefile.
+.TP
+.BI \-defaultrgbprofile " defaultrgbprofilefile"
+If poppler is compiled with colour management support, this option sets the DefaultRGB color space
+to the ICC profile stored in defaultrgbprofilefile.
+.TP
+.BI \-defaultcmykprofile " defaultcmykprofilefile"
+If poppler is compiled with colour management support, this option sets the DefaultCMYK color space
+to the ICC profile stored in defaultcmykprofilefile.
+.TP
 .B \-optimizecolorspace
 By default, bitmap images in the PDF pass through to the output PostScript
 in their original color space, which produces predictable results.
@@ -189,7 +217,9 @@ bypass all security restrictions.
 Specify the user password for the PDF file.
 .TP
 .B \-overprint
-Enable overprinting.
+Enable overprint emulation during rasterization. For \-processcolorformat being CMYK8 and the language level
+being higher than 2, this option is set to true by default. Note: This option requires \-processcolorformat to
+be CMYK8.
 .TP
 .B \-q
 Don't print any messages or errors.

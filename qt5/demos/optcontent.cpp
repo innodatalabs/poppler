@@ -22,8 +22,7 @@
 
 #include <QtWidgets/QTreeView>
 
-OptContentDock::OptContentDock(QWidget *parent)
-    : AbstractInfoDock(parent)
+OptContentDock::OptContentDock(QWidget *parent) : AbstractInfoDock(parent)
 {
     m_view = new QTreeView(this);
     setWidget(m_view);
@@ -31,17 +30,14 @@ OptContentDock::OptContentDock(QWidget *parent)
     m_view->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
 }
 
-OptContentDock::~OptContentDock()
-{
-}
-
+OptContentDock::~OptContentDock() { }
 
 void OptContentDock::documentLoaded()
 {
     AbstractInfoDock::documentLoaded();
-    if ( document()->pageMode() == Poppler::Document::UseOC ) {
+    if (document()->pageMode() == Poppler::Document::UseOC) {
         show();
-    }  
+    }
 }
 
 void OptContentDock::fillInfo()
@@ -51,7 +47,7 @@ void OptContentDock::fillInfo()
     }
 
     m_view->setModel(document()->optionalContentModel());
-    connect(m_view->model(), SIGNAL(dataChanged(QModelIndex, QModelIndex)), this, SLOT(reloadImage()));
+    connect(m_view->model(), &QAbstractItemModel::dataChanged, this, &OptContentDock::reloadImage);
     m_view->expandToDepth(1);
 }
 
@@ -65,4 +61,3 @@ void OptContentDock::reloadImage()
 {
     reloadPage();
 }
-

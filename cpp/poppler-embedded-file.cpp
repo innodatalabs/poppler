@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2009-2011, Pino Toscano <pino@kde.org>
  * Copyright (C) 2016 Jakub Alba <jakubalba@gmail.com>
- * Copyright (C) 2018 Albert Astals Cid <aacid@kde.org>
+ * Copyright (C) 2018, 2020 Albert Astals Cid <aacid@kde.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,9 @@
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+/**
+ \file poppler-embedded-file.h
+ */
 #include "poppler-embedded-file.h"
 
 #include "poppler-embedded-file-private.h"
@@ -31,17 +34,14 @@
 
 using namespace poppler;
 
-embedded_file_private::embedded_file_private(FileSpec *fs)
-    : file_spec(fs)
-{
-}
+embedded_file_private::embedded_file_private(FileSpec *fs) : file_spec(fs) { }
 
 embedded_file_private::~embedded_file_private()
 {
     delete file_spec;
 }
 
-embedded_file* embedded_file_private::create(FileSpec *fs)
+embedded_file *embedded_file_private::create(FileSpec *fs)
 {
     return new embedded_file(*new embedded_file_private(fs));
 }
@@ -52,11 +52,7 @@ embedded_file* embedded_file_private::create(FileSpec *fs)
  Represents a file embedded in a PDF %document.
  */
 
-
-embedded_file::embedded_file(embedded_file_private &dd)
-    : d(&dd)
-{
-}
+embedded_file::embedded_file(embedded_file_private &dd) : d(&dd) { }
 
 /**
  Destroys the embedded file.
@@ -80,7 +76,7 @@ bool embedded_file::is_valid() const
 std::string embedded_file::name() const
 {
     const GooString *goo = d->file_spec->getFileName();
-    return goo ? std::string(goo->getCString()) : std::string();
+    return goo ? std::string(goo->c_str()) : std::string();
 }
 
 /**
@@ -100,7 +96,8 @@ ustring embedded_file::description() const
  */
 int embedded_file::size() const
 {
-    return d->file_spec->getEmbeddedFile()->size();
+    const EmbFile *ef = d->file_spec->getEmbeddedFile();
+    return ef ? ef->size() : -1;
 }
 
 /**
@@ -109,7 +106,8 @@ int embedded_file::size() const
  */
 time_type embedded_file::modification_date() const
 {
-    const GooString *goo = d->file_spec->getEmbeddedFile()->modDate();
+    const EmbFile *ef = d->file_spec->getEmbeddedFile();
+    const GooString *goo = ef ? ef->modDate() : nullptr;
     return goo ? dateStringToTime(goo) : time_type(-1);
 }
 
@@ -119,7 +117,8 @@ time_type embedded_file::modification_date() const
  */
 time_type embedded_file::creation_date() const
 {
-    const GooString *goo = d->file_spec->getEmbeddedFile()->createDate();
+    const EmbFile *ef = d->file_spec->getEmbeddedFile();
+    const GooString *goo = ef ? ef->createDate() : nullptr;
     return goo ? dateStringToTime(goo) : time_type(-1);
 }
 
@@ -128,11 +127,12 @@ time_type embedded_file::creation_date() const
  */
 byte_array embedded_file::checksum() const
 {
-    const GooString *cs = d->file_spec->getEmbeddedFile()->checksum();
+    const EmbFile *ef = d->file_spec->getEmbeddedFile();
+    const GooString *cs = ef ? ef->checksum() : nullptr;
     if (!cs) {
         return byte_array();
     }
-    const char *ccs = cs->getCString();
+    const char *ccs = cs->c_str();
     byte_array data(cs->getLength());
     for (int i = 0; i < cs->getLength(); ++i) {
         data[i] = ccs[i];
@@ -145,8 +145,9 @@ byte_array embedded_file::checksum() const
  */
 std::string embedded_file::mime_type() const
 {
-    const GooString *goo = d->file_spec->getEmbeddedFile()->mimeType();
-    return goo ? std::string(goo->getCString()) : std::string();
+    const EmbFile *ef = d->file_spec->getEmbeddedFile();
+    const GooString *goo = ef ? ef->mimeType() : nullptr;
+    return goo ? std::string(goo->c_str()) : std::string();
 }
 
 /**
@@ -159,7 +160,8 @@ byte_array embedded_file::data() const
     if (!is_valid()) {
         return byte_array();
     }
-    Stream *stream = d->file_spec->getEmbeddedFile()->stream();
+    EmbFile *ef = d->file_spec->getEmbeddedFile();
+    Stream *stream = ef ? ef->stream() : nullptr;
     if (!stream) {
         return byte_array();
     }

@@ -23,8 +23,10 @@
 #include "poppler.h"
 
 G_BEGIN_DECLS
-gboolean poppler_date_parse (const gchar *date,
-			     time_t      *timet);
+
+POPPLER_PUBLIC
+gboolean poppler_date_parse(const gchar *date, time_t *timet);
+
 G_END_DECLS
 
 #endif /* __POPPLER_DATE_H__ */

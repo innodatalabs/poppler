@@ -11,9 +11,13 @@ if (ENABLE_SPLASH)
   # pdftoppm
   set(pdftoppm_SOURCES ${common_srcs}
     pdftoppm.cc
+    sanitychecks.cc
   )
   add_executable(pdftoppm ${pdftoppm_SOURCES})
   target_link_libraries(pdftoppm ${common_libs})
+  if(LCMS2_FOUND)
+    target_link_libraries(pdftoppm ${LCMS2_LIBRARIES})
+  endif()
   install(TARGETS pdftoppm DESTINATION bin)
   install(FILES pdftoppm.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 endif ()
@@ -30,14 +34,12 @@ if (HAVE_CAIRO)
   include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
+    SYSTEM
     ${CAIRO_INCLUDE_DIRS}
   )
   add_definitions(${CAIRO_CFLAGS})
   add_executable(pdftocairo ${pdftocairo_SOURCES})
   target_link_libraries(pdftocairo ${CAIRO_LIBRARIES} ${FREETYPE_LIBRARIES} ${common_libs})
-  if(LCMS_FOUND)
-    target_link_libraries(pdftocairo ${LCMS_LIBRARIES})
-  endif()
   if(CMAKE_USE_PTHREADS_INIT)
     target_link_libraries(pdftocairo Threads::Threads)
   endif()
@@ -57,6 +59,15 @@ target_link_libraries(pdfdetach ${common_libs})
 install(TARGETS pdfdetach DESTINATION bin)
 install(FILES pdfdetach.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 
+# pdfdetach
+set(pdfattach_SOURCES ${common_srcs}
+  pdfattach.cc
+)
+add_executable(pdfattach ${pdfattach_SOURCES})
+target_link_libraries(pdfattach ${common_libs})
+install(TARGETS pdfattach DESTINATION bin)
+install(FILES pdfattach.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+
 # pdffonts
 set(pdffonts_SOURCES ${common_srcs}
   pdffonts.cc
@@ -71,8 +82,6 @@ set(pdfimages_SOURCES ${common_srcs}
   pdfimages.cc
   ImageOutputDev.cc
   ImageOutputDev.h
-  JSInfo.cc
-  JSInfo.h
 )
 add_executable(pdfimages ${pdfimages_SOURCES})
 target_link_libraries(pdfimages ${common_libs})
@@ -82,8 +91,6 @@ install(FILES pdfimages.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 # pdfinfo
 set(pdfinfo_SOURCES ${common_srcs}
   pdfinfo.cc printencodings.cc
-  JSInfo.cc
-  JSInfo.h
 )
 add_executable(pdfinfo ${pdfinfo_SOURCES})
 target_link_libraries(pdfinfo ${common_libs})
@@ -96,6 +103,7 @@ if (ENABLE_NSS3)
     pdfsig.cc
   )
   add_executable(pdfsig ${pdfsig_SOURCES})
+  target_include_directories(pdfsig SYSTEM PRIVATE ${NSS3_INCLUDE_DIRS})
   target_link_libraries(pdfsig ${common_libs})
   install(TARGETS pdfsig DESTINATION bin)
   install(FILES pdfsig.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
@@ -104,9 +112,13 @@ endif ()
 # pdftops
 set(pdftops_SOURCES ${common_srcs}
   pdftops.cc
+  sanitychecks.cc
 )
 add_executable(pdftops ${pdftops_SOURCES})
 target_link_libraries(pdftops ${common_libs})
+if(LCMS2_FOUND)
+  target_link_libraries(pdftops ${LCMS2_LIBRARIES})
+endif()
 install(TARGETS pdftops DESTINATION bin)
 install(FILES pdftops.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 
@@ -121,13 +133,14 @@ install(FILES pdftotext.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 
 # pdftohtml
 set(pdftohtml_SOURCES ${common_srcs}
+  InMemoryFile.cc
   pdftohtml.cc
   HtmlFonts.cc
   HtmlLinks.cc
   HtmlOutputDev.cc
 )
 add_executable(pdftohtml ${pdftohtml_SOURCES})
-target_link_libraries(pdftohtml ${common_libs})
+target_link_libraries(pdftohtml ${common_libs} PNG::PNG)
 install(TARGETS pdftohtml DESTINATION bin)
 install(FILES pdftohtml.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 

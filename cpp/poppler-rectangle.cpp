@@ -16,6 +16,9 @@
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+/**
+ \file poppler-rectangle.h
+ */
 #include "poppler-rectangle.h"
 
 #include <iostream>
@@ -40,14 +43,13 @@ using namespace poppler;
  A rectangle with float (double) dimensions and coordinates.
  */
 
-
-std::ostream& poppler::operator<<(std::ostream& stream, const rect &r)
+std::ostream &poppler::operator<<(std::ostream &stream, const rect &r)
 {
     stream << "[" << r.x() << "," << r.y() << " " << r.width() << "+" << r.height() << "]";
     return stream;
 }
 
-std::ostream& poppler::operator<<(std::ostream& stream, const rectf &r)
+std::ostream &poppler::operator<<(std::ostream &stream, const rectf &r)
 {
     stream << "[" << r.x() << "," << r.y() << " " << r.width() << "+" << r.height() << "]";
     return stream;

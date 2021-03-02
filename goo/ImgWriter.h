@@ -15,23 +15,23 @@
 #ifndef IMGWRITER_H
 #define IMGWRITER_H
 
-#include <stdio.h>
+#include <cstdio>
 
 class ImgWriter
 {
 public:
-  ImgWriter() = default;
-  ImgWriter(const ImgWriter &) = delete;
-  ImgWriter& operator=(const ImgWriter &other) = delete;
+    ImgWriter() = default;
+    ImgWriter(const ImgWriter &) = delete;
+    ImgWriter &operator=(const ImgWriter &other) = delete;
 
-  virtual ~ImgWriter();
-  virtual bool init(FILE *f, int width, int height, int hDPI, int vDPI) = 0;
+    virtual ~ImgWriter();
+    virtual bool init(FILE *f, int width, int height, int hDPI, int vDPI) = 0;
 
-  virtual bool writePointers(unsigned char **rowPointers, int rowCount) = 0;
-  virtual bool writeRow(unsigned char **row) = 0;
+    virtual bool writePointers(unsigned char **rowPointers, int rowCount) = 0;
+    virtual bool writeRow(unsigned char **row) = 0;
 
-  virtual bool close() = 0;
-  virtual bool supportCMYK() { return false; }
+    virtual bool close() = 0;
+    virtual bool supportCMYK() { return false; }
 };
 
 #endif

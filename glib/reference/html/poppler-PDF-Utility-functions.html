@@ -7,8 +7,8 @@
 <link rel="home" href="index.html" title="Poppler Reference Manual">
 <link rel="up" href="ch01.html" title="Poppler">
 <link rel="prev" href="poppler-Error-handling.html" title="Error handling">
-<link rel="next" href="poppler-poppler-features.html" title="poppler-features">
-<meta name="generator" content="GTK-Doc V1.28 (XML mode)">
+<link rel="next" href="poppler-Poppler-Features.html" title="Version and Features Information">
+<meta name="generator" content="GTK-Doc V1.33.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -20,7 +20,7 @@
 <td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
 <td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
 <td><a accesskey="p" href="poppler-Error-handling.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
-<td><a accesskey="n" href="poppler-poppler-features.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+<td><a accesskey="n" href="poppler-Poppler-Features.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
 </tr></table>
 <div class="refentry">
 <a name="poppler-PDF-Utility-functions"></a><div class="titlepage"></div>
@@ -35,17 +35,35 @@
 <a name="poppler-PDF-Utility-functions.functions"></a><h2>Functions</h2>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
-<col width="150px" class="functions_return">
-<col class="functions_name">
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
 </colgroup>
-<tbody><tr>
+<tbody>
+<tr>
 <td class="function_type">
 <a href="../glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
 </td>
 <td class="function_name">
 <a class="link" href="poppler-PDF-Utility-functions.html#poppler-date-parse" title="poppler_date_parse ()">poppler_date_parse</a> <span class="c_punctuation">()</span>
 </td>
-</tr></tbody>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="poppler-PDF-Utility-functions.html#poppler-named-dest-from-bytestring" title="poppler_named_dest_from_bytestring ()">poppler_named_dest_from_bytestring</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="../glib/glib-Basic-Types.html#guint8"><span class="returnvalue">guint8</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="poppler-PDF-Utility-functions.html#poppler-named-dest-to-bytestring" title="poppler_named_dest_to_bytestring ()">poppler_named_dest_to_bytestring</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <div class="refsect1">
@@ -94,12 +112,93 @@ was set</p>
 </div>
 <p class="since">Since: <a class="link" href="api-index-0-12.html#api-index-0.12">0.12</a></p>
 </div>
+<hr>
+<div class="refsect2">
+<a name="poppler-named-dest-from-bytestring"></a><h3>poppler_named_dest_from_bytestring ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *
+poppler_named_dest_from_bytestring (<em class="parameter"><code>const <a href="../glib/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> *data</code></em>,
+                                    <em class="parameter"><code><a href="../glib/glib-Basic-Types.html#gsize"><span class="type">gsize</span></a> length</code></em>);</pre>
+<p>Converts a bytestring into a zero-terminated string suitable to
+pass to <a class="link" href="PopplerDocument.html#poppler-document-find-dest" title="poppler_document_find_dest ()"><code class="function">poppler_document_find_dest()</code></a>.</p>
+<p>Note that the returned string has no defined encoding and is not
+suitable for display to the user.</p>
+<p>The returned data must be freed using <a href="../glib/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.</p>
+<div class="refsect3">
+<a name="poppler-named-dest-from-bytestring.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>data</p></td>
+<td class="parameter_description"><p>the bytestring data. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> length=length]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>the bytestring length</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
 </div>
-<div class="refsect1">
-<a name="poppler-PDF-Utility-functions.other_details"></a><h2>Types and Values</h2>
+<div class="refsect3">
+<a name="poppler-named-dest-from-bytestring.returns"></a><h4>Returns</h4>
+<p>the named dest. </p>
+<p><span class="annotation">[<acronym title="The caller owns the data, and is responsible for free it."><span class="acronym">transfer full</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-73.html#api-index-0.73">0.73</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="poppler-named-dest-to-bytestring"></a><h3>poppler_named_dest_to_bytestring ()</h3>
+<pre class="programlisting"><a href="../glib/glib-Basic-Types.html#guint8"><span class="returnvalue">guint8</span></a> *
+poppler_named_dest_to_bytestring (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>,
+                                  <em class="parameter"><code><a href="../glib/glib-Basic-Types.html#gsize"><span class="type">gsize</span></a> *length</code></em>);</pre>
+<p>Converts a named dest string (e.g. from <span class="type">PopplerDest.named_dest</span>) into a
+bytestring, inverting the transformation of
+<a class="link" href="poppler-PDF-Utility-functions.html#poppler-named-dest-from-bytestring" title="poppler_named_dest_from_bytestring ()"><code class="function">poppler_named_dest_from_bytestring()</code></a>.</p>
+<p>Note that the returned data is not zero terminated and may also
+contains embedded NUL bytes.</p>
+<p>If <em class="parameter"><code>name</code></em>
+ is not a valid named dest string, returns <a href="../glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+<p>The returned data must be freed using <a href="../glib/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.</p>
+<div class="refsect3">
+<a name="poppler-named-dest-to-bytestring.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>the named dest string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>a location to store the length of the returned bytestring. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="poppler-named-dest-to-bytestring.returns"></a><h4>Returns</h4>
+<p>a new bytestring,
+or <a href="../glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p>
+<p><span class="annotation">[<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> length=length][<acronym title="The caller owns the data, and is responsible for free it."><span class="acronym">transfer full</span></acronym>][<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-73.html#api-index-0.73">0.73</a></p>
+</div>
 </div>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.28</div>
+<hr>Generated by GTK-Doc V1.33.1</div>
 </body>
 </html>

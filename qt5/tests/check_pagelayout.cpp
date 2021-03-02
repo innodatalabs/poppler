@@ -2,9 +2,11 @@
 
 #include <poppler-qt5.h>
 
-class TestPageLayout: public QObject
+class TestPageLayout : public QObject
 {
     Q_OBJECT
+public:
+    TestPageLayout(QObject *parent = nullptr) : QObject(parent) { }
 private slots:
     void checkNone();
     void checkSingle();
@@ -15,9 +17,9 @@ void TestPageLayout::checkNone()
 {
     Poppler::Document *doc;
     doc = Poppler::Document::load(TESTDATADIR "/unittestcases/UseNone.pdf");
-    QVERIFY( doc );
-  
-    QCOMPARE( doc->pageLayout(), Poppler::Document::NoLayout );
+    QVERIFY(doc);
+
+    QCOMPARE(doc->pageLayout(), Poppler::Document::NoLayout);
 
     delete doc;
 }
@@ -26,9 +28,9 @@ void TestPageLayout::checkSingle()
 {
     Poppler::Document *doc;
     doc = Poppler::Document::load(TESTDATADIR "/unittestcases/FullScreen.pdf");
-    QVERIFY( doc );
-  
-    QCOMPARE( doc->pageLayout(), Poppler::Document::SinglePage );
+    QVERIFY(doc);
+
+    QCOMPARE(doc->pageLayout(), Poppler::Document::SinglePage);
 
     delete doc;
 }
@@ -37,13 +39,12 @@ void TestPageLayout::checkFacing()
 {
     Poppler::Document *doc;
     doc = Poppler::Document::load(TESTDATADIR "/unittestcases/doublepage.pdf");
-    QVERIFY( doc );
+    QVERIFY(doc);
 
-    QCOMPARE( doc->pageLayout(), Poppler::Document::TwoPageRight );
+    QCOMPARE(doc->pageLayout(), Poppler::Document::TwoPageRight);
 
     delete doc;
 }
 
 QTEST_GUILESS_MAIN(TestPageLayout)
 #include "check_pagelayout.moc"
-

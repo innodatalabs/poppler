@@ -16,7 +16,7 @@
 
 #include "config.h"
 
-#include <time.h>
+#include <ctime>
 
 #ifndef HAVE_GMTIME_R
 struct tm *gmtime_r(const time_t *timep, struct tm *result);
@@ -31,8 +31,7 @@ time_t timegm(struct tm *tm);
 #endif
 
 #ifndef HAVE_STRTOK_R
-char * strtok_r (char *s, const char *delim, char **save_ptr);
+char *strtok_r(char *s, const char *delim, char **save_ptr);
 #endif
 
 #endif // GLIBC_H
-

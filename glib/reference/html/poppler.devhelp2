@@ -3,19 +3,20 @@
   <chapters>
     <sub name="Poppler" link="ch01.html">
       <sub name="PopplerDocument" link="PopplerDocument.html"/>
-      <sub name="PopplerPage" link="PopplerPage.html"/>
+      <sub name="PopplerPage" link="poppler-Poppler-Page.html"/>
       <sub name="PopplerAction" link="PopplerAction.html"/>
       <sub name="PopplerAttachment" link="PopplerAttachment.html"/>
-      <sub name="PoppplerFormField" link="PopplerFormField.html"/>
-      <sub name="PopplerAnnot" link="PopplerAnnot.html"/>
-      <sub name="PopplerLayer" link="PopplerLayer.html"/>
-      <sub name="PopplerMedia" link="PopplerMedia.html"/>
-      <sub name="PopplerMovie" link="PopplerMovie.html"/>
+      <sub name="PopplerFormField" link="PopplerFormField.html"/>
+      <sub name="PopplerAnnot" link="poppler-Poppler-Annotation.html"/>
+      <sub name="PopplerLayer" link="poppler-Poppler-Layer.html"/>
+      <sub name="PopplerMedia" link="poppler-Poppler-Media.html"/>
+      <sub name="PopplerMovie" link="poppler-Poppler-Movie.html"/>
       <sub name="PopplerStructureElement" link="PopplerStructureElement.html"/>
-      <sub name="PopplerColor" link="PopplerColor.html"/>
+      <sub name="PopplerColor" link="poppler-Poppler-Color.html"/>
       <sub name="Error handling" link="poppler-Error-handling.html"/>
       <sub name="PDF Utility functions" link="poppler-PDF-Utility-functions.html"/>
-      <sub name="poppler-features" link="poppler-poppler-features.html"/>
+      <sub name="Version and Features Information" link="poppler-Poppler-Features.html"/>
+      <sub name="Poppler Text Span" link="poppler-Poppler-Text-Span.html"/>
     </sub>
     <sub name="Index of all symbols" link="api-index-full.html"/>
     <sub name="Index of deprecated symbols" link="api-index-deprecated.html"/>
@@ -28,92 +29,125 @@
     <sub name="Index of new symbols in 0.26" link="api-index-0-26.html"/>
     <sub name="Index of new symbols in 0.33" link="api-index-0-33.html"/>
     <sub name="Index of new symbols in 0.46" link="api-index-0-46.html"/>
+    <sub name="Index of new symbols in 0.54" link="api-index-0-54.html"/>
+    <sub name="Index of new symbols in 0.70" link="api-index-0-70.html"/>
+    <sub name="Index of new symbols in 0.72" link="api-index-0-72.html"/>
+    <sub name="Index of new symbols in 0.73" link="api-index-0-73.html"/>
+    <sub name="Index of new symbols in 0.78" link="api-index-0-78.html"/>
+    <sub name="Index of new symbols in 0.80" link="api-index-0-80.html"/>
+    <sub name="Index of new symbols in 0.82" link="api-index-0-82.html"/>
+    <sub name="Index of new symbols in 0.88" link="api-index-0-88.html"/>
+    <sub name="Index of new symbols in 0.89" link="api-index-0-89.html"/>
+    <sub name="Index of new symbols in 0.90" link="api-index-0-90.html"/>
     <sub name="Annotation Glossary" link="annotation-glossary.html"/>
   </chapters>
   <functions>
-    <keyword type="function" name="poppler_document_new_from_file ()" link="PopplerDocument.html#poppler-document-new-from-file"/>
-    <keyword type="function" name="poppler_document_new_from_data ()" link="PopplerDocument.html#poppler-document-new-from-data"/>
-    <keyword type="function" name="poppler_document_new_from_stream ()" link="PopplerDocument.html#poppler-document-new-from-stream" since="0.22"/>
-    <keyword type="function" name="poppler_document_new_from_gfile ()" link="PopplerDocument.html#poppler-document-new-from-gfile" since="0.22"/>
-    <keyword type="function" name="poppler_document_save ()" link="PopplerDocument.html#poppler-document-save"/>
-    <keyword type="function" name="poppler_document_save_a_copy ()" link="PopplerDocument.html#poppler-document-save-a-copy"/>
-    <keyword type="function" name="poppler_document_get_id ()" link="PopplerDocument.html#poppler-document-get-id" since="0.16"/>
-    <keyword type="function" name="poppler_document_get_pdf_version_string ()" link="PopplerDocument.html#poppler-document-get-pdf-version-string" since="0.16"/>
-    <keyword type="function" name="poppler_document_get_pdf_version ()" link="PopplerDocument.html#poppler-document-get-pdf-version" since="0.16"/>
-    <keyword type="function" name="poppler_document_get_title ()" link="PopplerDocument.html#poppler-document-get-title" since="0.16"/>
-    <keyword type="function" name="poppler_document_set_title ()" link="PopplerDocument.html#poppler-document-set-title" since="0.46"/>
+    <keyword type="function" name="poppler_document_create_dests_tree ()" link="PopplerDocument.html#poppler-document-create-dests-tree" since="0.78"/>
+    <keyword type="function" name="poppler_document_find_dest ()" link="PopplerDocument.html#poppler-document-find-dest"/>
+    <keyword type="function" name="poppler_document_get_attachments ()" link="PopplerDocument.html#poppler-document-get-attachments"/>
     <keyword type="function" name="poppler_document_get_author ()" link="PopplerDocument.html#poppler-document-get-author" since="0.16"/>
-    <keyword type="function" name="poppler_document_set_author ()" link="PopplerDocument.html#poppler-document-set-author" since="0.46"/>
-    <keyword type="function" name="poppler_document_get_subject ()" link="PopplerDocument.html#poppler-document-get-subject" since="0.16"/>
-    <keyword type="function" name="poppler_document_set_subject ()" link="PopplerDocument.html#poppler-document-set-subject" since="0.46"/>
-    <keyword type="function" name="poppler_document_get_keywords ()" link="PopplerDocument.html#poppler-document-get-keywords" since="0.16"/>
-    <keyword type="function" name="poppler_document_set_keywords ()" link="PopplerDocument.html#poppler-document-set-keywords" since="0.46"/>
-    <keyword type="function" name="poppler_document_get_creator ()" link="PopplerDocument.html#poppler-document-get-creator" since="0.16"/>
-    <keyword type="function" name="poppler_document_set_creator ()" link="PopplerDocument.html#poppler-document-set-creator" since="0.46"/>
-    <keyword type="function" name="poppler_document_get_producer ()" link="PopplerDocument.html#poppler-document-get-producer" since="0.16"/>
-    <keyword type="function" name="poppler_document_set_producer ()" link="PopplerDocument.html#poppler-document-set-producer" since="0.46"/>
     <keyword type="function" name="poppler_document_get_creation_date ()" link="PopplerDocument.html#poppler-document-get-creation-date" since="0.16"/>
-    <keyword type="function" name="poppler_document_set_creation_date ()" link="PopplerDocument.html#poppler-document-set-creation-date" since="0.46"/>
-    <keyword type="function" name="poppler_document_get_modification_date ()" link="PopplerDocument.html#poppler-document-get-modification-date" since="0.16"/>
-    <keyword type="function" name="poppler_document_set_modification_date ()" link="PopplerDocument.html#poppler-document-set-modification-date" since="0.46"/>
-    <keyword type="function" name="poppler_document_get_page_layout ()" link="PopplerDocument.html#poppler-document-get-page-layout" since="0.16"/>
-    <keyword type="function" name="poppler_document_get_page_mode ()" link="PopplerDocument.html#poppler-document-get-page-mode" since="0.16"/>
-    <keyword type="function" name="poppler_document_get_permissions ()" link="PopplerDocument.html#poppler-document-get-permissions" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_creation_date_time ()" link="PopplerDocument.html#poppler-document-get-creation-date-time" since="20.09.0"/>
+    <keyword type="function" name="poppler_document_get_creator ()" link="PopplerDocument.html#poppler-document-get-creator" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_form_field ()" link="PopplerDocument.html#poppler-document-get-form-field"/>
+    <keyword type="function" name="poppler_document_get_id ()" link="PopplerDocument.html#poppler-document-get-id" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_keywords ()" link="PopplerDocument.html#poppler-document-get-keywords" since="0.16"/>
     <keyword type="function" name="poppler_document_get_metadata ()" link="PopplerDocument.html#poppler-document-get-metadata" since="0.16"/>
-    <keyword type="function" name="poppler_document_is_linearized ()" link="PopplerDocument.html#poppler-document-is-linearized" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_modification_date ()" link="PopplerDocument.html#poppler-document-get-modification-date" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_modification_date_time ()" link="PopplerDocument.html#poppler-document-get-modification-date-time" since="20.09.0"/>
+    <keyword type="function" name="poppler_document_get_n_attachments ()" link="PopplerDocument.html#poppler-document-get-n-attachments" since="0.18"/>
     <keyword type="function" name="poppler_document_get_n_pages ()" link="PopplerDocument.html#poppler-document-get-n-pages"/>
     <keyword type="function" name="poppler_document_get_page ()" link="PopplerDocument.html#poppler-document-get-page"/>
     <keyword type="function" name="poppler_document_get_page_by_label ()" link="PopplerDocument.html#poppler-document-get-page-by-label"/>
-    <keyword type="function" name="poppler_document_find_dest ()" link="PopplerDocument.html#poppler-document-find-dest"/>
-    <keyword type="function" name="poppler_document_get_n_attachments ()" link="PopplerDocument.html#poppler-document-get-n-attachments" since="0.18"/>
+    <keyword type="function" name="poppler_document_get_page_layout ()" link="PopplerDocument.html#poppler-document-get-page-layout" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_page_mode ()" link="PopplerDocument.html#poppler-document-get-page-mode" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_pdf_conformance ()" link="PopplerDocument.html#poppler-document-get-pdf-conformance" since="0.70"/>
+    <keyword type="function" name="poppler_document_get_pdf_part ()" link="PopplerDocument.html#poppler-document-get-pdf-part" since="0.70"/>
+    <keyword type="function" name="poppler_document_get_pdf_subtype ()" link="PopplerDocument.html#poppler-document-get-pdf-subtype" since="0.70"/>
+    <keyword type="function" name="poppler_document_get_pdf_subtype_string ()" link="PopplerDocument.html#poppler-document-get-pdf-subtype-string" since="0.70"/>
+    <keyword type="function" name="poppler_document_get_pdf_version ()" link="PopplerDocument.html#poppler-document-get-pdf-version" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_pdf_version_string ()" link="PopplerDocument.html#poppler-document-get-pdf-version-string" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_permissions ()" link="PopplerDocument.html#poppler-document-get-permissions" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_print_duplex ()" link="PopplerDocument.html#poppler-document-get-print-duplex" since="0.80"/>
+    <keyword type="function" name="poppler_document_get_print_n_copies ()" link="PopplerDocument.html#poppler-document-get-print-n-copies" since="0.80"/>
+    <keyword type="function" name="poppler_document_get_print_page_ranges ()" link="PopplerDocument.html#poppler-document-get-print-page-ranges" since="0.80"/>
+    <keyword type="function" name="poppler_document_get_print_scaling ()" link="PopplerDocument.html#poppler-document-get-print-scaling" since="0.73"/>
+    <keyword type="function" name="poppler_document_get_producer ()" link="PopplerDocument.html#poppler-document-get-producer" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_subject ()" link="PopplerDocument.html#poppler-document-get-subject" since="0.16"/>
+    <keyword type="function" name="poppler_document_get_title ()" link="PopplerDocument.html#poppler-document-get-title" since="0.16"/>
     <keyword type="function" name="poppler_document_has_attachments ()" link="PopplerDocument.html#poppler-document-has-attachments"/>
-    <keyword type="function" name="poppler_document_get_attachments ()" link="PopplerDocument.html#poppler-document-get-attachments"/>
-    <keyword type="function" name="poppler_document_get_form_field ()" link="PopplerDocument.html#poppler-document-get-form-field"/>
-    <keyword type="function" name="poppler_index_iter_new ()" link="PopplerDocument.html#poppler-index-iter-new"/>
-    <keyword type="function" name="poppler_index_iter_copy ()" link="PopplerDocument.html#poppler-index-iter-copy"/>
-    <keyword type="function" name="poppler_index_iter_free ()" link="PopplerDocument.html#poppler-index-iter-free"/>
-    <keyword type="function" name="poppler_index_iter_get_child ()" link="PopplerDocument.html#poppler-index-iter-get-child"/>
-    <keyword type="function" name="poppler_index_iter_is_open ()" link="PopplerDocument.html#poppler-index-iter-is-open"/>
-    <keyword type="function" name="poppler_index_iter_get_action ()" link="PopplerDocument.html#poppler-index-iter-get-action"/>
-    <keyword type="function" name="poppler_index_iter_next ()" link="PopplerDocument.html#poppler-index-iter-next"/>
+    <keyword type="function" name="poppler_document_has_javascript ()" link="PopplerDocument.html#poppler-document-has-javascript" since="0.90"/>
+    <keyword type="function" name="poppler_document_is_linearized ()" link="PopplerDocument.html#poppler-document-is-linearized" since="0.16"/>
+    <keyword type="function" name="poppler_document_new_from_bytes ()" link="PopplerDocument.html#poppler-document-new-from-bytes" since="0.82"/>
+    <keyword type="function" name="poppler_document_new_from_data ()" link="PopplerDocument.html#poppler-document-new-from-data" deprecated=""/>
+    <keyword type="function" name="poppler_document_new_from_file ()" link="PopplerDocument.html#poppler-document-new-from-file"/>
+    <keyword type="function" name="poppler_document_new_from_gfile ()" link="PopplerDocument.html#poppler-document-new-from-gfile" since="0.22"/>
+    <keyword type="function" name="poppler_document_new_from_stream ()" link="PopplerDocument.html#poppler-document-new-from-stream" since="0.22"/>
+    <keyword type="function" name="poppler_document_reset_form ()" link="PopplerDocument.html#poppler-document-reset-form" since="0.90"/>
+    <keyword type="function" name="poppler_document_save ()" link="PopplerDocument.html#poppler-document-save"/>
+    <keyword type="function" name="poppler_document_save_a_copy ()" link="PopplerDocument.html#poppler-document-save-a-copy"/>
+    <keyword type="function" name="poppler_document_set_author ()" link="PopplerDocument.html#poppler-document-set-author" since="0.46"/>
+    <keyword type="function" name="poppler_document_set_creation_date ()" link="PopplerDocument.html#poppler-document-set-creation-date" since="0.46"/>
+    <keyword type="function" name="poppler_document_set_creation_date_time ()" link="PopplerDocument.html#poppler-document-set-creation-date-time" since="20.09.0"/>
+    <keyword type="function" name="poppler_document_set_creator ()" link="PopplerDocument.html#poppler-document-set-creator" since="0.46"/>
+    <keyword type="function" name="poppler_document_set_keywords ()" link="PopplerDocument.html#poppler-document-set-keywords" since="0.46"/>
+    <keyword type="function" name="poppler_document_set_modification_date ()" link="PopplerDocument.html#poppler-document-set-modification-date" since="0.46"/>
+    <keyword type="function" name="poppler_document_set_modification_date_time ()" link="PopplerDocument.html#poppler-document-set-modification-date-time" since="20.09.0"/>
+    <keyword type="function" name="poppler_document_set_producer ()" link="PopplerDocument.html#poppler-document-set-producer" since="0.46"/>
+    <keyword type="function" name="poppler_document_set_subject ()" link="PopplerDocument.html#poppler-document-set-subject" since="0.46"/>
+    <keyword type="function" name="poppler_document_set_title ()" link="PopplerDocument.html#poppler-document-set-title" since="0.46"/>
+    <keyword type="function" name="poppler_font_info_free ()" link="PopplerDocument.html#poppler-font-info-free"/>
     <keyword type="function" name="poppler_font_info_new ()" link="PopplerDocument.html#poppler-font-info-new"/>
     <keyword type="function" name="poppler_font_info_scan ()" link="PopplerDocument.html#poppler-font-info-scan"/>
-    <keyword type="function" name="poppler_font_info_free ()" link="PopplerDocument.html#poppler-font-info-free"/>
     <keyword type="function" name="poppler_fonts_iter_copy ()" link="PopplerDocument.html#poppler-fonts-iter-copy"/>
     <keyword type="function" name="poppler_fonts_iter_free ()" link="PopplerDocument.html#poppler-fonts-iter-free"/>
-    <keyword type="function" name="poppler_fonts_iter_get_name ()" link="PopplerDocument.html#poppler-fonts-iter-get-name"/>
-    <keyword type="function" name="poppler_fonts_iter_get_full_name ()" link="PopplerDocument.html#poppler-fonts-iter-get-full-name"/>
-    <keyword type="function" name="poppler_fonts_iter_get_font_type ()" link="PopplerDocument.html#poppler-fonts-iter-get-font-type"/>
-    <keyword type="function" name="poppler_fonts_iter_get_substitute_name ()" link="PopplerDocument.html#poppler-fonts-iter-get-substitute-name" since="0.20"/>
-    <keyword type="function" name="poppler_fonts_iter_get_file_name ()" link="PopplerDocument.html#poppler-fonts-iter-get-file-name"/>
     <keyword type="function" name="poppler_fonts_iter_get_encoding ()" link="PopplerDocument.html#poppler-fonts-iter-get-encoding" since="0.20"/>
+    <keyword type="function" name="poppler_fonts_iter_get_file_name ()" link="PopplerDocument.html#poppler-fonts-iter-get-file-name"/>
+    <keyword type="function" name="poppler_fonts_iter_get_font_type ()" link="PopplerDocument.html#poppler-fonts-iter-get-font-type"/>
+    <keyword type="function" name="poppler_fonts_iter_get_full_name ()" link="PopplerDocument.html#poppler-fonts-iter-get-full-name"/>
+    <keyword type="function" name="poppler_fonts_iter_get_name ()" link="PopplerDocument.html#poppler-fonts-iter-get-name"/>
+    <keyword type="function" name="poppler_fonts_iter_get_substitute_name ()" link="PopplerDocument.html#poppler-fonts-iter-get-substitute-name" since="0.20"/>
     <keyword type="function" name="poppler_fonts_iter_is_embedded ()" link="PopplerDocument.html#poppler-fonts-iter-is-embedded"/>
     <keyword type="function" name="poppler_fonts_iter_is_subset ()" link="PopplerDocument.html#poppler-fonts-iter-is-subset"/>
     <keyword type="function" name="poppler_fonts_iter_next ()" link="PopplerDocument.html#poppler-fonts-iter-next"/>
-    <keyword type="function" name="poppler_layers_iter_new ()" link="PopplerDocument.html#poppler-layers-iter-new" since="0.12"/>
+    <keyword type="function" name="poppler_index_iter_copy ()" link="PopplerDocument.html#poppler-index-iter-copy"/>
+    <keyword type="function" name="poppler_index_iter_free ()" link="PopplerDocument.html#poppler-index-iter-free"/>
+    <keyword type="function" name="poppler_index_iter_get_action ()" link="PopplerDocument.html#poppler-index-iter-get-action"/>
+    <keyword type="function" name="poppler_index_iter_get_child ()" link="PopplerDocument.html#poppler-index-iter-get-child"/>
+    <keyword type="function" name="poppler_index_iter_is_open ()" link="PopplerDocument.html#poppler-index-iter-is-open"/>
+    <keyword type="function" name="poppler_index_iter_new ()" link="PopplerDocument.html#poppler-index-iter-new"/>
+    <keyword type="function" name="poppler_index_iter_next ()" link="PopplerDocument.html#poppler-index-iter-next"/>
     <keyword type="function" name="poppler_layers_iter_copy ()" link="PopplerDocument.html#poppler-layers-iter-copy"/>
     <keyword type="function" name="poppler_layers_iter_free ()" link="PopplerDocument.html#poppler-layers-iter-free" since="0.12"/>
     <keyword type="function" name="poppler_layers_iter_get_child ()" link="PopplerDocument.html#poppler-layers-iter-get-child" since="0.12"/>
     <keyword type="function" name="poppler_layers_iter_get_layer ()" link="PopplerDocument.html#poppler-layers-iter-get-layer" since="0.12"/>
     <keyword type="function" name="poppler_layers_iter_get_title ()" link="PopplerDocument.html#poppler-layers-iter-get-title" since="0.12"/>
+    <keyword type="function" name="poppler_layers_iter_new ()" link="PopplerDocument.html#poppler-layers-iter-new" since="0.12"/>
     <keyword type="function" name="poppler_layers_iter_next ()" link="PopplerDocument.html#poppler-layers-iter-next" since="0.12"/>
-    <keyword type="function" name="poppler_ps_file_new ()" link="PopplerDocument.html#poppler-ps-file-new"/>
     <keyword type="function" name="poppler_ps_file_free ()" link="PopplerDocument.html#poppler-ps-file-free"/>
-    <keyword type="function" name="poppler_ps_file_set_paper_size ()" link="PopplerDocument.html#poppler-ps-file-set-paper-size"/>
+    <keyword type="function" name="poppler_ps_file_new ()" link="PopplerDocument.html#poppler-ps-file-new"/>
     <keyword type="function" name="poppler_ps_file_set_duplex ()" link="PopplerDocument.html#poppler-ps-file-set-duplex"/>
+    <keyword type="function" name="poppler_ps_file_set_paper_size ()" link="PopplerDocument.html#poppler-ps-file-set-paper-size"/>
     <keyword type="struct" name="PopplerDocument" link="PopplerDocument.html#PopplerDocument-struct"/>
-    <keyword type="struct" name="PopplerIndexIter" link="PopplerDocument.html#PopplerIndexIter-struct"/>
-    <keyword type="struct" name="PopplerFontsIter" link="PopplerDocument.html#PopplerFontsIter-struct"/>
-    <keyword type="struct" name="PopplerLayersIter" link="PopplerDocument.html#PopplerLayersIter-struct"/>
-    <keyword type="enum" name="enum PopplerPageLayout" link="PopplerDocument.html#PopplerPageLayout"/>
-    <keyword type="enum" name="enum PopplerPageMode" link="PopplerDocument.html#PopplerPageMode"/>
     <keyword type="struct" name="PopplerFontInfo" link="PopplerDocument.html#PopplerFontInfo-struct"/>
     <keyword type="enum" name="enum PopplerFontType" link="PopplerDocument.html#PopplerFontType"/>
+    <keyword type="struct" name="PopplerFontsIter" link="PopplerDocument.html#PopplerFontsIter-struct"/>
+    <keyword type="struct" name="PopplerIndexIter" link="PopplerDocument.html#PopplerIndexIter-struct"/>
+    <keyword type="struct" name="PopplerLayersIter" link="PopplerDocument.html#PopplerLayersIter-struct"/>
+    <keyword type="enum" name="enum PopplerPDFConformance" link="PopplerDocument.html#PopplerPDFConformance" since="0.70"/>
+    <keyword type="enum" name="enum PopplerPDFPart" link="PopplerDocument.html#PopplerPDFPart" since="0.70"/>
+    <keyword type="enum" name="enum PopplerPDFSubtype" link="PopplerDocument.html#PopplerPDFSubtype" since="0.70"/>
     <keyword type="struct" name="PopplerPSFile" link="PopplerDocument.html#PopplerPSFile-struct"/>
-    <keyword type="enum" name="enum PopplerViewerPreferences" link="PopplerDocument.html#PopplerViewerPreferences"/>
+    <keyword type="enum" name="enum PopplerPageLayout" link="PopplerDocument.html#PopplerPageLayout"/>
+    <keyword type="enum" name="enum PopplerPageMode" link="PopplerDocument.html#PopplerPageMode"/>
+    <keyword type="struct" name="PopplerPageRange" link="PopplerDocument.html#PopplerPageRange" since="0.80"/>
     <keyword type="enum" name="enum PopplerPermissions" link="PopplerDocument.html#PopplerPermissions"/>
+    <keyword type="enum" name="enum PopplerPrintDuplex" link="PopplerDocument.html#PopplerPrintDuplex" since="0.80"/>
+    <keyword type="enum" name="enum PopplerPrintScaling" link="PopplerDocument.html#PopplerPrintScaling" since="0.73"/>
+    <keyword type="enum" name="enum PopplerViewerPreferences" link="PopplerDocument.html#PopplerViewerPreferences"/>
     <keyword type="property" name="The “author” property" link="PopplerDocument.html#PopplerDocument--author"/>
     <keyword type="property" name="The “creation-date” property" link="PopplerDocument.html#PopplerDocument--creation-date"/>
+    <keyword type="property" name="The “creation-datetime” property" link="PopplerDocument.html#PopplerDocument--creation-datetime"/>
     <keyword type="property" name="The “creator” property" link="PopplerDocument.html#PopplerDocument--creator"/>
     <keyword type="property" name="The “format” property" link="PopplerDocument.html#PopplerDocument--format"/>
     <keyword type="property" name="The “format-major” property" link="PopplerDocument.html#PopplerDocument--format-major"/>
@@ -122,86 +156,103 @@
     <keyword type="property" name="The “linearized” property" link="PopplerDocument.html#PopplerDocument--linearized"/>
     <keyword type="property" name="The “metadata” property" link="PopplerDocument.html#PopplerDocument--metadata"/>
     <keyword type="property" name="The “mod-date” property" link="PopplerDocument.html#PopplerDocument--mod-date"/>
+    <keyword type="property" name="The “mod-datetime” property" link="PopplerDocument.html#PopplerDocument--mod-datetime"/>
     <keyword type="property" name="The “page-layout” property" link="PopplerDocument.html#PopplerDocument--page-layout"/>
     <keyword type="property" name="The “page-mode” property" link="PopplerDocument.html#PopplerDocument--page-mode"/>
     <keyword type="property" name="The “permissions” property" link="PopplerDocument.html#PopplerDocument--permissions"/>
+    <keyword type="property" name="The “print-duplex” property" link="PopplerDocument.html#PopplerDocument--print-duplex"/>
+    <keyword type="property" name="The “print-n-copies” property" link="PopplerDocument.html#PopplerDocument--print-n-copies"/>
+    <keyword type="property" name="The “print-scaling” property" link="PopplerDocument.html#PopplerDocument--print-scaling"/>
     <keyword type="property" name="The “producer” property" link="PopplerDocument.html#PopplerDocument--producer"/>
     <keyword type="property" name="The “subject” property" link="PopplerDocument.html#PopplerDocument--subject"/>
+    <keyword type="property" name="The “subtype” property" link="PopplerDocument.html#PopplerDocument--subtype"/>
+    <keyword type="property" name="The “subtype-conformance” property" link="PopplerDocument.html#PopplerDocument--subtype-conformance"/>
+    <keyword type="property" name="The “subtype-part” property" link="PopplerDocument.html#PopplerDocument--subtype-part"/>
+    <keyword type="property" name="The “subtype-string” property" link="PopplerDocument.html#PopplerDocument--subtype-string"/>
     <keyword type="property" name="The “title” property" link="PopplerDocument.html#PopplerDocument--title"/>
     <keyword type="property" name="The “viewer-preferences” property" link="PopplerDocument.html#PopplerDocument--viewer-preferences"/>
-    <keyword type="function" name="poppler_page_get_index ()" link="PopplerPage.html#poppler-page-get-index"/>
-    <keyword type="function" name="poppler_page_get_label ()" link="PopplerPage.html#poppler-page-get-label" since="0.16"/>
-    <keyword type="function" name="poppler_page_get_size ()" link="PopplerPage.html#poppler-page-get-size"/>
-    <keyword type="function" name="poppler_page_get_crop_box ()" link="PopplerPage.html#poppler-page-get-crop-box"/>
-    <keyword type="function" name="poppler_page_get_duration ()" link="PopplerPage.html#poppler-page-get-duration"/>
-    <keyword type="function" name="poppler_page_get_transition ()" link="PopplerPage.html#poppler-page-get-transition"/>
-    <keyword type="function" name="poppler_page_get_thumbnail_size ()" link="PopplerPage.html#poppler-page-get-thumbnail-size"/>
-    <keyword type="function" name="poppler_page_get_thumbnail ()" link="PopplerPage.html#poppler-page-get-thumbnail"/>
-    <keyword type="function" name="poppler_page_render ()" link="PopplerPage.html#poppler-page-render"/>
-    <keyword type="function" name="poppler_page_render_for_printing ()" link="PopplerPage.html#poppler-page-render-for-printing"/>
-    <keyword type="function" name="poppler_page_render_for_printing_with_options ()" link="PopplerPage.html#poppler-page-render-for-printing-with-options" since="0.16"/>
-    <keyword type="function" name="poppler_page_render_to_ps ()" link="PopplerPage.html#poppler-page-render-to-ps"/>
-    <keyword type="function" name="poppler_page_render_selection ()" link="PopplerPage.html#poppler-page-render-selection"/>
-    <keyword type="function" name="poppler_page_get_selected_region ()" link="PopplerPage.html#poppler-page-get-selected-region" since="0.16"/>
-    <keyword type="function" name="poppler_page_get_selection_region ()" link="PopplerPage.html#poppler-page-get-selection-region" deprecated="0.16: Use poppler_page_get_selected_region() instead."/>
-    <keyword type="function" name="poppler_page_selection_region_free ()" link="PopplerPage.html#poppler-page-selection-region-free" deprecated="0.16"/>
-    <keyword type="function" name="poppler_page_get_selected_text ()" link="PopplerPage.html#poppler-page-get-selected-text" since="0.16"/>
-    <keyword type="function" name="poppler_page_find_text ()" link="PopplerPage.html#poppler-page-find-text"/>
-    <keyword type="function" name="poppler_page_find_text_with_options ()" link="PopplerPage.html#poppler-page-find-text-with-options" since="0.22"/>
-    <keyword type="function" name="poppler_page_get_text ()" link="PopplerPage.html#poppler-page-get-text" since="0.16"/>
-    <keyword type="function" name="poppler_page_get_text_for_area ()" link="PopplerPage.html#poppler-page-get-text-for-area" since="0.26"/>
-    <keyword type="function" name="poppler_page_get_text_layout ()" link="PopplerPage.html#poppler-page-get-text-layout" since="0.16"/>
-    <keyword type="function" name="poppler_page_get_text_layout_for_area ()" link="PopplerPage.html#poppler-page-get-text-layout-for-area" since="0.26"/>
-    <keyword type="function" name="poppler_page_get_text_attributes ()" link="PopplerPage.html#poppler-page-get-text-attributes" since="0.18"/>
-    <keyword type="function" name="poppler_page_get_text_attributes_for_area ()" link="PopplerPage.html#poppler-page-get-text-attributes-for-area" since="0.26"/>
-    <keyword type="function" name="poppler_page_free_text_attributes ()" link="PopplerPage.html#poppler-page-free-text-attributes" since="0.18"/>
-    <keyword type="function" name="poppler_page_get_link_mapping ()" link="PopplerPage.html#poppler-page-get-link-mapping"/>
-    <keyword type="function" name="poppler_page_free_link_mapping ()" link="PopplerPage.html#poppler-page-free-link-mapping"/>
-    <keyword type="function" name="poppler_page_get_image_mapping ()" link="PopplerPage.html#poppler-page-get-image-mapping"/>
-    <keyword type="function" name="poppler_page_get_image ()" link="PopplerPage.html#poppler-page-get-image"/>
-    <keyword type="function" name="poppler_page_free_image_mapping ()" link="PopplerPage.html#poppler-page-free-image-mapping"/>
-    <keyword type="function" name="poppler_page_get_form_field_mapping ()" link="PopplerPage.html#poppler-page-get-form-field-mapping"/>
-    <keyword type="function" name="poppler_page_free_form_field_mapping ()" link="PopplerPage.html#poppler-page-free-form-field-mapping"/>
-    <keyword type="function" name="poppler_page_get_annot_mapping ()" link="PopplerPage.html#poppler-page-get-annot-mapping"/>
-    <keyword type="function" name="poppler_page_free_annot_mapping ()" link="PopplerPage.html#poppler-page-free-annot-mapping"/>
-    <keyword type="function" name="poppler_page_add_annot ()" link="PopplerPage.html#poppler-page-add-annot" since="0.16"/>
-    <keyword type="function" name="poppler_page_remove_annot ()" link="PopplerPage.html#poppler-page-remove-annot" since="0.22"/>
-    <keyword type="function" name="poppler_rectangle_new ()" link="PopplerPage.html#poppler-rectangle-new"/>
-    <keyword type="function" name="poppler_rectangle_copy ()" link="PopplerPage.html#poppler-rectangle-copy"/>
-    <keyword type="function" name="poppler_rectangle_free ()" link="PopplerPage.html#poppler-rectangle-free"/>
-    <keyword type="function" name="poppler_page_transition_new ()" link="PopplerPage.html#poppler-page-transition-new"/>
-    <keyword type="function" name="poppler_page_transition_copy ()" link="PopplerPage.html#poppler-page-transition-copy"/>
-    <keyword type="function" name="poppler_page_transition_free ()" link="PopplerPage.html#poppler-page-transition-free"/>
-    <keyword type="function" name="poppler_link_mapping_new ()" link="PopplerPage.html#poppler-link-mapping-new"/>
-    <keyword type="function" name="poppler_link_mapping_copy ()" link="PopplerPage.html#poppler-link-mapping-copy"/>
-    <keyword type="function" name="poppler_link_mapping_free ()" link="PopplerPage.html#poppler-link-mapping-free"/>
-    <keyword type="function" name="poppler_image_mapping_new ()" link="PopplerPage.html#poppler-image-mapping-new"/>
-    <keyword type="function" name="poppler_image_mapping_copy ()" link="PopplerPage.html#poppler-image-mapping-copy"/>
-    <keyword type="function" name="poppler_image_mapping_free ()" link="PopplerPage.html#poppler-image-mapping-free"/>
-    <keyword type="function" name="poppler_form_field_mapping_new ()" link="PopplerPage.html#poppler-form-field-mapping-new"/>
-    <keyword type="function" name="poppler_form_field_mapping_copy ()" link="PopplerPage.html#poppler-form-field-mapping-copy"/>
-    <keyword type="function" name="poppler_form_field_mapping_free ()" link="PopplerPage.html#poppler-form-field-mapping-free"/>
-    <keyword type="function" name="poppler_annot_mapping_new ()" link="PopplerPage.html#poppler-annot-mapping-new"/>
-    <keyword type="function" name="poppler_annot_mapping_copy ()" link="PopplerPage.html#poppler-annot-mapping-copy"/>
-    <keyword type="function" name="poppler_annot_mapping_free ()" link="PopplerPage.html#poppler-annot-mapping-free"/>
-    <keyword type="function" name="poppler_text_attributes_new ()" link="PopplerPage.html#poppler-text-attributes-new" since="0.18"/>
-    <keyword type="function" name="poppler_text_attributes_copy ()" link="PopplerPage.html#poppler-text-attributes-copy" since="0.18"/>
-    <keyword type="function" name="poppler_text_attributes_free ()" link="PopplerPage.html#poppler-text-attributes-free" since="0.18"/>
-    <keyword type="struct" name="PopplerPage" link="PopplerPage.html#PopplerPage-struct"/>
-    <keyword type="struct" name="PopplerRectangle" link="PopplerPage.html#PopplerRectangle-struct"/>
-    <keyword type="struct" name="PopplerPageTransition" link="PopplerPage.html#PopplerPageTransition-struct"/>
-    <keyword type="struct" name="PopplerLinkMapping" link="PopplerPage.html#PopplerLinkMapping-struct"/>
-    <keyword type="struct" name="PopplerImageMapping" link="PopplerPage.html#PopplerImageMapping-struct"/>
-    <keyword type="struct" name="PopplerFormFieldMapping" link="PopplerPage.html#PopplerFormFieldMapping-struct"/>
-    <keyword type="struct" name="PopplerAnnotMapping" link="PopplerPage.html#PopplerAnnotMapping-struct"/>
-    <keyword type="enum" name="enum PopplerPageTransitionType" link="PopplerPage.html#PopplerPageTransitionType"/>
-    <keyword type="enum" name="enum PopplerPageTransitionAlignment" link="PopplerPage.html#PopplerPageTransitionAlignment"/>
-    <keyword type="enum" name="enum PopplerPageTransitionDirection" link="PopplerPage.html#PopplerPageTransitionDirection"/>
-    <keyword type="enum" name="enum PopplerSelectionStyle" link="PopplerPage.html#PopplerSelectionStyle"/>
-    <keyword type="struct" name="PopplerTextAttributes" link="PopplerPage.html#PopplerTextAttributes-struct"/>
-    <keyword type="enum" name="enum PopplerPrintFlags" link="PopplerPage.html#PopplerPrintFlags" since="0.16"/>
-    <keyword type="enum" name="enum PopplerFindFlags" link="PopplerPage.html#PopplerFindFlags" since="0.22"/>
-    <keyword type="property" name="The “label” property" link="PopplerPage.html#PopplerPage--label"/>
+    <keyword type="function" name="poppler_annot_mapping_copy ()" link="poppler-Poppler-Page.html#poppler-annot-mapping-copy"/>
+    <keyword type="function" name="poppler_annot_mapping_free ()" link="poppler-Poppler-Page.html#poppler-annot-mapping-free"/>
+    <keyword type="function" name="poppler_annot_mapping_new ()" link="poppler-Poppler-Page.html#poppler-annot-mapping-new"/>
+    <keyword type="function" name="poppler_form_field_mapping_copy ()" link="poppler-Poppler-Page.html#poppler-form-field-mapping-copy"/>
+    <keyword type="function" name="poppler_form_field_mapping_free ()" link="poppler-Poppler-Page.html#poppler-form-field-mapping-free"/>
+    <keyword type="function" name="poppler_form_field_mapping_new ()" link="poppler-Poppler-Page.html#poppler-form-field-mapping-new"/>
+    <keyword type="function" name="poppler_image_mapping_copy ()" link="poppler-Poppler-Page.html#poppler-image-mapping-copy"/>
+    <keyword type="function" name="poppler_image_mapping_free ()" link="poppler-Poppler-Page.html#poppler-image-mapping-free"/>
+    <keyword type="function" name="poppler_image_mapping_new ()" link="poppler-Poppler-Page.html#poppler-image-mapping-new"/>
+    <keyword type="function" name="poppler_link_mapping_copy ()" link="poppler-Poppler-Page.html#poppler-link-mapping-copy"/>
+    <keyword type="function" name="poppler_link_mapping_free ()" link="poppler-Poppler-Page.html#poppler-link-mapping-free"/>
+    <keyword type="function" name="poppler_link_mapping_new ()" link="poppler-Poppler-Page.html#poppler-link-mapping-new"/>
+    <keyword type="function" name="poppler_page_add_annot ()" link="poppler-Poppler-Page.html#poppler-page-add-annot" since="0.16"/>
+    <keyword type="function" name="poppler_page_find_text ()" link="poppler-Poppler-Page.html#poppler-page-find-text"/>
+    <keyword type="function" name="poppler_page_find_text_with_options ()" link="poppler-Poppler-Page.html#poppler-page-find-text-with-options" since="0.22"/>
+    <keyword type="function" name="poppler_page_free_annot_mapping ()" link="poppler-Poppler-Page.html#poppler-page-free-annot-mapping"/>
+    <keyword type="function" name="poppler_page_free_form_field_mapping ()" link="poppler-Poppler-Page.html#poppler-page-free-form-field-mapping"/>
+    <keyword type="function" name="poppler_page_free_image_mapping ()" link="poppler-Poppler-Page.html#poppler-page-free-image-mapping"/>
+    <keyword type="function" name="poppler_page_free_link_mapping ()" link="poppler-Poppler-Page.html#poppler-page-free-link-mapping"/>
+    <keyword type="function" name="poppler_page_free_text_attributes ()" link="poppler-Poppler-Page.html#poppler-page-free-text-attributes" since="0.18"/>
+    <keyword type="function" name="poppler_page_get_annot_mapping ()" link="poppler-Poppler-Page.html#poppler-page-get-annot-mapping"/>
+    <keyword type="function" name="poppler_page_get_bounding_box ()" link="poppler-Poppler-Page.html#poppler-page-get-bounding-box"/>
+    <keyword type="function" name="poppler_page_get_crop_box ()" link="poppler-Poppler-Page.html#poppler-page-get-crop-box"/>
+    <keyword type="function" name="poppler_page_get_duration ()" link="poppler-Poppler-Page.html#poppler-page-get-duration"/>
+    <keyword type="function" name="poppler_page_get_form_field_mapping ()" link="poppler-Poppler-Page.html#poppler-page-get-form-field-mapping"/>
+    <keyword type="function" name="poppler_page_get_image ()" link="poppler-Poppler-Page.html#poppler-page-get-image"/>
+    <keyword type="function" name="poppler_page_get_image_mapping ()" link="poppler-Poppler-Page.html#poppler-page-get-image-mapping"/>
+    <keyword type="function" name="poppler_page_get_index ()" link="poppler-Poppler-Page.html#poppler-page-get-index"/>
+    <keyword type="function" name="poppler_page_get_label ()" link="poppler-Poppler-Page.html#poppler-page-get-label" since="0.16"/>
+    <keyword type="function" name="poppler_page_get_link_mapping ()" link="poppler-Poppler-Page.html#poppler-page-get-link-mapping"/>
+    <keyword type="function" name="poppler_page_get_selected_region ()" link="poppler-Poppler-Page.html#poppler-page-get-selected-region" since="0.16"/>
+    <keyword type="function" name="poppler_page_get_selected_text ()" link="poppler-Poppler-Page.html#poppler-page-get-selected-text" since="0.16"/>
+    <keyword type="function" name="poppler_page_get_selection_region ()" link="poppler-Poppler-Page.html#poppler-page-get-selection-region" deprecated="0.16: Use poppler_page_get_selected_region() instead."/>
+    <keyword type="function" name="poppler_page_get_size ()" link="poppler-Poppler-Page.html#poppler-page-get-size"/>
+    <keyword type="function" name="poppler_page_get_text ()" link="poppler-Poppler-Page.html#poppler-page-get-text" since="0.16"/>
+    <keyword type="function" name="poppler_page_get_text_attributes ()" link="poppler-Poppler-Page.html#poppler-page-get-text-attributes" since="0.18"/>
+    <keyword type="function" name="poppler_page_get_text_attributes_for_area ()" link="poppler-Poppler-Page.html#poppler-page-get-text-attributes-for-area" since="0.26"/>
+    <keyword type="function" name="poppler_page_get_text_for_area ()" link="poppler-Poppler-Page.html#poppler-page-get-text-for-area" since="0.26"/>
+    <keyword type="function" name="poppler_page_get_text_layout ()" link="poppler-Poppler-Page.html#poppler-page-get-text-layout" since="0.16"/>
+    <keyword type="function" name="poppler_page_get_text_layout_for_area ()" link="poppler-Poppler-Page.html#poppler-page-get-text-layout-for-area" since="0.26"/>
+    <keyword type="function" name="poppler_page_get_thumbnail ()" link="poppler-Poppler-Page.html#poppler-page-get-thumbnail"/>
+    <keyword type="function" name="poppler_page_get_thumbnail_size ()" link="poppler-Poppler-Page.html#poppler-page-get-thumbnail-size"/>
+    <keyword type="function" name="poppler_page_get_transition ()" link="poppler-Poppler-Page.html#poppler-page-get-transition"/>
+    <keyword type="function" name="poppler_page_remove_annot ()" link="poppler-Poppler-Page.html#poppler-page-remove-annot" since="0.22"/>
+    <keyword type="function" name="poppler_page_render ()" link="poppler-Poppler-Page.html#poppler-page-render"/>
+    <keyword type="function" name="poppler_page_render_for_printing ()" link="poppler-Poppler-Page.html#poppler-page-render-for-printing"/>
+    <keyword type="function" name="poppler_page_render_for_printing_with_options ()" link="poppler-Poppler-Page.html#poppler-page-render-for-printing-with-options" since="0.16"/>
+    <keyword type="function" name="poppler_page_render_selection ()" link="poppler-Poppler-Page.html#poppler-page-render-selection"/>
+    <keyword type="function" name="poppler_page_render_to_ps ()" link="poppler-Poppler-Page.html#poppler-page-render-to-ps"/>
+    <keyword type="function" name="poppler_page_selection_region_free ()" link="poppler-Poppler-Page.html#poppler-page-selection-region-free" deprecated=""/>
+    <keyword type="function" name="poppler_page_transition_copy ()" link="poppler-Poppler-Page.html#poppler-page-transition-copy"/>
+    <keyword type="function" name="poppler_page_transition_free ()" link="poppler-Poppler-Page.html#poppler-page-transition-free"/>
+    <keyword type="function" name="poppler_page_transition_new ()" link="poppler-Poppler-Page.html#poppler-page-transition-new"/>
+    <keyword type="function" name="poppler_point_copy ()" link="poppler-Poppler-Page.html#poppler-point-copy" since="0.26"/>
+    <keyword type="function" name="poppler_point_free ()" link="poppler-Poppler-Page.html#poppler-point-free" since="0.26"/>
+    <keyword type="function" name="poppler_point_new ()" link="poppler-Poppler-Page.html#poppler-point-new" since="0.26"/>
+    <keyword type="function" name="poppler_quadrilateral_copy ()" link="poppler-Poppler-Page.html#poppler-quadrilateral-copy" since="0.26"/>
+    <keyword type="function" name="poppler_quadrilateral_free ()" link="poppler-Poppler-Page.html#poppler-quadrilateral-free" since="0.26"/>
+    <keyword type="function" name="poppler_quadrilateral_new ()" link="poppler-Poppler-Page.html#poppler-quadrilateral-new" since="0.26"/>
+    <keyword type="function" name="poppler_rectangle_copy ()" link="poppler-Poppler-Page.html#poppler-rectangle-copy"/>
+    <keyword type="function" name="poppler_rectangle_free ()" link="poppler-Poppler-Page.html#poppler-rectangle-free"/>
+    <keyword type="function" name="poppler_rectangle_new ()" link="poppler-Poppler-Page.html#poppler-rectangle-new"/>
+    <keyword type="function" name="poppler_text_attributes_copy ()" link="poppler-Poppler-Page.html#poppler-text-attributes-copy" since="0.18"/>
+    <keyword type="function" name="poppler_text_attributes_free ()" link="poppler-Poppler-Page.html#poppler-text-attributes-free" since="0.18"/>
+    <keyword type="function" name="poppler_text_attributes_new ()" link="poppler-Poppler-Page.html#poppler-text-attributes-new" since="0.18"/>
+    <keyword type="struct" name="PopplerAnnotMapping" link="poppler-Poppler-Page.html#PopplerAnnotMapping-struct"/>
+    <keyword type="enum" name="enum PopplerFindFlags" link="poppler-Poppler-Page.html#PopplerFindFlags" since="0.22"/>
+    <keyword type="struct" name="PopplerFormFieldMapping" link="poppler-Poppler-Page.html#PopplerFormFieldMapping-struct"/>
+    <keyword type="struct" name="PopplerImageMapping" link="poppler-Poppler-Page.html#PopplerImageMapping-struct"/>
+    <keyword type="struct" name="PopplerLinkMapping" link="poppler-Poppler-Page.html#PopplerLinkMapping-struct"/>
+    <keyword type="struct" name="PopplerPage" link="poppler-Poppler-Page.html#PopplerPage-struct"/>
+    <keyword type="struct" name="PopplerPageTransition" link="poppler-Poppler-Page.html#PopplerPageTransition-struct"/>
+    <keyword type="enum" name="enum PopplerPageTransitionAlignment" link="poppler-Poppler-Page.html#PopplerPageTransitionAlignment"/>
+    <keyword type="enum" name="enum PopplerPageTransitionDirection" link="poppler-Poppler-Page.html#PopplerPageTransitionDirection"/>
+    <keyword type="enum" name="enum PopplerPageTransitionType" link="poppler-Poppler-Page.html#PopplerPageTransitionType"/>
+    <keyword type="struct" name="PopplerPoint" link="poppler-Poppler-Page.html#PopplerPoint-struct"/>
+    <keyword type="enum" name="enum PopplerPrintFlags" link="poppler-Poppler-Page.html#PopplerPrintFlags" since="0.16"/>
+    <keyword type="struct" name="PopplerQuadrilateral" link="poppler-Poppler-Page.html#PopplerQuadrilateral-struct"/>
+    <keyword type="struct" name="PopplerRectangle" link="poppler-Poppler-Page.html#PopplerRectangle-struct"/>
+    <keyword type="enum" name="enum PopplerSelectionStyle" link="poppler-Poppler-Page.html#PopplerSelectionStyle"/>
+    <keyword type="struct" name="PopplerTextAttributes" link="poppler-Poppler-Page.html#PopplerTextAttributes-struct"/>
+    <keyword type="property" name="The “label” property" link="poppler-Poppler-Page.html#PopplerPage--label"/>
     <keyword type="function" name="poppler_action_copy ()" link="PopplerAction.html#poppler-action-copy"/>
     <keyword type="function" name="poppler_action_free ()" link="PopplerAction.html#poppler-action-free"/>
     <keyword type="function" name="poppler_dest_copy ()" link="PopplerAction.html#poppler-dest-copy"/>
@@ -214,265 +265,319 @@
     <keyword type="struct" name="struct PopplerActionLaunch" link="PopplerAction.html#PopplerActionLaunch"/>
     <keyword type="struct" name="struct PopplerActionUri" link="PopplerAction.html#PopplerActionUri"/>
     <keyword type="struct" name="struct PopplerActionNamed" link="PopplerAction.html#PopplerActionNamed"/>
-    <keyword type="struct" name="struct PopplerActionMovie" link="PopplerAction.html#PopplerActionMovie"/>
-    <keyword type="struct" name="struct PopplerActionRendition" link="PopplerAction.html#PopplerActionRendition"/>
-    <keyword type="struct" name="struct PopplerActionOCGState" link="PopplerAction.html#PopplerActionOCGState"/>
-    <keyword type="struct" name="struct PopplerActionJavascript" link="PopplerAction.html#PopplerActionJavascript"/>
+    <keyword type="struct" name="struct PopplerActionMovie" link="PopplerAction.html#PopplerActionMovie" since="0.14"/>
+    <keyword type="struct" name="struct PopplerActionRendition" link="PopplerAction.html#PopplerActionRendition" since="0.14"/>
+    <keyword type="struct" name="struct PopplerActionResetForm" link="PopplerAction.html#PopplerActionResetForm" since="0.90"/>
+    <keyword type="struct" name="struct PopplerActionOCGState" link="PopplerAction.html#PopplerActionOCGState" since="0.14"/>
+    <keyword type="struct" name="struct PopplerActionJavascript" link="PopplerAction.html#PopplerActionJavascript" since="0.18"/>
     <keyword type="enum" name="enum PopplerActionType" link="PopplerAction.html#PopplerActionType"/>
     <keyword type="enum" name="enum PopplerDestType" link="PopplerAction.html#PopplerDestType"/>
     <keyword type="enum" name="enum PopplerActionMovieOperation" link="PopplerAction.html#PopplerActionMovieOperation" since="0.14"/>
     <keyword type="struct" name="PopplerActionLayer" link="PopplerAction.html#PopplerActionLayer"/>
     <keyword type="enum" name="enum PopplerActionLayerAction" link="PopplerAction.html#PopplerActionLayerAction" since="0.14"/>
     <keyword type="function" name="PopplerAttachmentSaveFunc ()" link="PopplerAttachment.html#PopplerAttachmentSaveFunc"/>
+    <keyword type="function" name="poppler_attachment_get_checksum ()" link="PopplerAttachment.html#poppler-attachment-get-checksum" since="20.09.0"/>
+    <keyword type="function" name="poppler_attachment_get_ctime ()" link="PopplerAttachment.html#poppler-attachment-get-ctime" since="20.09.0"/>
+    <keyword type="function" name="poppler_attachment_get_description ()" link="PopplerAttachment.html#poppler-attachment-get-description" since="20.09.0"/>
+    <keyword type="function" name="poppler_attachment_get_mtime ()" link="PopplerAttachment.html#poppler-attachment-get-mtime" since="20.09.0"/>
+    <keyword type="function" name="poppler_attachment_get_name ()" link="PopplerAttachment.html#poppler-attachment-get-name" since="20.09.0"/>
+    <keyword type="function" name="poppler_attachment_get_size ()" link="PopplerAttachment.html#poppler-attachment-get-size" since="20.09.0"/>
     <keyword type="function" name="poppler_attachment_save ()" link="PopplerAttachment.html#poppler-attachment-save"/>
     <keyword type="function" name="poppler_attachment_save_to_callback ()" link="PopplerAttachment.html#poppler-attachment-save-to-callback"/>
     <keyword type="struct" name="PopplerAttachment" link="PopplerAttachment.html#PopplerAttachment-struct"/>
-    <keyword type="function" name="poppler_form_field_get_field_type ()" link="PopplerFormField.html#poppler-form-field-get-field-type"/>
-    <keyword type="function" name="poppler_form_field_get_id ()" link="PopplerFormField.html#poppler-form-field-get-id"/>
-    <keyword type="function" name="poppler_form_field_is_read_only ()" link="PopplerFormField.html#poppler-form-field-is-read-only"/>
-    <keyword type="function" name="poppler_form_field_get_font_size ()" link="PopplerFormField.html#poppler-form-field-get-font-size"/>
-    <keyword type="function" name="poppler_form_field_get_partial_name ()" link="PopplerFormField.html#poppler-form-field-get-partial-name" since="0.16"/>
-    <keyword type="function" name="poppler_form_field_get_mapping_name ()" link="PopplerFormField.html#poppler-form-field-get-mapping-name" since="0.16"/>
-    <keyword type="function" name="poppler_form_field_get_name ()" link="PopplerFormField.html#poppler-form-field-get-name" since="0.16"/>
-    <keyword type="function" name="poppler_form_field_get_action ()" link="PopplerFormField.html#poppler-form-field-get-action" since="0.18"/>
     <keyword type="function" name="poppler_form_field_button_get_button_type ()" link="PopplerFormField.html#poppler-form-field-button-get-button-type"/>
     <keyword type="function" name="poppler_form_field_button_get_state ()" link="PopplerFormField.html#poppler-form-field-button-get-state"/>
     <keyword type="function" name="poppler_form_field_button_set_state ()" link="PopplerFormField.html#poppler-form-field-button-set-state"/>
-    <keyword type="function" name="poppler_form_field_choice_get_choice_type ()" link="PopplerFormField.html#poppler-form-field-choice-get-choice-type"/>
     <keyword type="function" name="poppler_form_field_choice_can_select_multiple ()" link="PopplerFormField.html#poppler-form-field-choice-can-select-multiple"/>
     <keyword type="function" name="poppler_form_field_choice_commit_on_change ()" link="PopplerFormField.html#poppler-form-field-choice-commit-on-change"/>
     <keyword type="function" name="poppler_form_field_choice_do_spell_check ()" link="PopplerFormField.html#poppler-form-field-choice-do-spell-check"/>
+    <keyword type="function" name="poppler_form_field_choice_get_choice_type ()" link="PopplerFormField.html#poppler-form-field-choice-get-choice-type"/>
     <keyword type="function" name="poppler_form_field_choice_get_item ()" link="PopplerFormField.html#poppler-form-field-choice-get-item"/>
     <keyword type="function" name="poppler_form_field_choice_get_n_items ()" link="PopplerFormField.html#poppler-form-field-choice-get-n-items"/>
     <keyword type="function" name="poppler_form_field_choice_get_text ()" link="PopplerFormField.html#poppler-form-field-choice-get-text"/>
-    <keyword type="function" name="poppler_form_field_choice_set_text ()" link="PopplerFormField.html#poppler-form-field-choice-set-text"/>
     <keyword type="function" name="poppler_form_field_choice_is_editable ()" link="PopplerFormField.html#poppler-form-field-choice-is-editable"/>
     <keyword type="function" name="poppler_form_field_choice_is_item_selected ()" link="PopplerFormField.html#poppler-form-field-choice-is-item-selected"/>
     <keyword type="function" name="poppler_form_field_choice_select_item ()" link="PopplerFormField.html#poppler-form-field-choice-select-item"/>
+    <keyword type="function" name="poppler_form_field_choice_set_text ()" link="PopplerFormField.html#poppler-form-field-choice-set-text"/>
     <keyword type="function" name="poppler_form_field_choice_toggle_item ()" link="PopplerFormField.html#poppler-form-field-choice-toggle-item"/>
     <keyword type="function" name="poppler_form_field_choice_unselect_all ()" link="PopplerFormField.html#poppler-form-field-choice-unselect-all"/>
-    <keyword type="function" name="poppler_form_field_text_get_text_type ()" link="PopplerFormField.html#poppler-form-field-text-get-text-type"/>
-    <keyword type="function" name="poppler_form_field_text_get_text ()" link="PopplerFormField.html#poppler-form-field-text-get-text"/>
-    <keyword type="function" name="poppler_form_field_text_set_text ()" link="PopplerFormField.html#poppler-form-field-text-set-text"/>
-    <keyword type="function" name="poppler_form_field_text_get_max_len ()" link="PopplerFormField.html#poppler-form-field-text-get-max-len"/>
+    <keyword type="function" name="poppler_form_field_get_action ()" link="PopplerFormField.html#poppler-form-field-get-action" since="0.18"/>
+    <keyword type="function" name="poppler_form_field_get_additional_action ()" link="PopplerFormField.html#poppler-form-field-get-additional-action" since="0.72"/>
+    <keyword type="function" name="poppler_form_field_get_alternate_ui_name ()" link="PopplerFormField.html#poppler-form-field-get-alternate-ui-name" since="0.88"/>
+    <keyword type="function" name="poppler_form_field_get_field_type ()" link="PopplerFormField.html#poppler-form-field-get-field-type"/>
+    <keyword type="function" name="poppler_form_field_get_font_size ()" link="PopplerFormField.html#poppler-form-field-get-font-size"/>
+    <keyword type="function" name="poppler_form_field_get_id ()" link="PopplerFormField.html#poppler-form-field-get-id"/>
+    <keyword type="function" name="poppler_form_field_get_mapping_name ()" link="PopplerFormField.html#poppler-form-field-get-mapping-name" since="0.16"/>
+    <keyword type="function" name="poppler_form_field_get_name ()" link="PopplerFormField.html#poppler-form-field-get-name" since="0.16"/>
+    <keyword type="function" name="poppler_form_field_get_partial_name ()" link="PopplerFormField.html#poppler-form-field-get-partial-name" since="0.16"/>
+    <keyword type="function" name="poppler_form_field_is_read_only ()" link="PopplerFormField.html#poppler-form-field-is-read-only"/>
     <keyword type="function" name="poppler_form_field_text_do_scroll ()" link="PopplerFormField.html#poppler-form-field-text-do-scroll"/>
     <keyword type="function" name="poppler_form_field_text_do_spell_check ()" link="PopplerFormField.html#poppler-form-field-text-do-spell-check"/>
+    <keyword type="function" name="poppler_form_field_text_get_max_len ()" link="PopplerFormField.html#poppler-form-field-text-get-max-len"/>
+    <keyword type="function" name="poppler_form_field_text_get_text ()" link="PopplerFormField.html#poppler-form-field-text-get-text"/>
+    <keyword type="function" name="poppler_form_field_text_get_text_type ()" link="PopplerFormField.html#poppler-form-field-text-get-text-type"/>
     <keyword type="function" name="poppler_form_field_text_is_password ()" link="PopplerFormField.html#poppler-form-field-text-is-password"/>
     <keyword type="function" name="poppler_form_field_text_is_rich_text ()" link="PopplerFormField.html#poppler-form-field-text-is-rich-text"/>
+    <keyword type="function" name="poppler_form_field_text_set_text ()" link="PopplerFormField.html#poppler-form-field-text-set-text"/>
     <keyword type="struct" name="PopplerFormField" link="PopplerFormField.html#PopplerFormField-struct"/>
+    <keyword type="enum" name="enum PopplerAdditionalActionType" link="PopplerFormField.html#PopplerAdditionalActionType" since="0.72"/>
     <keyword type="enum" name="enum PopplerFormFieldType" link="PopplerFormField.html#PopplerFormFieldType"/>
     <keyword type="enum" name="enum PopplerFormButtonType" link="PopplerFormField.html#PopplerFormButtonType"/>
     <keyword type="enum" name="enum PopplerFormChoiceType" link="PopplerFormField.html#PopplerFormChoiceType"/>
     <keyword type="enum" name="enum PopplerFormTextType" link="PopplerFormField.html#PopplerFormTextType"/>
-    <keyword type="function" name="poppler_annot_get_annot_type ()" link="PopplerAnnot.html#poppler-annot-get-annot-type"/>
-    <keyword type="function" name="poppler_annot_get_flags ()" link="PopplerAnnot.html#poppler-annot-get-flags"/>
-    <keyword type="function" name="poppler_annot_set_flags ()" link="PopplerAnnot.html#poppler-annot-set-flags" since="0.22"/>
-    <keyword type="function" name="poppler_annot_get_name ()" link="PopplerAnnot.html#poppler-annot-get-name"/>
-    <keyword type="function" name="poppler_annot_get_page_index ()" link="PopplerAnnot.html#poppler-annot-get-page-index" since="0.14"/>
-    <keyword type="function" name="poppler_annot_get_color ()" link="PopplerAnnot.html#poppler-annot-get-color"/>
-    <keyword type="function" name="poppler_annot_set_color ()" link="PopplerAnnot.html#poppler-annot-set-color" since="0.16"/>
-    <keyword type="function" name="poppler_annot_get_contents ()" link="PopplerAnnot.html#poppler-annot-get-contents"/>
-    <keyword type="function" name="poppler_annot_set_contents ()" link="PopplerAnnot.html#poppler-annot-set-contents" since="0.12"/>
-    <keyword type="function" name="poppler_annot_get_modified ()" link="PopplerAnnot.html#poppler-annot-get-modified"/>
-    <keyword type="function" name="poppler_annot_get_rectangle ()" link="PopplerAnnot.html#poppler-annot-get-rectangle" since="0.26"/>
-    <keyword type="function" name="poppler_annot_set_rectangle ()" link="PopplerAnnot.html#poppler-annot-set-rectangle" since="0.26"/>
-    <keyword type="function" name="poppler_annot_markup_get_label ()" link="PopplerAnnot.html#poppler-annot-markup-get-label"/>
-    <keyword type="function" name="poppler_annot_markup_set_label ()" link="PopplerAnnot.html#poppler-annot-markup-set-label" since="0.16"/>
-    <keyword type="function" name="poppler_annot_markup_get_subject ()" link="PopplerAnnot.html#poppler-annot-markup-get-subject"/>
-    <keyword type="function" name="poppler_annot_markup_get_opacity ()" link="PopplerAnnot.html#poppler-annot-markup-get-opacity"/>
-    <keyword type="function" name="poppler_annot_markup_set_opacity ()" link="PopplerAnnot.html#poppler-annot-markup-set-opacity" since="0.16"/>
-    <keyword type="function" name="poppler_annot_markup_has_popup ()" link="PopplerAnnot.html#poppler-annot-markup-has-popup" since="0.12"/>
-    <keyword type="function" name="poppler_annot_markup_set_popup ()" link="PopplerAnnot.html#poppler-annot-markup-set-popup" since="0.16"/>
-    <keyword type="function" name="poppler_annot_markup_get_popup_is_open ()" link="PopplerAnnot.html#poppler-annot-markup-get-popup-is-open"/>
-    <keyword type="function" name="poppler_annot_markup_set_popup_is_open ()" link="PopplerAnnot.html#poppler-annot-markup-set-popup-is-open" since="0.16"/>
-    <keyword type="function" name="poppler_annot_markup_get_popup_rectangle ()" link="PopplerAnnot.html#poppler-annot-markup-get-popup-rectangle" since="0.12"/>
-    <keyword type="function" name="poppler_annot_markup_set_popup_rectangle ()" link="PopplerAnnot.html#poppler-annot-markup-set-popup-rectangle" since="0.33"/>
-    <keyword type="function" name="poppler_annot_markup_get_date ()" link="PopplerAnnot.html#poppler-annot-markup-get-date"/>
-    <keyword type="function" name="poppler_annot_markup_get_external_data ()" link="PopplerAnnot.html#poppler-annot-markup-get-external-data"/>
-    <keyword type="function" name="poppler_annot_markup_get_reply_to ()" link="PopplerAnnot.html#poppler-annot-markup-get-reply-to"/>
-    <keyword type="function" name="poppler_annot_text_new ()" link="PopplerAnnot.html#poppler-annot-text-new" since="0.16"/>
-    <keyword type="function" name="poppler_annot_text_get_icon ()" link="PopplerAnnot.html#poppler-annot-text-get-icon"/>
-    <keyword type="function" name="poppler_annot_text_set_icon ()" link="PopplerAnnot.html#poppler-annot-text-set-icon" since="0.16"/>
-    <keyword type="function" name="poppler_annot_text_get_is_open ()" link="PopplerAnnot.html#poppler-annot-text-get-is-open"/>
-    <keyword type="function" name="poppler_annot_text_set_is_open ()" link="PopplerAnnot.html#poppler-annot-text-set-is-open" since="0.16"/>
-    <keyword type="function" name="poppler_annot_text_get_state ()" link="PopplerAnnot.html#poppler-annot-text-get-state"/>
-    <keyword type="function" name="poppler_annot_text_markup_new_highlight ()" link="PopplerAnnot.html#poppler-annot-text-markup-new-highlight" since="0.26"/>
-    <keyword type="function" name="poppler_annot_text_markup_new_squiggly ()" link="PopplerAnnot.html#poppler-annot-text-markup-new-squiggly" since="0.26"/>
-    <keyword type="function" name="poppler_annot_text_markup_new_strikeout ()" link="PopplerAnnot.html#poppler-annot-text-markup-new-strikeout" since="0.26"/>
-    <keyword type="function" name="poppler_annot_text_markup_new_underline ()" link="PopplerAnnot.html#poppler-annot-text-markup-new-underline" since="0.26"/>
-    <keyword type="function" name="poppler_annot_text_markup_set_quadrilaterals ()" link="PopplerAnnot.html#poppler-annot-text-markup-set-quadrilaterals" since="0.26"/>
-    <keyword type="function" name="poppler_annot_text_markup_get_quadrilaterals ()" link="PopplerAnnot.html#poppler-annot-text-markup-get-quadrilaterals" since="0.26"/>
-    <keyword type="function" name="poppler_annot_free_text_get_callout_line ()" link="PopplerAnnot.html#poppler-annot-free-text-get-callout-line"/>
-    <keyword type="function" name="poppler_annot_free_text_get_quadding ()" link="PopplerAnnot.html#poppler-annot-free-text-get-quadding"/>
-    <keyword type="function" name="poppler_annot_file_attachment_get_attachment ()" link="PopplerAnnot.html#poppler-annot-file-attachment-get-attachment" since="0.14"/>
-    <keyword type="function" name="poppler_annot_file_attachment_get_name ()" link="PopplerAnnot.html#poppler-annot-file-attachment-get-name" since="0.14"/>
-    <keyword type="function" name="poppler_annot_screen_get_action ()" link="PopplerAnnot.html#poppler-annot-screen-get-action" since="0.14"/>
-    <keyword type="function" name="poppler_annot_movie_get_movie ()" link="PopplerAnnot.html#poppler-annot-movie-get-movie" since="0.14"/>
-    <keyword type="function" name="poppler_annot_movie_get_title ()" link="PopplerAnnot.html#poppler-annot-movie-get-title" since="0.14"/>
-    <keyword type="function" name="poppler_annot_callout_line_new ()" link="PopplerAnnot.html#poppler-annot-callout-line-new"/>
-    <keyword type="function" name="poppler_annot_callout_line_copy ()" link="PopplerAnnot.html#poppler-annot-callout-line-copy"/>
-    <keyword type="function" name="poppler_annot_callout_line_free ()" link="PopplerAnnot.html#poppler-annot-callout-line-free"/>
-    <keyword type="function" name="poppler_annot_circle_new ()" link="PopplerAnnot.html#poppler-annot-circle-new" since="0.26"/>
-    <keyword type="function" name="poppler_annot_circle_get_interior_color ()" link="PopplerAnnot.html#poppler-annot-circle-get-interior-color" since="0.26"/>
-    <keyword type="function" name="poppler_annot_circle_set_interior_color ()" link="PopplerAnnot.html#poppler-annot-circle-set-interior-color" since="0.26"/>
-    <keyword type="function" name="poppler_annot_line_new ()" link="PopplerAnnot.html#poppler-annot-line-new" since="0.26"/>
-    <keyword type="function" name="poppler_annot_line_set_vertices ()" link="PopplerAnnot.html#poppler-annot-line-set-vertices" since="0.26"/>
-    <keyword type="function" name="poppler_annot_square_new ()" link="PopplerAnnot.html#poppler-annot-square-new" since="0.26"/>
-    <keyword type="function" name="poppler_annot_square_get_interior_color ()" link="PopplerAnnot.html#poppler-annot-square-get-interior-color" since="0.26"/>
-    <keyword type="function" name="poppler_annot_square_set_interior_color ()" link="PopplerAnnot.html#poppler-annot-square-set-interior-color" since="0.26"/>
-    <keyword type="function" name="poppler_point_new ()" link="PopplerAnnot.html#poppler-point-new" since="0.26"/>
-    <keyword type="function" name="poppler_point_copy ()" link="PopplerAnnot.html#poppler-point-copy" since="0.26"/>
-    <keyword type="function" name="poppler_point_free ()" link="PopplerAnnot.html#poppler-point-free" since="0.26"/>
-    <keyword type="function" name="poppler_quadrilateral_new ()" link="PopplerAnnot.html#poppler-quadrilateral-new" since="0.26"/>
-    <keyword type="function" name="poppler_quadrilateral_copy ()" link="PopplerAnnot.html#poppler-quadrilateral-copy" since="0.26"/>
-    <keyword type="function" name="poppler_quadrilateral_free ()" link="PopplerAnnot.html#poppler-quadrilateral-free" since="0.26"/>
-    <keyword type="struct" name="PopplerAnnot" link="PopplerAnnot.html#PopplerAnnot-struct"/>
-    <keyword type="struct" name="PopplerAnnotMarkup" link="PopplerAnnot.html#PopplerAnnotMarkup-struct"/>
-    <keyword type="struct" name="PopplerAnnotCircle" link="PopplerAnnot.html#PopplerAnnotCircle-struct"/>
-    <keyword type="struct" name="PopplerAnnotText" link="PopplerAnnot.html#PopplerAnnotText-struct"/>
-    <keyword type="struct" name="PopplerAnnotTextMarkup" link="PopplerAnnot.html#PopplerAnnotTextMarkup-struct"/>
-    <keyword type="struct" name="PopplerAnnotFreeText" link="PopplerAnnot.html#PopplerAnnotFreeText-struct"/>
-    <keyword type="struct" name="PopplerAnnotFileAttachment" link="PopplerAnnot.html#PopplerAnnotFileAttachment-struct"/>
-    <keyword type="struct" name="PopplerAnnotLine" link="PopplerAnnot.html#PopplerAnnotLine-struct"/>
-    <keyword type="struct" name="PopplerAnnotMovie" link="PopplerAnnot.html#PopplerAnnotMovie-struct"/>
-    <keyword type="struct" name="PopplerAnnotScreen" link="PopplerAnnot.html#PopplerAnnotScreen-struct"/>
-    <keyword type="enum" name="enum PopplerAnnotType" link="PopplerAnnot.html#PopplerAnnotType"/>
-    <keyword type="enum" name="enum PopplerAnnotFlag" link="PopplerAnnot.html#PopplerAnnotFlag"/>
-    <keyword type="enum" name="enum PopplerAnnotExternalDataType" link="PopplerAnnot.html#PopplerAnnotExternalDataType"/>
-    <keyword type="enum" name="enum PopplerAnnotMarkupReplyType" link="PopplerAnnot.html#PopplerAnnotMarkupReplyType"/>
-    <keyword type="enum" name="enum PopplerAnnotTextState" link="PopplerAnnot.html#PopplerAnnotTextState"/>
-    <keyword type="struct" name="PopplerAnnotCalloutLine" link="PopplerAnnot.html#PopplerAnnotCalloutLine-struct"/>
-    <keyword type="enum" name="enum PopplerAnnotFreeTextQuadding" link="PopplerAnnot.html#PopplerAnnotFreeTextQuadding"/>
-    <keyword type="struct" name="PopplerAnnotSquare" link="PopplerAnnot.html#PopplerAnnotSquare-struct"/>
-    <keyword type="struct" name="PopplerPoint" link="PopplerAnnot.html#PopplerPoint-struct"/>
-    <keyword type="struct" name="PopplerQuadrilateral" link="PopplerAnnot.html#PopplerQuadrilateral-struct"/>
-    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_NOTE" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-ICON-NOTE:CAPS"/>
-    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_COMMENT" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-ICON-COMMENT:CAPS"/>
-    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_KEY" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-ICON-KEY:CAPS"/>
-    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_HELP" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-ICON-HELP:CAPS"/>
-    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_NEW_PARAGRAPH" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-ICON-NEW-PARAGRAPH:CAPS"/>
-    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_PARAGRAPH" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-ICON-PARAGRAPH:CAPS"/>
-    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_INSERT" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-ICON-INSERT:CAPS"/>
-    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_CROSS" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-ICON-CROSS:CAPS"/>
-    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_CIRCLE" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-ICON-CIRCLE:CAPS"/>
-    <keyword type="function" name="poppler_layer_get_title ()" link="PopplerLayer.html#poppler-layer-get-title" since="0.12"/>
-    <keyword type="function" name="poppler_layer_is_visible ()" link="PopplerLayer.html#poppler-layer-is-visible" since="0.12"/>
-    <keyword type="function" name="poppler_layer_show ()" link="PopplerLayer.html#poppler-layer-show" since="0.12"/>
-    <keyword type="function" name="poppler_layer_hide ()" link="PopplerLayer.html#poppler-layer-hide" since="0.12"/>
-    <keyword type="function" name="poppler_layer_is_parent ()" link="PopplerLayer.html#poppler-layer-is-parent" since="0.12"/>
-    <keyword type="function" name="poppler_layer_get_radio_button_group_id ()" link="PopplerLayer.html#poppler-layer-get-radio-button-group-id" since="0.12"/>
-    <keyword type="struct" name="PopplerLayer" link="PopplerLayer.html#PopplerLayer-struct"/>
-    <keyword type="function" name="PopplerMediaSaveFunc ()" link="PopplerMedia.html#PopplerMediaSaveFunc" since="0.14"/>
-    <keyword type="function" name="poppler_media_get_filename ()" link="PopplerMedia.html#poppler-media-get-filename" since="0.14"/>
-    <keyword type="function" name="poppler_media_get_mime_type ()" link="PopplerMedia.html#poppler-media-get-mime-type" since="0.14"/>
-    <keyword type="function" name="poppler_media_is_embedded ()" link="PopplerMedia.html#poppler-media-is-embedded" since="0.14"/>
-    <keyword type="function" name="poppler_media_save ()" link="PopplerMedia.html#poppler-media-save" since="0.14"/>
-    <keyword type="function" name="poppler_media_save_to_callback ()" link="PopplerMedia.html#poppler-media-save-to-callback" since="0.14"/>
-    <keyword type="struct" name="PopplerMedia" link="PopplerMedia.html#PopplerMedia-struct"/>
-    <keyword type="function" name="poppler_movie_get_filename ()" link="PopplerMovie.html#poppler-movie-get-filename" since="0.14"/>
-    <keyword type="function" name="poppler_movie_need_poster ()" link="PopplerMovie.html#poppler-movie-need-poster" since="0.14"/>
-    <keyword type="function" name="poppler_movie_show_controls ()" link="PopplerMovie.html#poppler-movie-show-controls" since="0.14"/>
-    <keyword type="function" name="poppler_movie_get_play_mode ()" link="PopplerMovie.html#poppler-movie-get-play-mode" since="0.54"/>
-    <keyword type="struct" name="PopplerMovie" link="PopplerMovie.html#PopplerMovie-struct"/>
-    <keyword type="enum" name="enum PopplerMoviePlayMode" link="PopplerMovie.html#PopplerMoviePlayMode" since="0.54"/>
-    <keyword type="function" name="poppler_structure_element_iter_new ()" link="PopplerStructureElement.html#poppler-structure-element-iter-new" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_iter_next ()" link="PopplerStructureElement.html#poppler-structure-element-iter-next" since="0.26"/>
+    <keyword type="function" name="poppler_annot_get_annot_type ()" link="poppler-Poppler-Annotation.html#poppler-annot-get-annot-type"/>
+    <keyword type="function" name="poppler_annot_callout_line_copy ()" link="poppler-Poppler-Annotation.html#poppler-annot-callout-line-copy"/>
+    <keyword type="function" name="poppler_annot_callout_line_free ()" link="poppler-Poppler-Annotation.html#poppler-annot-callout-line-free"/>
+    <keyword type="function" name="poppler_annot_callout_line_new ()" link="poppler-Poppler-Annotation.html#poppler-annot-callout-line-new"/>
+    <keyword type="function" name="poppler_annot_circle_get_interior_color ()" link="poppler-Poppler-Annotation.html#poppler-annot-circle-get-interior-color" since="0.26"/>
+    <keyword type="function" name="poppler_annot_circle_new ()" link="poppler-Poppler-Annotation.html#poppler-annot-circle-new" since="0.26"/>
+    <keyword type="function" name="poppler_annot_circle_set_interior_color ()" link="poppler-Poppler-Annotation.html#poppler-annot-circle-set-interior-color" since="0.26"/>
+    <keyword type="function" name="poppler_annot_file_attachment_get_attachment ()" link="poppler-Poppler-Annotation.html#poppler-annot-file-attachment-get-attachment" since="0.14"/>
+    <keyword type="function" name="poppler_annot_file_attachment_get_name ()" link="poppler-Poppler-Annotation.html#poppler-annot-file-attachment-get-name" since="0.14"/>
+    <keyword type="function" name="poppler_annot_free_text_get_callout_line ()" link="poppler-Poppler-Annotation.html#poppler-annot-free-text-get-callout-line"/>
+    <keyword type="function" name="poppler_annot_free_text_get_quadding ()" link="poppler-Poppler-Annotation.html#poppler-annot-free-text-get-quadding"/>
+    <keyword type="function" name="poppler_annot_get_color ()" link="poppler-Poppler-Annotation.html#poppler-annot-get-color"/>
+    <keyword type="function" name="poppler_annot_get_contents ()" link="poppler-Poppler-Annotation.html#poppler-annot-get-contents"/>
+    <keyword type="function" name="poppler_annot_get_flags ()" link="poppler-Poppler-Annotation.html#poppler-annot-get-flags"/>
+    <keyword type="function" name="poppler_annot_get_modified ()" link="poppler-Poppler-Annotation.html#poppler-annot-get-modified"/>
+    <keyword type="function" name="poppler_annot_get_name ()" link="poppler-Poppler-Annotation.html#poppler-annot-get-name"/>
+    <keyword type="function" name="poppler_annot_get_page_index ()" link="poppler-Poppler-Annotation.html#poppler-annot-get-page-index" since="0.14"/>
+    <keyword type="function" name="poppler_annot_get_rectangle ()" link="poppler-Poppler-Annotation.html#poppler-annot-get-rectangle" since="0.26"/>
+    <keyword type="function" name="poppler_annot_line_new ()" link="poppler-Poppler-Annotation.html#poppler-annot-line-new" since="0.26"/>
+    <keyword type="function" name="poppler_annot_line_set_vertices ()" link="poppler-Poppler-Annotation.html#poppler-annot-line-set-vertices" since="0.26"/>
+    <keyword type="function" name="poppler_annot_markup_get_date ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-get-date"/>
+    <keyword type="function" name="poppler_annot_markup_get_external_data ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-get-external-data"/>
+    <keyword type="function" name="poppler_annot_markup_get_label ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-get-label"/>
+    <keyword type="function" name="poppler_annot_markup_get_opacity ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-get-opacity"/>
+    <keyword type="function" name="poppler_annot_markup_get_popup_is_open ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-get-popup-is-open"/>
+    <keyword type="function" name="poppler_annot_markup_get_popup_rectangle ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-get-popup-rectangle" since="0.12"/>
+    <keyword type="function" name="poppler_annot_markup_get_reply_to ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-get-reply-to"/>
+    <keyword type="function" name="poppler_annot_markup_get_subject ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-get-subject"/>
+    <keyword type="function" name="poppler_annot_markup_has_popup ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-has-popup" since="0.12"/>
+    <keyword type="function" name="poppler_annot_markup_set_label ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-set-label" since="0.16"/>
+    <keyword type="function" name="poppler_annot_markup_set_opacity ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-set-opacity" since="0.16"/>
+    <keyword type="function" name="poppler_annot_markup_set_popup ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-set-popup" since="0.16"/>
+    <keyword type="function" name="poppler_annot_markup_set_popup_is_open ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-set-popup-is-open" since="0.16"/>
+    <keyword type="function" name="poppler_annot_markup_set_popup_rectangle ()" link="poppler-Poppler-Annotation.html#poppler-annot-markup-set-popup-rectangle" since="0.33"/>
+    <keyword type="function" name="poppler_annot_movie_get_movie ()" link="poppler-Poppler-Annotation.html#poppler-annot-movie-get-movie" since="0.14"/>
+    <keyword type="function" name="poppler_annot_movie_get_title ()" link="poppler-Poppler-Annotation.html#poppler-annot-movie-get-title" since="0.14"/>
+    <keyword type="function" name="poppler_annot_screen_get_action ()" link="poppler-Poppler-Annotation.html#poppler-annot-screen-get-action" since="0.14"/>
+    <keyword type="function" name="poppler_annot_set_color ()" link="poppler-Poppler-Annotation.html#poppler-annot-set-color" since="0.16"/>
+    <keyword type="function" name="poppler_annot_set_contents ()" link="poppler-Poppler-Annotation.html#poppler-annot-set-contents" since="0.12"/>
+    <keyword type="function" name="poppler_annot_set_flags ()" link="poppler-Poppler-Annotation.html#poppler-annot-set-flags" since="0.22"/>
+    <keyword type="function" name="poppler_annot_set_rectangle ()" link="poppler-Poppler-Annotation.html#poppler-annot-set-rectangle" since="0.26"/>
+    <keyword type="function" name="poppler_annot_square_get_interior_color ()" link="poppler-Poppler-Annotation.html#poppler-annot-square-get-interior-color" since="0.26"/>
+    <keyword type="function" name="poppler_annot_square_new ()" link="poppler-Poppler-Annotation.html#poppler-annot-square-new" since="0.26"/>
+    <keyword type="function" name="poppler_annot_square_set_interior_color ()" link="poppler-Poppler-Annotation.html#poppler-annot-square-set-interior-color" since="0.26"/>
+    <keyword type="function" name="poppler_annot_text_get_icon ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-get-icon"/>
+    <keyword type="function" name="poppler_annot_text_get_is_open ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-get-is-open"/>
+    <keyword type="function" name="poppler_annot_text_get_state ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-get-state"/>
+    <keyword type="function" name="poppler_annot_text_markup_get_quadrilaterals ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-markup-get-quadrilaterals" since="0.26"/>
+    <keyword type="function" name="poppler_annot_text_markup_new_highlight ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-markup-new-highlight" since="0.26"/>
+    <keyword type="function" name="poppler_annot_text_markup_new_squiggly ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-markup-new-squiggly" since="0.26"/>
+    <keyword type="function" name="poppler_annot_text_markup_new_strikeout ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-markup-new-strikeout" since="0.26"/>
+    <keyword type="function" name="poppler_annot_text_markup_new_underline ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-markup-new-underline" since="0.26"/>
+    <keyword type="function" name="poppler_annot_text_markup_set_quadrilaterals ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-markup-set-quadrilaterals" since="0.26"/>
+    <keyword type="function" name="poppler_annot_text_new ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-new" since="0.16"/>
+    <keyword type="function" name="poppler_annot_text_set_icon ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-set-icon" since="0.16"/>
+    <keyword type="function" name="poppler_annot_text_set_is_open ()" link="poppler-Poppler-Annotation.html#poppler-annot-text-set-is-open" since="0.16"/>
+    <keyword type="struct" name="PopplerAnnotCalloutLine" link="poppler-Poppler-Annotation.html#PopplerAnnotCalloutLine-struct"/>
+    <keyword type="struct" name="PopplerAnnot" link="poppler-Poppler-Annotation.html#PopplerAnnot-struct"/>
+    <keyword type="struct" name="PopplerAnnotCircle" link="poppler-Poppler-Annotation.html#PopplerAnnotCircle-struct"/>
+    <keyword type="struct" name="PopplerAnnotFileAttachment" link="poppler-Poppler-Annotation.html#PopplerAnnotFileAttachment-struct"/>
+    <keyword type="struct" name="PopplerAnnotFreeText" link="poppler-Poppler-Annotation.html#PopplerAnnotFreeText-struct"/>
+    <keyword type="struct" name="PopplerAnnotLine" link="poppler-Poppler-Annotation.html#PopplerAnnotLine-struct"/>
+    <keyword type="struct" name="PopplerAnnotMarkup" link="poppler-Poppler-Annotation.html#PopplerAnnotMarkup-struct"/>
+    <keyword type="struct" name="PopplerAnnotMovie" link="poppler-Poppler-Annotation.html#PopplerAnnotMovie-struct"/>
+    <keyword type="struct" name="PopplerAnnotScreen" link="poppler-Poppler-Annotation.html#PopplerAnnotScreen-struct"/>
+    <keyword type="struct" name="PopplerAnnotSquare" link="poppler-Poppler-Annotation.html#PopplerAnnotSquare-struct"/>
+    <keyword type="struct" name="PopplerAnnotText" link="poppler-Poppler-Annotation.html#PopplerAnnotText-struct"/>
+    <keyword type="struct" name="PopplerAnnotTextMarkup" link="poppler-Poppler-Annotation.html#PopplerAnnotTextMarkup-struct"/>
+    <keyword type="enum" name="enum PopplerAnnotExternalDataType" link="poppler-Poppler-Annotation.html#PopplerAnnotExternalDataType"/>
+    <keyword type="enum" name="enum PopplerAnnotFlag" link="poppler-Poppler-Annotation.html#PopplerAnnotFlag"/>
+    <keyword type="enum" name="enum PopplerAnnotFreeTextQuadding" link="poppler-Poppler-Annotation.html#PopplerAnnotFreeTextQuadding"/>
+    <keyword type="enum" name="enum PopplerAnnotMarkupReplyType" link="poppler-Poppler-Annotation.html#PopplerAnnotMarkupReplyType"/>
+    <keyword type="enum" name="enum PopplerAnnotTextState" link="poppler-Poppler-Annotation.html#PopplerAnnotTextState"/>
+    <keyword type="enum" name="enum PopplerAnnotType" link="poppler-Poppler-Annotation.html#PopplerAnnotType"/>
+    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_CIRCLE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-ICON-CIRCLE:CAPS"/>
+    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_COMMENT" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-ICON-COMMENT:CAPS"/>
+    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_CROSS" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-ICON-CROSS:CAPS"/>
+    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_HELP" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-ICON-HELP:CAPS"/>
+    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_INSERT" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-ICON-INSERT:CAPS"/>
+    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_KEY" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-ICON-KEY:CAPS"/>
+    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_NEW_PARAGRAPH" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-ICON-NEW-PARAGRAPH:CAPS"/>
+    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_NOTE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-ICON-NOTE:CAPS"/>
+    <keyword type="macro" name="POPPLER_ANNOT_TEXT_ICON_PARAGRAPH" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-ICON-PARAGRAPH:CAPS"/>
+    <keyword type="function" name="poppler_layer_get_radio_button_group_id ()" link="poppler-Poppler-Layer.html#poppler-layer-get-radio-button-group-id" since="0.12"/>
+    <keyword type="function" name="poppler_layer_get_title ()" link="poppler-Poppler-Layer.html#poppler-layer-get-title" since="0.12"/>
+    <keyword type="function" name="poppler_layer_hide ()" link="poppler-Poppler-Layer.html#poppler-layer-hide" since="0.12"/>
+    <keyword type="function" name="poppler_layer_is_parent ()" link="poppler-Poppler-Layer.html#poppler-layer-is-parent" since="0.12"/>
+    <keyword type="function" name="poppler_layer_is_visible ()" link="poppler-Poppler-Layer.html#poppler-layer-is-visible" since="0.12"/>
+    <keyword type="function" name="poppler_layer_show ()" link="poppler-Poppler-Layer.html#poppler-layer-show" since="0.12"/>
+    <keyword type="struct" name="PopplerLayer" link="poppler-Poppler-Layer.html#PopplerLayer-struct"/>
+    <keyword type="function" name="PopplerMediaSaveFunc ()" link="poppler-Poppler-Media.html#PopplerMediaSaveFunc" since="0.14"/>
+    <keyword type="function" name="poppler_media_get_filename ()" link="poppler-Poppler-Media.html#poppler-media-get-filename" since="0.14"/>
+    <keyword type="function" name="poppler_media_get_mime_type ()" link="poppler-Poppler-Media.html#poppler-media-get-mime-type" since="0.14"/>
+    <keyword type="function" name="poppler_media_is_embedded ()" link="poppler-Poppler-Media.html#poppler-media-is-embedded" since="0.14"/>
+    <keyword type="function" name="poppler_media_save ()" link="poppler-Poppler-Media.html#poppler-media-save" since="0.14"/>
+    <keyword type="function" name="poppler_media_save_to_callback ()" link="poppler-Poppler-Media.html#poppler-media-save-to-callback" since="0.14"/>
+    <keyword type="struct" name="PopplerMedia" link="poppler-Poppler-Media.html#PopplerMedia-struct"/>
+    <keyword type="function" name="poppler_movie_get_aspect ()" link="poppler-Poppler-Movie.html#poppler-movie-get-aspect" since="0.89"/>
+    <keyword type="function" name="poppler_movie_get_duration ()" link="poppler-Poppler-Movie.html#poppler-movie-get-duration" since="0.80"/>
+    <keyword type="function" name="poppler_movie_get_filename ()" link="poppler-Poppler-Movie.html#poppler-movie-get-filename" since="0.14"/>
+    <keyword type="function" name="poppler_movie_get_play_mode ()" link="poppler-Poppler-Movie.html#poppler-movie-get-play-mode" since="0.54"/>
+    <keyword type="function" name="poppler_movie_get_rate ()" link="poppler-Poppler-Movie.html#poppler-movie-get-rate" since="0.80"/>
+    <keyword type="function" name="poppler_movie_get_rotation_angle ()" link="poppler-Poppler-Movie.html#poppler-movie-get-rotation-angle" since="0.80"/>
+    <keyword type="function" name="poppler_movie_get_start ()" link="poppler-Poppler-Movie.html#poppler-movie-get-start" since="0.80"/>
+    <keyword type="function" name="poppler_movie_get_volume ()" link="poppler-Poppler-Movie.html#poppler-movie-get-volume" since="0.80"/>
+    <keyword type="function" name="poppler_movie_is_synchronous ()" link="poppler-Poppler-Movie.html#poppler-movie-is-synchronous" since="0.80"/>
+    <keyword type="function" name="poppler_movie_need_poster ()" link="poppler-Poppler-Movie.html#poppler-movie-need-poster" since="0.14"/>
+    <keyword type="function" name="poppler_movie_show_controls ()" link="poppler-Poppler-Movie.html#poppler-movie-show-controls" since="0.14"/>
+    <keyword type="struct" name="PopplerMovie" link="poppler-Poppler-Movie.html#PopplerMovie-struct"/>
+    <keyword type="enum" name="enum PopplerMoviePlayMode" link="poppler-Poppler-Movie.html#PopplerMoviePlayMode" since="0.54"/>
+    <keyword type="function" name="poppler_structure_element_get_abbreviation ()" link="PopplerStructureElement.html#poppler-structure-element-get-abbreviation" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_actual_text ()" link="PopplerStructureElement.html#poppler-structure-element-get-actual-text" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_alt_text ()" link="PopplerStructureElement.html#poppler-structure-element-get-alt-text" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_background_color ()" link="PopplerStructureElement.html#poppler-structure-element-get-background-color" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_baseline_shift ()" link="PopplerStructureElement.html#poppler-structure-element-get-baseline-shift" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_block_align ()" link="PopplerStructureElement.html#poppler-structure-element-get-block-align" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_border_color ()" link="PopplerStructureElement.html#poppler-structure-element-get-border-color" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_border_style ()" link="PopplerStructureElement.html#poppler-structure-element-get-border-style" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_border_thickness ()" link="PopplerStructureElement.html#poppler-structure-element-get-border-thickness" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_bounding_box ()" link="PopplerStructureElement.html#poppler-structure-element-get-bounding-box" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_color ()" link="PopplerStructureElement.html#poppler-structure-element-get-color" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_column_count ()" link="PopplerStructureElement.html#poppler-structure-element-get-column-count" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_column_gaps ()" link="PopplerStructureElement.html#poppler-structure-element-get-column-gaps" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_column_widths ()" link="PopplerStructureElement.html#poppler-structure-element-get-column-widths" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_end_indent ()" link="PopplerStructureElement.html#poppler-structure-element-get-end-indent" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_form_description ()" link="PopplerStructureElement.html#poppler-structure-element-get-form-description" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_form_role ()" link="PopplerStructureElement.html#poppler-structure-element-get-form-role" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_form_state ()" link="PopplerStructureElement.html#poppler-structure-element-get-form-state" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_glyph_orientation ()" link="PopplerStructureElement.html#poppler-structure-element-get-glyph-orientation" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_height ()" link="PopplerStructureElement.html#poppler-structure-element-get-height" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_id ()" link="PopplerStructureElement.html#poppler-structure-element-get-id" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_inline_align ()" link="PopplerStructureElement.html#poppler-structure-element-get-inline-align" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_kind ()" link="PopplerStructureElement.html#poppler-structure-element-get-kind" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_language ()" link="PopplerStructureElement.html#poppler-structure-element-get-language" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_line_height ()" link="PopplerStructureElement.html#poppler-structure-element-get-line-height" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_list_numbering ()" link="PopplerStructureElement.html#poppler-structure-element-get-list-numbering" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_padding ()" link="PopplerStructureElement.html#poppler-structure-element-get-padding" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_page ()" link="PopplerStructureElement.html#poppler-structure-element-get-page" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_placement ()" link="PopplerStructureElement.html#poppler-structure-element-get-placement" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_ruby_align ()" link="PopplerStructureElement.html#poppler-structure-element-get-ruby-align" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_ruby_position ()" link="PopplerStructureElement.html#poppler-structure-element-get-ruby-position" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_space_after ()" link="PopplerStructureElement.html#poppler-structure-element-get-space-after" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_space_before ()" link="PopplerStructureElement.html#poppler-structure-element-get-space-before" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_start_indent ()" link="PopplerStructureElement.html#poppler-structure-element-get-start-indent" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_table_border_style ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-border-style" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_table_column_span ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-column-span" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_table_headers ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-headers" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_table_padding ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-padding" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_table_row_span ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-row-span" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_table_scope ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-scope" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_table_summary ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-summary" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_text ()" link="PopplerStructureElement.html#poppler-structure-element-get-text" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_text_align ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-align" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_text_decoration_color ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-decoration-color" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_text_decoration_thickness ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-decoration-thickness" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_text_decoration_type ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-decoration-type" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_text_indent ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-indent" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_text_spans ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-spans" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_title ()" link="PopplerStructureElement.html#poppler-structure-element-get-title" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_width ()" link="PopplerStructureElement.html#poppler-structure-element-get-width" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_get_writing_mode ()" link="PopplerStructureElement.html#poppler-structure-element-get-writing-mode" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_is_block ()" link="PopplerStructureElement.html#poppler-structure-element-is-block" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_is_content ()" link="PopplerStructureElement.html#poppler-structure-element-is-content" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_is_grouping ()" link="PopplerStructureElement.html#poppler-structure-element-is-grouping" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_is_inline ()" link="PopplerStructureElement.html#poppler-structure-element-is-inline" since="0.26"/>
     <keyword type="function" name="poppler_structure_element_iter_copy ()" link="PopplerStructureElement.html#poppler-structure-element-iter-copy" since="0.26"/>
     <keyword type="function" name="poppler_structure_element_iter_free ()" link="PopplerStructureElement.html#poppler-structure-element-iter-free" since="0.26"/>
     <keyword type="function" name="poppler_structure_element_iter_get_child ()" link="PopplerStructureElement.html#poppler-structure-element-iter-get-child" since="0.26"/>
     <keyword type="function" name="poppler_structure_element_iter_get_element ()" link="PopplerStructureElement.html#poppler-structure-element-iter-get-element" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_kind ()" link="PopplerStructureElement.html#poppler-structure-element-get-kind" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_page ()" link="PopplerStructureElement.html#poppler-structure-element-get-page" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_is_content ()" link="PopplerStructureElement.html#poppler-structure-element-is-content" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_is_inline ()" link="PopplerStructureElement.html#poppler-structure-element-is-inline" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_is_block ()" link="PopplerStructureElement.html#poppler-structure-element-is-block" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_is_grouping ()" link="PopplerStructureElement.html#poppler-structure-element-is-grouping" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_id ()" link="PopplerStructureElement.html#poppler-structure-element-get-id" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_title ()" link="PopplerStructureElement.html#poppler-structure-element-get-title" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_abbreviation ()" link="PopplerStructureElement.html#poppler-structure-element-get-abbreviation"/>
-    <keyword type="function" name="poppler_structure_element_get_language ()" link="PopplerStructureElement.html#poppler-structure-element-get-language" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_text ()" link="PopplerStructureElement.html#poppler-structure-element-get-text" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_alt_text ()" link="PopplerStructureElement.html#poppler-structure-element-get-alt-text" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_actual_text ()" link="PopplerStructureElement.html#poppler-structure-element-get-actual-text" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_text_spans ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-spans" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_placement ()" link="PopplerStructureElement.html#poppler-structure-element-get-placement" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_writing_mode ()" link="PopplerStructureElement.html#poppler-structure-element-get-writing-mode" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_background_color ()" link="PopplerStructureElement.html#poppler-structure-element-get-background-color" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_border_color ()" link="PopplerStructureElement.html#poppler-structure-element-get-border-color" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_border_style ()" link="PopplerStructureElement.html#poppler-structure-element-get-border-style" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_border_thickness ()" link="PopplerStructureElement.html#poppler-structure-element-get-border-thickness" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_padding ()" link="PopplerStructureElement.html#poppler-structure-element-get-padding" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_color ()" link="PopplerStructureElement.html#poppler-structure-element-get-color" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_space_before ()" link="PopplerStructureElement.html#poppler-structure-element-get-space-before" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_space_after ()" link="PopplerStructureElement.html#poppler-structure-element-get-space-after" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_start_indent ()" link="PopplerStructureElement.html#poppler-structure-element-get-start-indent" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_end_indent ()" link="PopplerStructureElement.html#poppler-structure-element-get-end-indent" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_text_indent ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-indent" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_text_align ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-align" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_bounding_box ()" link="PopplerStructureElement.html#poppler-structure-element-get-bounding-box" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_width ()" link="PopplerStructureElement.html#poppler-structure-element-get-width" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_height ()" link="PopplerStructureElement.html#poppler-structure-element-get-height" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_block_align ()" link="PopplerStructureElement.html#poppler-structure-element-get-block-align" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_inline_align ()" link="PopplerStructureElement.html#poppler-structure-element-get-inline-align" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_table_border_style ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-border-style" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_table_padding ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-padding" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_baseline_shift ()" link="PopplerStructureElement.html#poppler-structure-element-get-baseline-shift" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_line_height ()" link="PopplerStructureElement.html#poppler-structure-element-get-line-height" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_text_decoration_color ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-decoration-color" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_text_decoration_thickness ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-decoration-thickness" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_text_decoration_type ()" link="PopplerStructureElement.html#poppler-structure-element-get-text-decoration-type" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_ruby_align ()" link="PopplerStructureElement.html#poppler-structure-element-get-ruby-align" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_ruby_position ()" link="PopplerStructureElement.html#poppler-structure-element-get-ruby-position" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_glyph_orientation ()" link="PopplerStructureElement.html#poppler-structure-element-get-glyph-orientation" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_column_count ()" link="PopplerStructureElement.html#poppler-structure-element-get-column-count" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_column_gaps ()" link="PopplerStructureElement.html#poppler-structure-element-get-column-gaps" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_column_widths ()" link="PopplerStructureElement.html#poppler-structure-element-get-column-widths" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_list_numbering ()" link="PopplerStructureElement.html#poppler-structure-element-get-list-numbering" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_form_role ()" link="PopplerStructureElement.html#poppler-structure-element-get-form-role" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_form_state ()" link="PopplerStructureElement.html#poppler-structure-element-get-form-state" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_form_description ()" link="PopplerStructureElement.html#poppler-structure-element-get-form-description" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_table_row_span ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-row-span" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_table_column_span ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-column-span" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_table_headers ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-headers" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_table_scope ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-scope" since="0.26"/>
-    <keyword type="function" name="poppler_structure_element_get_table_summary ()" link="PopplerStructureElement.html#poppler-structure-element-get-table-summary" since="0.26"/>
-    <keyword type="function" name="poppler_text_span_copy ()" link="PopplerStructureElement.html#poppler-text-span-copy" since="0.26"/>
-    <keyword type="function" name="poppler_text_span_free ()" link="PopplerStructureElement.html#poppler-text-span-free" since="0.26"/>
-    <keyword type="function" name="poppler_text_span_is_fixed_width_font ()" link="PopplerStructureElement.html#poppler-text-span-is-fixed-width-font" since="0.26"/>
-    <keyword type="function" name="poppler_text_span_is_serif_font ()" link="PopplerStructureElement.html#poppler-text-span-is-serif-font" since="0.26"/>
-    <keyword type="function" name="poppler_text_span_is_bold_font ()" link="PopplerStructureElement.html#poppler-text-span-is-bold-font" since="0.26"/>
-    <keyword type="function" name="poppler_text_span_get_color ()" link="PopplerStructureElement.html#poppler-text-span-get-color" since="0.26"/>
-    <keyword type="function" name="poppler_text_span_get_text ()" link="PopplerStructureElement.html#poppler-text-span-get-text" since="0.26"/>
-    <keyword type="function" name="poppler_text_span_get_font_name ()" link="PopplerStructureElement.html#poppler-text-span-get-font-name" since="0.26"/>
-    <keyword type="struct" name="PopplerStructureElement" link="PopplerStructureElement.html#PopplerStructureElement-struct"/>
-    <keyword type="enum" name="enum PopplerStructureElementKind" link="PopplerStructureElement.html#PopplerStructureElementKind"/>
-    <keyword type="struct" name="PopplerStructureElementIter" link="PopplerStructureElement.html#PopplerStructureElementIter-struct"/>
-    <keyword type="enum" name="enum PopplerStructureGetTextFlags" link="PopplerStructureElement.html#PopplerStructureGetTextFlags"/>
-    <keyword type="enum" name="enum PopplerStructurePlacement" link="PopplerStructureElement.html#PopplerStructurePlacement"/>
-    <keyword type="enum" name="enum PopplerStructureWritingMode" link="PopplerStructureElement.html#PopplerStructureWritingMode"/>
-    <keyword type="enum" name="enum PopplerStructureBorderStyle" link="PopplerStructureElement.html#PopplerStructureBorderStyle"/>
-    <keyword type="enum" name="enum PopplerStructureTextAlign" link="PopplerStructureElement.html#PopplerStructureTextAlign"/>
+    <keyword type="function" name="poppler_structure_element_iter_new ()" link="PopplerStructureElement.html#poppler-structure-element-iter-new" since="0.26"/>
+    <keyword type="function" name="poppler_structure_element_iter_next ()" link="PopplerStructureElement.html#poppler-structure-element-iter-next" since="0.26"/>
     <keyword type="enum" name="enum PopplerStructureBlockAlign" link="PopplerStructureElement.html#PopplerStructureBlockAlign"/>
-    <keyword type="enum" name="enum PopplerStructureInlineAlign" link="PopplerStructureElement.html#PopplerStructureInlineAlign"/>
-    <keyword type="enum" name="enum PopplerStructureTextDecoration" link="PopplerStructureElement.html#PopplerStructureTextDecoration"/>
-    <keyword type="enum" name="enum PopplerStructureRubyAlign" link="PopplerStructureElement.html#PopplerStructureRubyAlign"/>
-    <keyword type="enum" name="enum PopplerStructureRubyPosition" link="PopplerStructureElement.html#PopplerStructureRubyPosition"/>
-    <keyword type="enum" name="enum PopplerStructureGlyphOrientation" link="PopplerStructureElement.html#PopplerStructureGlyphOrientation"/>
-    <keyword type="enum" name="enum PopplerStructureListNumbering" link="PopplerStructureElement.html#PopplerStructureListNumbering"/>
-    <keyword type="enum" name="enum PopplerStructureTableScope" link="PopplerStructureElement.html#PopplerStructureTableScope"/>
+    <keyword type="enum" name="enum PopplerStructureBorderStyle" link="PopplerStructureElement.html#PopplerStructureBorderStyle"/>
+    <keyword type="struct" name="PopplerStructureElement" link="PopplerStructureElement.html#PopplerStructureElement-struct"/>
+    <keyword type="struct" name="PopplerStructureElementIter" link="PopplerStructureElement.html#PopplerStructureElementIter-struct"/>
+    <keyword type="enum" name="enum PopplerStructureElementKind" link="PopplerStructureElement.html#PopplerStructureElementKind"/>
     <keyword type="enum" name="enum PopplerStructureFormRole" link="PopplerStructureElement.html#PopplerStructureFormRole"/>
     <keyword type="enum" name="enum PopplerStructureFormState" link="PopplerStructureElement.html#PopplerStructureFormState"/>
-    <keyword type="struct" name="PopplerTextSpan" link="PopplerStructureElement.html#PopplerTextSpan-struct"/>
-    <keyword type="function" name="poppler_color_new ()" link="PopplerColor.html#poppler-color-new"/>
-    <keyword type="function" name="poppler_color_copy ()" link="PopplerColor.html#poppler-color-copy"/>
-    <keyword type="function" name="poppler_color_free ()" link="PopplerColor.html#poppler-color-free"/>
-    <keyword type="struct" name="PopplerColor" link="PopplerColor.html#PopplerColor-struct"/>
+    <keyword type="enum" name="enum PopplerStructureGetTextFlags" link="PopplerStructureElement.html#PopplerStructureGetTextFlags"/>
+    <keyword type="enum" name="enum PopplerStructureGlyphOrientation" link="PopplerStructureElement.html#PopplerStructureGlyphOrientation"/>
+    <keyword type="enum" name="enum PopplerStructureInlineAlign" link="PopplerStructureElement.html#PopplerStructureInlineAlign"/>
+    <keyword type="enum" name="enum PopplerStructureListNumbering" link="PopplerStructureElement.html#PopplerStructureListNumbering"/>
+    <keyword type="enum" name="enum PopplerStructurePlacement" link="PopplerStructureElement.html#PopplerStructurePlacement"/>
+    <keyword type="enum" name="enum PopplerStructureRubyAlign" link="PopplerStructureElement.html#PopplerStructureRubyAlign"/>
+    <keyword type="enum" name="enum PopplerStructureRubyPosition" link="PopplerStructureElement.html#PopplerStructureRubyPosition"/>
+    <keyword type="enum" name="enum PopplerStructureTableScope" link="PopplerStructureElement.html#PopplerStructureTableScope"/>
+    <keyword type="enum" name="enum PopplerStructureTextAlign" link="PopplerStructureElement.html#PopplerStructureTextAlign"/>
+    <keyword type="enum" name="enum PopplerStructureTextDecoration" link="PopplerStructureElement.html#PopplerStructureTextDecoration"/>
+    <keyword type="enum" name="enum PopplerStructureWritingMode" link="PopplerStructureElement.html#PopplerStructureWritingMode"/>
+    <keyword type="function" name="poppler_color_copy ()" link="poppler-Poppler-Color.html#poppler-color-copy"/>
+    <keyword type="function" name="poppler_color_free ()" link="poppler-Poppler-Color.html#poppler-color-free"/>
+    <keyword type="function" name="poppler_color_new ()" link="poppler-Poppler-Color.html#poppler-color-new"/>
+    <keyword type="struct" name="PopplerColor" link="poppler-Poppler-Color.html#PopplerColor-struct"/>
     <keyword type="macro" name="POPPLER_ERROR" link="poppler-Error-handling.html#POPPLER-ERROR:CAPS"/>
     <keyword type="enum" name="enum PopplerError" link="poppler-Error-handling.html#PopplerError"/>
     <keyword type="function" name="poppler_date_parse ()" link="poppler-PDF-Utility-functions.html#poppler-date-parse" since="0.12"/>
-    <keyword type="function" name="poppler_get_version ()" link="poppler-poppler-features.html#poppler-get-version"/>
-    <keyword type="function" name="poppler_get_backend ()" link="poppler-poppler-features.html#poppler-get-backend"/>
-    <keyword type="enum" name="enum PopplerBackend" link="poppler-poppler-features.html#PopplerBackend"/>
+    <keyword type="function" name="poppler_named_dest_from_bytestring ()" link="poppler-PDF-Utility-functions.html#poppler-named-dest-from-bytestring" since="0.73"/>
+    <keyword type="function" name="poppler_named_dest_to_bytestring ()" link="poppler-PDF-Utility-functions.html#poppler-named-dest-to-bytestring" since="0.73"/>
+    <keyword type="macro" name="POPPLER_CHECK_VERSION()" link="poppler-Poppler-Features.html#POPPLER-CHECK-VERSION:CAPS" since="0.12"/>
+    <keyword type="function" name="poppler_get_backend ()" link="poppler-Poppler-Features.html#poppler-get-backend"/>
+    <keyword type="function" name="poppler_get_version ()" link="poppler-Poppler-Features.html#poppler-get-version"/>
+    <keyword type="macro" name="POPPLER_HAS_CAIRO" link="poppler-Poppler-Features.html#POPPLER-HAS-CAIRO:CAPS"/>
+    <keyword type="macro" name="POPPLER_MAJOR_VERSION" link="poppler-Poppler-Features.html#POPPLER-MAJOR-VERSION:CAPS" since="0.12"/>
+    <keyword type="macro" name="POPPLER_MICRO_VERSION" link="poppler-Poppler-Features.html#POPPLER-MICRO-VERSION:CAPS" since="0.12"/>
+    <keyword type="macro" name="POPPLER_MINOR_VERSION" link="poppler-Poppler-Features.html#POPPLER-MINOR-VERSION:CAPS" since="0.12"/>
+    <keyword type="enum" name="enum PopplerBackend" link="poppler-Poppler-Features.html#PopplerBackend"/>
+    <keyword type="function" name="poppler_text_span_copy ()" link="poppler-Poppler-Text-Span.html#poppler-text-span-copy" since="0.26"/>
+    <keyword type="function" name="poppler_text_span_free ()" link="poppler-Poppler-Text-Span.html#poppler-text-span-free" since="0.26"/>
+    <keyword type="function" name="poppler_text_span_get_color ()" link="poppler-Poppler-Text-Span.html#poppler-text-span-get-color" since="0.26"/>
+    <keyword type="function" name="poppler_text_span_get_font_name ()" link="poppler-Poppler-Text-Span.html#poppler-text-span-get-font-name" since="0.26"/>
+    <keyword type="function" name="poppler_text_span_get_text ()" link="poppler-Poppler-Text-Span.html#poppler-text-span-get-text" since="0.26"/>
+    <keyword type="function" name="poppler_text_span_is_bold_font ()" link="poppler-Poppler-Text-Span.html#poppler-text-span-is-bold-font" since="0.26"/>
+    <keyword type="function" name="poppler_text_span_is_fixed_width_font ()" link="poppler-Poppler-Text-Span.html#poppler-text-span-is-fixed-width-font" since="0.26"/>
+    <keyword type="function" name="poppler_text_span_is_serif_font ()" link="poppler-Poppler-Text-Span.html#poppler-text-span-is-serif-font" since="0.26"/>
+    <keyword type="struct" name="PopplerTextSpan" link="poppler-Poppler-Text-Span.html#PopplerTextSpan-struct"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_UNKNOWN" link="PopplerDocument.html#POPPLER-FONT-TYPE-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_TYPE1" link="PopplerDocument.html#POPPLER-FONT-TYPE-TYPE1:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_TYPE1C" link="PopplerDocument.html#POPPLER-FONT-TYPE-TYPE1C:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_TYPE1COT" link="PopplerDocument.html#POPPLER-FONT-TYPE-TYPE1COT:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_TYPE3" link="PopplerDocument.html#POPPLER-FONT-TYPE-TYPE3:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_TRUETYPE" link="PopplerDocument.html#POPPLER-FONT-TYPE-TRUETYPE:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_TRUETYPEOT" link="PopplerDocument.html#POPPLER-FONT-TYPE-TRUETYPEOT:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_CID_TYPE0" link="PopplerDocument.html#POPPLER-FONT-TYPE-CID-TYPE0:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_CID_TYPE0C" link="PopplerDocument.html#POPPLER-FONT-TYPE-CID-TYPE0C:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_CID_TYPE0COT" link="PopplerDocument.html#POPPLER-FONT-TYPE-CID-TYPE0COT:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_CID_TYPE2" link="PopplerDocument.html#POPPLER-FONT-TYPE-CID-TYPE2:CAPS"/>
+    <keyword type="constant" name="POPPLER_FONT_TYPE_CID_TYPE2OT" link="PopplerDocument.html#POPPLER-FONT-TYPE-CID-TYPE2OT:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_CONF_UNSET" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-CONF-UNSET:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_CONF_A" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-CONF-A:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_CONF_B" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-CONF-B:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_CONF_G" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-CONF-G:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_CONF_N" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-CONF-N:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_CONF_P" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-CONF-P:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_CONF_PG" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-CONF-PG:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_CONF_U" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-CONF-U:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_CONF_NONE" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-CONF-NONE:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PART_UNSET" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PART-UNSET:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PART_1" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PART-1:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PART_2" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PART-2:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PART_3" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PART-3:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PART_4" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PART-4:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PART_5" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PART-5:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PART_6" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PART-6:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PART_7" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PART-7:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PART_8" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PART-8:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PART_NONE" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PART-NONE:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_UNSET" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-UNSET:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PDF_A" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PDF-A:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PDF_E" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PDF-E:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PDF_UA" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PDF-UA:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PDF_VT" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PDF-VT:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_PDF_X" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-PDF-X:CAPS"/>
+    <keyword type="constant" name="POPPLER_PDF_SUBTYPE_NONE" link="PopplerDocument.html#POPPLER-PDF-SUBTYPE-NONE:CAPS"/>
     <keyword type="constant" name="POPPLER_PAGE_LAYOUT_UNSET" link="PopplerDocument.html#POPPLER-PAGE-LAYOUT-UNSET:CAPS"/>
     <keyword type="constant" name="POPPLER_PAGE_LAYOUT_SINGLE_PAGE" link="PopplerDocument.html#POPPLER-PAGE-LAYOUT-SINGLE-PAGE:CAPS"/>
     <keyword type="constant" name="POPPLER_PAGE_LAYOUT_ONE_COLUMN" link="PopplerDocument.html#POPPLER-PAGE-LAYOUT-ONE-COLUMN:CAPS"/>
@@ -487,26 +592,6 @@
     <keyword type="constant" name="POPPLER_PAGE_MODE_FULL_SCREEN" link="PopplerDocument.html#POPPLER-PAGE-MODE-FULL-SCREEN:CAPS"/>
     <keyword type="constant" name="POPPLER_PAGE_MODE_USE_OC" link="PopplerDocument.html#POPPLER-PAGE-MODE-USE-OC:CAPS"/>
     <keyword type="constant" name="POPPLER_PAGE_MODE_USE_ATTACHMENTS" link="PopplerDocument.html#POPPLER-PAGE-MODE-USE-ATTACHMENTS:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_UNKNOWN" link="PopplerDocument.html#POPPLER-FONT-TYPE-UNKNOWN:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_TYPE1" link="PopplerDocument.html#POPPLER-FONT-TYPE-TYPE1:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_TYPE1C" link="PopplerDocument.html#POPPLER-FONT-TYPE-TYPE1C:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_TYPE1COT" link="PopplerDocument.html#POPPLER-FONT-TYPE-TYPE1COT:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_TYPE3" link="PopplerDocument.html#POPPLER-FONT-TYPE-TYPE3:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_TRUETYPE" link="PopplerDocument.html#POPPLER-FONT-TYPE-TRUETYPE:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_TRUETYPEOT" link="PopplerDocument.html#POPPLER-FONT-TYPE-TRUETYPEOT:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_CID_TYPE0" link="PopplerDocument.html#POPPLER-FONT-TYPE-CID-TYPE0:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_CID_TYPE0C" link="PopplerDocument.html#POPPLER-FONT-TYPE-CID-TYPE0C:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_CID_TYPE0COT" link="PopplerDocument.html#POPPLER-FONT-TYPE-CID-TYPE0COT:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_CID_TYPE2" link="PopplerDocument.html#POPPLER-FONT-TYPE-CID-TYPE2:CAPS"/>
-    <keyword type="constant" name="POPPLER_FONT_TYPE_CID_TYPE2OT" link="PopplerDocument.html#POPPLER-FONT-TYPE-CID-TYPE2OT:CAPS"/>
-    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_UNSET" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-UNSET:CAPS"/>
-    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_HIDE_TOOLBAR" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-HIDE-TOOLBAR:CAPS"/>
-    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_HIDE_MENUBAR" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-HIDE-MENUBAR:CAPS"/>
-    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_HIDE_WINDOWUI" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-HIDE-WINDOWUI:CAPS"/>
-    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_FIT_WINDOW" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-FIT-WINDOW:CAPS"/>
-    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_CENTER_WINDOW" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-CENTER-WINDOW:CAPS"/>
-    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_DISPLAY_DOC_TITLE" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-DISPLAY-DOC-TITLE:CAPS"/>
-    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_DIRECTION_RTL" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-DIRECTION-RTL:CAPS"/>
     <keyword type="constant" name="POPPLER_PERMISSIONS_OK_TO_PRINT" link="PopplerDocument.html#POPPLER-PERMISSIONS-OK-TO-PRINT:CAPS"/>
     <keyword type="constant" name="POPPLER_PERMISSIONS_OK_TO_MODIFY" link="PopplerDocument.html#POPPLER-PERMISSIONS-OK-TO-MODIFY:CAPS"/>
     <keyword type="constant" name="POPPLER_PERMISSIONS_OK_TO_COPY" link="PopplerDocument.html#POPPLER-PERMISSIONS-OK-TO-COPY:CAPS"/>
@@ -516,33 +601,48 @@
     <keyword type="constant" name="POPPLER_PERMISSIONS_OK_TO_ASSEMBLE" link="PopplerDocument.html#POPPLER-PERMISSIONS-OK-TO-ASSEMBLE:CAPS"/>
     <keyword type="constant" name="POPPLER_PERMISSIONS_OK_TO_PRINT_HIGH_RESOLUTION" link="PopplerDocument.html#POPPLER-PERMISSIONS-OK-TO-PRINT-HIGH-RESOLUTION:CAPS"/>
     <keyword type="constant" name="POPPLER_PERMISSIONS_FULL" link="PopplerDocument.html#POPPLER-PERMISSIONS-FULL:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_REPLACE" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-REPLACE:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_SPLIT" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-SPLIT:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_BLINDS" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-BLINDS:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_BOX" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-BOX:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_WIPE" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-WIPE:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_DISSOLVE" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-DISSOLVE:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_GLITTER" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-GLITTER:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_FLY" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-FLY:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_PUSH" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-PUSH:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_COVER" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-COVER:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_UNCOVER" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-UNCOVER:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_FADE" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-FADE:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_HORIZONTAL" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-HORIZONTAL:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_VERTICAL" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-VERTICAL:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_INWARD" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-INWARD:CAPS"/>
-    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_OUTWARD" link="PopplerPage.html#POPPLER-PAGE-TRANSITION-OUTWARD:CAPS"/>
-    <keyword type="constant" name="POPPLER_SELECTION_GLYPH" link="PopplerPage.html#POPPLER-SELECTION-GLYPH:CAPS"/>
-    <keyword type="constant" name="POPPLER_SELECTION_WORD" link="PopplerPage.html#POPPLER-SELECTION-WORD:CAPS"/>
-    <keyword type="constant" name="POPPLER_SELECTION_LINE" link="PopplerPage.html#POPPLER-SELECTION-LINE:CAPS"/>
-    <keyword type="constant" name="POPPLER_PRINT_DOCUMENT" link="PopplerPage.html#POPPLER-PRINT-DOCUMENT:CAPS"/>
-    <keyword type="constant" name="POPPLER_PRINT_MARKUP_ANNOTS" link="PopplerPage.html#POPPLER-PRINT-MARKUP-ANNOTS:CAPS"/>
-    <keyword type="constant" name="POPPLER_PRINT_STAMP_ANNOTS_ONLY" link="PopplerPage.html#POPPLER-PRINT-STAMP-ANNOTS-ONLY:CAPS"/>
-    <keyword type="constant" name="POPPLER_PRINT_ALL" link="PopplerPage.html#POPPLER-PRINT-ALL:CAPS"/>
-    <keyword type="constant" name="POPPLER_FIND_DEFAULT" link="PopplerPage.html#POPPLER-FIND-DEFAULT:CAPS"/>
-    <keyword type="constant" name="POPPLER_FIND_CASE_SENSITIVE" link="PopplerPage.html#POPPLER-FIND-CASE-SENSITIVE:CAPS"/>
-    <keyword type="constant" name="POPPLER_FIND_BACKWARDS" link="PopplerPage.html#POPPLER-FIND-BACKWARDS:CAPS"/>
-    <keyword type="constant" name="POPPLER_FIND_WHOLE_WORDS_ONLY" link="PopplerPage.html#POPPLER-FIND-WHOLE-WORDS-ONLY:CAPS"/>
+    <keyword type="constant" name="POPPLER_PRINT_DUPLEX_NONE" link="PopplerDocument.html#POPPLER-PRINT-DUPLEX-NONE:CAPS"/>
+    <keyword type="constant" name="POPPLER_PRINT_DUPLEX_SIMPLEX" link="PopplerDocument.html#POPPLER-PRINT-DUPLEX-SIMPLEX:CAPS"/>
+    <keyword type="constant" name="POPPLER_PRINT_DUPLEX_DUPLEX_FLIP_SHORT_EDGE" link="PopplerDocument.html#POPPLER-PRINT-DUPLEX-DUPLEX-FLIP-SHORT-EDGE:CAPS"/>
+    <keyword type="constant" name="POPPLER_PRINT_DUPLEX_DUPLEX_FLIP_LONG_EDGE" link="PopplerDocument.html#POPPLER-PRINT-DUPLEX-DUPLEX-FLIP-LONG-EDGE:CAPS"/>
+    <keyword type="constant" name="POPPLER_PRINT_SCALING_APP_DEFAULT" link="PopplerDocument.html#POPPLER-PRINT-SCALING-APP-DEFAULT:CAPS"/>
+    <keyword type="constant" name="POPPLER_PRINT_SCALING_NONE" link="PopplerDocument.html#POPPLER-PRINT-SCALING-NONE:CAPS"/>
+    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_UNSET" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-UNSET:CAPS"/>
+    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_HIDE_TOOLBAR" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-HIDE-TOOLBAR:CAPS"/>
+    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_HIDE_MENUBAR" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-HIDE-MENUBAR:CAPS"/>
+    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_HIDE_WINDOWUI" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-HIDE-WINDOWUI:CAPS"/>
+    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_FIT_WINDOW" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-FIT-WINDOW:CAPS"/>
+    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_CENTER_WINDOW" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-CENTER-WINDOW:CAPS"/>
+    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_DISPLAY_DOC_TITLE" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-DISPLAY-DOC-TITLE:CAPS"/>
+    <keyword type="constant" name="POPPLER_VIEWER_PREFERENCES_DIRECTION_RTL" link="PopplerDocument.html#POPPLER-VIEWER-PREFERENCES-DIRECTION-RTL:CAPS"/>
+    <keyword type="constant" name="POPPLER_FIND_DEFAULT" link="poppler-Poppler-Page.html#POPPLER-FIND-DEFAULT:CAPS"/>
+    <keyword type="constant" name="POPPLER_FIND_CASE_SENSITIVE" link="poppler-Poppler-Page.html#POPPLER-FIND-CASE-SENSITIVE:CAPS"/>
+    <keyword type="constant" name="POPPLER_FIND_BACKWARDS" link="poppler-Poppler-Page.html#POPPLER-FIND-BACKWARDS:CAPS"/>
+    <keyword type="constant" name="POPPLER_FIND_WHOLE_WORDS_ONLY" link="poppler-Poppler-Page.html#POPPLER-FIND-WHOLE-WORDS-ONLY:CAPS"/>
+    <keyword type="constant" name="POPPLER_FIND_IGNORE_DIACRITICS" link="poppler-Poppler-Page.html#POPPLER-FIND-IGNORE-DIACRITICS:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_HORIZONTAL" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-HORIZONTAL:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_VERTICAL" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-VERTICAL:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_INWARD" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-INWARD:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_OUTWARD" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-OUTWARD:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_REPLACE" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-REPLACE:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_SPLIT" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-SPLIT:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_BLINDS" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-BLINDS:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_BOX" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-BOX:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_WIPE" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-WIPE:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_DISSOLVE" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-DISSOLVE:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_GLITTER" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-GLITTER:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_FLY" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-FLY:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_PUSH" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-PUSH:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_COVER" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-COVER:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_UNCOVER" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-UNCOVER:CAPS"/>
+    <keyword type="constant" name="POPPLER_PAGE_TRANSITION_FADE" link="poppler-Poppler-Page.html#POPPLER-PAGE-TRANSITION-FADE:CAPS"/>
+    <keyword type="constant" name="POPPLER_PRINT_DOCUMENT" link="poppler-Poppler-Page.html#POPPLER-PRINT-DOCUMENT:CAPS"/>
+    <keyword type="constant" name="POPPLER_PRINT_MARKUP_ANNOTS" link="poppler-Poppler-Page.html#POPPLER-PRINT-MARKUP-ANNOTS:CAPS"/>
+    <keyword type="constant" name="POPPLER_PRINT_STAMP_ANNOTS_ONLY" link="poppler-Poppler-Page.html#POPPLER-PRINT-STAMP-ANNOTS-ONLY:CAPS"/>
+    <keyword type="constant" name="POPPLER_PRINT_ALL" link="poppler-Poppler-Page.html#POPPLER-PRINT-ALL:CAPS"/>
+    <keyword type="constant" name="POPPLER_SELECTION_GLYPH" link="poppler-Poppler-Page.html#POPPLER-SELECTION-GLYPH:CAPS"/>
+    <keyword type="constant" name="POPPLER_SELECTION_WORD" link="poppler-Poppler-Page.html#POPPLER-SELECTION-WORD:CAPS"/>
+    <keyword type="constant" name="POPPLER_SELECTION_LINE" link="poppler-Poppler-Page.html#POPPLER-SELECTION-LINE:CAPS"/>
     <keyword type="constant" name="POPPLER_ACTION_UNKNOWN" link="PopplerAction.html#POPPLER-ACTION-UNKNOWN:CAPS"/>
     <keyword type="constant" name="POPPLER_ACTION_NONE" link="PopplerAction.html#POPPLER-ACTION-NONE:CAPS"/>
     <keyword type="constant" name="POPPLER_ACTION_GOTO_DEST" link="PopplerAction.html#POPPLER-ACTION-GOTO-DEST:CAPS"/>
@@ -554,6 +654,7 @@
     <keyword type="constant" name="POPPLER_ACTION_RENDITION" link="PopplerAction.html#POPPLER-ACTION-RENDITION:CAPS"/>
     <keyword type="constant" name="POPPLER_ACTION_OCG_STATE" link="PopplerAction.html#POPPLER-ACTION-OCG-STATE:CAPS"/>
     <keyword type="constant" name="POPPLER_ACTION_JAVASCRIPT" link="PopplerAction.html#POPPLER-ACTION-JAVASCRIPT:CAPS"/>
+    <keyword type="constant" name="POPPLER_ACTION_RESET_FORM" link="PopplerAction.html#POPPLER-ACTION-RESET-FORM:CAPS"/>
     <keyword type="constant" name="POPPLER_DEST_UNKNOWN" link="PopplerAction.html#POPPLER-DEST-UNKNOWN:CAPS"/>
     <keyword type="constant" name="POPPLER_DEST_XYZ" link="PopplerAction.html#POPPLER-DEST-XYZ:CAPS"/>
     <keyword type="constant" name="POPPLER_DEST_FIT" link="PopplerAction.html#POPPLER-DEST-FIT:CAPS"/>
@@ -571,6 +672,10 @@
     <keyword type="constant" name="POPPLER_ACTION_LAYER_ON" link="PopplerAction.html#POPPLER-ACTION-LAYER-ON:CAPS"/>
     <keyword type="constant" name="POPPLER_ACTION_LAYER_OFF" link="PopplerAction.html#POPPLER-ACTION-LAYER-OFF:CAPS"/>
     <keyword type="constant" name="POPPLER_ACTION_LAYER_TOGGLE" link="PopplerAction.html#POPPLER-ACTION-LAYER-TOGGLE:CAPS"/>
+    <keyword type="constant" name="POPPLER_ADDITIONAL_ACTION_FIELD_MODIFIED" link="PopplerFormField.html#POPPLER-ADDITIONAL-ACTION-FIELD-MODIFIED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ADDITIONAL_ACTION_FORMAT_FIELD" link="PopplerFormField.html#POPPLER-ADDITIONAL-ACTION-FORMAT-FIELD:CAPS"/>
+    <keyword type="constant" name="POPPLER_ADDITIONAL_ACTION_VALIDATE_FIELD" link="PopplerFormField.html#POPPLER-ADDITIONAL-ACTION-VALIDATE-FIELD:CAPS"/>
+    <keyword type="constant" name="POPPLER_ADDITIONAL_ACTION_CALCULATE_FIELD" link="PopplerFormField.html#POPPLER-ADDITIONAL-ACTION-CALCULATE-FIELD:CAPS"/>
     <keyword type="constant" name="POPPLER_FORM_FIELD_UNKNOWN" link="PopplerFormField.html#POPPLER-FORM-FIELD-UNKNOWN:CAPS"/>
     <keyword type="constant" name="POPPLER_FORM_FIELD_BUTTON" link="PopplerFormField.html#POPPLER-FORM-FIELD-BUTTON:CAPS"/>
     <keyword type="constant" name="POPPLER_FORM_FIELD_TEXT" link="PopplerFormField.html#POPPLER-FORM-FIELD-TEXT:CAPS"/>
@@ -584,62 +689,75 @@
     <keyword type="constant" name="POPPLER_FORM_TEXT_NORMAL" link="PopplerFormField.html#POPPLER-FORM-TEXT-NORMAL:CAPS"/>
     <keyword type="constant" name="POPPLER_FORM_TEXT_MULTILINE" link="PopplerFormField.html#POPPLER-FORM-TEXT-MULTILINE:CAPS"/>
     <keyword type="constant" name="POPPLER_FORM_TEXT_FILE_SELECT" link="PopplerFormField.html#POPPLER-FORM-TEXT-FILE-SELECT:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_UNKNOWN" link="PopplerAnnot.html#POPPLER-ANNOT-UNKNOWN:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_TEXT" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_LINK" link="PopplerAnnot.html#POPPLER-ANNOT-LINK:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FREE_TEXT" link="PopplerAnnot.html#POPPLER-ANNOT-FREE-TEXT:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_LINE" link="PopplerAnnot.html#POPPLER-ANNOT-LINE:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_SQUARE" link="PopplerAnnot.html#POPPLER-ANNOT-SQUARE:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_CIRCLE" link="PopplerAnnot.html#POPPLER-ANNOT-CIRCLE:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_POLYGON" link="PopplerAnnot.html#POPPLER-ANNOT-POLYGON:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_POLY_LINE" link="PopplerAnnot.html#POPPLER-ANNOT-POLY-LINE:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_HIGHLIGHT" link="PopplerAnnot.html#POPPLER-ANNOT-HIGHLIGHT:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_UNDERLINE" link="PopplerAnnot.html#POPPLER-ANNOT-UNDERLINE:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_SQUIGGLY" link="PopplerAnnot.html#POPPLER-ANNOT-SQUIGGLY:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_STRIKE_OUT" link="PopplerAnnot.html#POPPLER-ANNOT-STRIKE-OUT:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_STAMP" link="PopplerAnnot.html#POPPLER-ANNOT-STAMP:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_CARET" link="PopplerAnnot.html#POPPLER-ANNOT-CARET:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_INK" link="PopplerAnnot.html#POPPLER-ANNOT-INK:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_POPUP" link="PopplerAnnot.html#POPPLER-ANNOT-POPUP:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FILE_ATTACHMENT" link="PopplerAnnot.html#POPPLER-ANNOT-FILE-ATTACHMENT:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_SOUND" link="PopplerAnnot.html#POPPLER-ANNOT-SOUND:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_MOVIE" link="PopplerAnnot.html#POPPLER-ANNOT-MOVIE:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_WIDGET" link="PopplerAnnot.html#POPPLER-ANNOT-WIDGET:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_SCREEN" link="PopplerAnnot.html#POPPLER-ANNOT-SCREEN:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_PRINTER_MARK" link="PopplerAnnot.html#POPPLER-ANNOT-PRINTER-MARK:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_TRAP_NET" link="PopplerAnnot.html#POPPLER-ANNOT-TRAP-NET:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_WATERMARK" link="PopplerAnnot.html#POPPLER-ANNOT-WATERMARK:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_3D" link="PopplerAnnot.html#POPPLER-ANNOT-3D:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_UNKNOWN" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-UNKNOWN:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_INVISIBLE" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-INVISIBLE:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_HIDDEN" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-HIDDEN:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_PRINT" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-PRINT:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_NO_ZOOM" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-NO-ZOOM:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_NO_ROTATE" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-NO-ROTATE:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_NO_VIEW" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-NO-VIEW:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_READ_ONLY" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-READ-ONLY:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_LOCKED" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-LOCKED:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_TOGGLE_NO_VIEW" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-TOGGLE-NO-VIEW:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FLAG_LOCKED_CONTENTS" link="PopplerAnnot.html#POPPLER-ANNOT-FLAG-LOCKED-CONTENTS:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_EXTERNAL_DATA_MARKUP_3D" link="PopplerAnnot.html#POPPLER-ANNOT-EXTERNAL-DATA-MARKUP-3D:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_EXTERNAL_DATA_MARKUP_UNKNOWN" link="PopplerAnnot.html#POPPLER-ANNOT-EXTERNAL-DATA-MARKUP-UNKNOWN:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_MARKUP_REPLY_TYPE_R" link="PopplerAnnot.html#POPPLER-ANNOT-MARKUP-REPLY-TYPE-R:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_MARKUP_REPLY_TYPE_GROUP" link="PopplerAnnot.html#POPPLER-ANNOT-MARKUP-REPLY-TYPE-GROUP:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_MARKED" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-STATE-MARKED:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_UNMARKED" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-STATE-UNMARKED:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_ACCEPTED" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-STATE-ACCEPTED:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_REJECTED" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-STATE-REJECTED:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_CANCELLED" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-STATE-CANCELLED:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_COMPLETED" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-STATE-COMPLETED:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_NONE" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-STATE-NONE:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_UNKNOWN" link="PopplerAnnot.html#POPPLER-ANNOT-TEXT-STATE-UNKNOWN:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FREE_TEXT_QUADDING_LEFT_JUSTIFIED" link="PopplerAnnot.html#POPPLER-ANNOT-FREE-TEXT-QUADDING-LEFT-JUSTIFIED:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FREE_TEXT_QUADDING_CENTERED" link="PopplerAnnot.html#POPPLER-ANNOT-FREE-TEXT-QUADDING-CENTERED:CAPS"/>
-    <keyword type="constant" name="POPPLER_ANNOT_FREE_TEXT_QUADDING_RIGHT_JUSTIFIED" link="PopplerAnnot.html#POPPLER-ANNOT-FREE-TEXT-QUADDING-RIGHT-JUSTIFIED:CAPS"/>
-    <keyword type="constant" name="POPPLER_MOVIE_PLAY_MODE_ONCE" link="PopplerMovie.html#POPPLER-MOVIE-PLAY-MODE-ONCE:CAPS"/>
-    <keyword type="constant" name="POPPLER_MOVIE_PLAY_MODE_OPEN" link="PopplerMovie.html#POPPLER-MOVIE-PLAY-MODE-OPEN:CAPS"/>
-    <keyword type="constant" name="POPPLER_MOVIE_PLAY_MODE_REPEAT" link="PopplerMovie.html#POPPLER-MOVIE-PLAY-MODE-REPEAT:CAPS"/>
-    <keyword type="constant" name="POPPLER_MOVIE_PLAY_MODE_PALINDROME" link="PopplerMovie.html#POPPLER-MOVIE-PLAY-MODE-PALINDROME:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_EXTERNAL_DATA_MARKUP_3D" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-EXTERNAL-DATA-MARKUP-3D:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_EXTERNAL_DATA_MARKUP_UNKNOWN" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-EXTERNAL-DATA-MARKUP-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_UNKNOWN" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_INVISIBLE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-INVISIBLE:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_HIDDEN" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-HIDDEN:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_PRINT" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-PRINT:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_NO_ZOOM" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-NO-ZOOM:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_NO_ROTATE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-NO-ROTATE:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_NO_VIEW" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-NO-VIEW:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_READ_ONLY" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-READ-ONLY:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_LOCKED" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-LOCKED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_TOGGLE_NO_VIEW" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-TOGGLE-NO-VIEW:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FLAG_LOCKED_CONTENTS" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FLAG-LOCKED-CONTENTS:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FREE_TEXT_QUADDING_LEFT_JUSTIFIED" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FREE-TEXT-QUADDING-LEFT-JUSTIFIED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FREE_TEXT_QUADDING_CENTERED" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FREE-TEXT-QUADDING-CENTERED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FREE_TEXT_QUADDING_RIGHT_JUSTIFIED" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FREE-TEXT-QUADDING-RIGHT-JUSTIFIED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_MARKUP_REPLY_TYPE_R" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-MARKUP-REPLY-TYPE-R:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_MARKUP_REPLY_TYPE_GROUP" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-MARKUP-REPLY-TYPE-GROUP:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_MARKED" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-STATE-MARKED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_UNMARKED" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-STATE-UNMARKED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_ACCEPTED" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-STATE-ACCEPTED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_REJECTED" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-STATE-REJECTED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_CANCELLED" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-STATE-CANCELLED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_COMPLETED" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-STATE-COMPLETED:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_NONE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-STATE-NONE:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_TEXT_STATE_UNKNOWN" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT-STATE-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_UNKNOWN" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_TEXT" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TEXT:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_LINK" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-LINK:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FREE_TEXT" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FREE-TEXT:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_LINE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-LINE:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_SQUARE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-SQUARE:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_CIRCLE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-CIRCLE:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_POLYGON" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-POLYGON:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_POLY_LINE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-POLY-LINE:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_HIGHLIGHT" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-HIGHLIGHT:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_UNDERLINE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-UNDERLINE:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_SQUIGGLY" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-SQUIGGLY:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_STRIKE_OUT" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-STRIKE-OUT:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_STAMP" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-STAMP:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_CARET" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-CARET:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_INK" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-INK:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_POPUP" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-POPUP:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_FILE_ATTACHMENT" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-FILE-ATTACHMENT:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_SOUND" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-SOUND:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_MOVIE" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-MOVIE:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_WIDGET" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-WIDGET:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_SCREEN" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-SCREEN:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_PRINTER_MARK" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-PRINTER-MARK:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_TRAP_NET" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-TRAP-NET:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_WATERMARK" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-WATERMARK:CAPS"/>
+    <keyword type="constant" name="POPPLER_ANNOT_3D" link="poppler-Poppler-Annotation.html#POPPLER-ANNOT-3D:CAPS"/>
+    <keyword type="constant" name="POPPLER_MOVIE_PLAY_MODE_ONCE" link="poppler-Poppler-Movie.html#POPPLER-MOVIE-PLAY-MODE-ONCE:CAPS"/>
+    <keyword type="constant" name="POPPLER_MOVIE_PLAY_MODE_OPEN" link="poppler-Poppler-Movie.html#POPPLER-MOVIE-PLAY-MODE-OPEN:CAPS"/>
+    <keyword type="constant" name="POPPLER_MOVIE_PLAY_MODE_REPEAT" link="poppler-Poppler-Movie.html#POPPLER-MOVIE-PLAY-MODE-REPEAT:CAPS"/>
+    <keyword type="constant" name="POPPLER_MOVIE_PLAY_MODE_PALINDROME" link="poppler-Poppler-Movie.html#POPPLER-MOVIE-PLAY-MODE-PALINDROME:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BLOCK_ALIGN_BEFORE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BLOCK-ALIGN-BEFORE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BLOCK_ALIGN_MIDDLE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BLOCK-ALIGN-MIDDLE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BLOCK_ALIGN_AFTER" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BLOCK-ALIGN-AFTER:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BLOCK_ALIGN_JUSTIFY" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BLOCK-ALIGN-JUSTIFY:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_NONE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-NONE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_HIDDEN" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-HIDDEN:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_DOTTED" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-DOTTED:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_DASHED" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-DASHED:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_SOLID" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-SOLID:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_DOUBLE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-DOUBLE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_GROOVE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-GROOVE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_INSET" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-INSET:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_OUTSET" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-OUTSET:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_ELEMENT_CONTENT" link="PopplerStructureElement.html#POPPLER-STRUCTURE-ELEMENT-CONTENT:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_ELEMENT_OBJECT_REFERENCE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-ELEMENT-OBJECT-REFERENCE:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_ELEMENT_DOCUMENT" link="PopplerStructureElement.html#POPPLER-STRUCTURE-ELEMENT-DOCUMENT:CAPS"/>
@@ -691,54 +809,24 @@
     <keyword type="constant" name="POPPLER_STRUCTURE_ELEMENT_FIGURE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-ELEMENT-FIGURE:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_ELEMENT_FORMULA" link="PopplerStructureElement.html#POPPLER-STRUCTURE-ELEMENT-FORMULA:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_ELEMENT_FORM" link="PopplerStructureElement.html#POPPLER-STRUCTURE-ELEMENT-FORM:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_ROLE_UNDEFINED" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-ROLE-UNDEFINED:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_ROLE_RADIO_BUTTON" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-ROLE-RADIO-BUTTON:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_ROLE_PUSH_BUTTON" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-ROLE-PUSH-BUTTON:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_ROLE_TEXT_VALUE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-ROLE-TEXT-VALUE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_ROLE_CHECKBOX" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-ROLE-CHECKBOX:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_STATE_ON" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-STATE-ON:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_STATE_OFF" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-STATE-OFF:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_STATE_NEUTRAL" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-STATE-NEUTRAL:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_GET_TEXT_NONE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-GET-TEXT-NONE:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_GET_TEXT_RECURSIVE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-GET-TEXT-RECURSIVE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_PLACEMENT_BLOCK" link="PopplerStructureElement.html#POPPLER-STRUCTURE-PLACEMENT-BLOCK:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_PLACEMENT_INLINE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-PLACEMENT-INLINE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_PLACEMENT_BEFORE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-PLACEMENT-BEFORE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_PLACEMENT_START" link="PopplerStructureElement.html#POPPLER-STRUCTURE-PLACEMENT-START:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_PLACEMENT_END" link="PopplerStructureElement.html#POPPLER-STRUCTURE-PLACEMENT-END:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_WRITING_MODE_LR_TB" link="PopplerStructureElement.html#POPPLER-STRUCTURE-WRITING-MODE-LR-TB:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_WRITING_MODE_RL_TB" link="PopplerStructureElement.html#POPPLER-STRUCTURE-WRITING-MODE-RL-TB:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_WRITING_MODE_TB_RL" link="PopplerStructureElement.html#POPPLER-STRUCTURE-WRITING-MODE-TB-RL:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_NONE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-NONE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_HIDDEN" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-HIDDEN:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_DOTTED" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-DOTTED:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_DASHED" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-DASHED:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_SOLID" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-SOLID:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_DOUBLE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-DOUBLE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_GROOVE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-GROOVE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_INSET" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-INSET:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BORDER_STYLE_OUTSET" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BORDER-STYLE-OUTSET:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_ALIGN_START" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-ALIGN-START:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_ALIGN_CENTER" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-ALIGN-CENTER:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_ALIGN_END" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-ALIGN-END:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_ALIGN_JUSTIFY" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-ALIGN-JUSTIFY:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BLOCK_ALIGN_BEFORE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BLOCK-ALIGN-BEFORE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BLOCK_ALIGN_MIDDLE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BLOCK-ALIGN-MIDDLE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BLOCK_ALIGN_AFTER" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BLOCK-ALIGN-AFTER:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_BLOCK_ALIGN_JUSTIFY" link="PopplerStructureElement.html#POPPLER-STRUCTURE-BLOCK-ALIGN-JUSTIFY:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_INLINE_ALIGN_START" link="PopplerStructureElement.html#POPPLER-STRUCTURE-INLINE-ALIGN-START:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_INLINE_ALIGN_CENTER" link="PopplerStructureElement.html#POPPLER-STRUCTURE-INLINE-ALIGN-CENTER:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_INLINE_ALIGN_END" link="PopplerStructureElement.html#POPPLER-STRUCTURE-INLINE-ALIGN-END:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_DECORATION_NONE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-DECORATION-NONE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_DECORATION_UNDERLINE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-DECORATION-UNDERLINE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_DECORATION_OVERLINE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-DECORATION-OVERLINE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_DECORATION_LINETHROUGH" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-DECORATION-LINETHROUGH:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_ALIGN_START" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-ALIGN-START:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_ALIGN_CENTER" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-ALIGN-CENTER:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_ALIGN_END" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-ALIGN-END:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_ALIGN_JUSTIFY" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-ALIGN-JUSTIFY:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_ALIGN_DISTRIBUTE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-ALIGN-DISTRIBUTE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_POSITION_BEFORE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-POSITION-BEFORE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_POSITION_AFTER" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-POSITION-AFTER:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_POSITION_WARICHU" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-POSITION-WARICHU:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_POSITION_INLINE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-POSITION-INLINE:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_GLYPH_ORIENTATION_AUTO" link="PopplerStructureElement.html#POPPLER-STRUCTURE-GLYPH-ORIENTATION-AUTO:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_GLYPH_ORIENTATION_0" link="PopplerStructureElement.html#POPPLER-STRUCTURE-GLYPH-ORIENTATION-0:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_GLYPH_ORIENTATION_90" link="PopplerStructureElement.html#POPPLER-STRUCTURE-GLYPH-ORIENTATION-90:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_GLYPH_ORIENTATION_180" link="PopplerStructureElement.html#POPPLER-STRUCTURE-GLYPH-ORIENTATION-180:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_GLYPH_ORIENTATION_270" link="PopplerStructureElement.html#POPPLER-STRUCTURE-GLYPH-ORIENTATION-270:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_INLINE_ALIGN_START" link="PopplerStructureElement.html#POPPLER-STRUCTURE-INLINE-ALIGN-START:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_INLINE_ALIGN_CENTER" link="PopplerStructureElement.html#POPPLER-STRUCTURE-INLINE-ALIGN-CENTER:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_INLINE_ALIGN_END" link="PopplerStructureElement.html#POPPLER-STRUCTURE-INLINE-ALIGN-END:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_LIST_NUMBERING_NONE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-LIST-NUMBERING-NONE:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_LIST_NUMBERING_DISC" link="PopplerStructureElement.html#POPPLER-STRUCTURE-LIST-NUMBERING-DISC:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_LIST_NUMBERING_CIRCLE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-LIST-NUMBERING-CIRCLE:CAPS"/>
@@ -748,51 +836,76 @@
     <keyword type="constant" name="POPPLER_STRUCTURE_LIST_NUMBERING_LOWER_ROMAN" link="PopplerStructureElement.html#POPPLER-STRUCTURE-LIST-NUMBERING-LOWER-ROMAN:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_LIST_NUMBERING_UPPER_ALPHA" link="PopplerStructureElement.html#POPPLER-STRUCTURE-LIST-NUMBERING-UPPER-ALPHA:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_LIST_NUMBERING_LOWER_ALPHA" link="PopplerStructureElement.html#POPPLER-STRUCTURE-LIST-NUMBERING-LOWER-ALPHA:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_PLACEMENT_BLOCK" link="PopplerStructureElement.html#POPPLER-STRUCTURE-PLACEMENT-BLOCK:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_PLACEMENT_INLINE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-PLACEMENT-INLINE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_PLACEMENT_BEFORE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-PLACEMENT-BEFORE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_PLACEMENT_START" link="PopplerStructureElement.html#POPPLER-STRUCTURE-PLACEMENT-START:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_PLACEMENT_END" link="PopplerStructureElement.html#POPPLER-STRUCTURE-PLACEMENT-END:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_ALIGN_START" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-ALIGN-START:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_ALIGN_CENTER" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-ALIGN-CENTER:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_ALIGN_END" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-ALIGN-END:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_ALIGN_JUSTIFY" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-ALIGN-JUSTIFY:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_ALIGN_DISTRIBUTE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-ALIGN-DISTRIBUTE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_POSITION_BEFORE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-POSITION-BEFORE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_POSITION_AFTER" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-POSITION-AFTER:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_POSITION_WARICHU" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-POSITION-WARICHU:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_RUBY_POSITION_INLINE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-RUBY-POSITION-INLINE:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_TABLE_SCOPE_ROW" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TABLE-SCOPE-ROW:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_TABLE_SCOPE_COLUMN" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TABLE-SCOPE-COLUMN:CAPS"/>
     <keyword type="constant" name="POPPLER_STRUCTURE_TABLE_SCOPE_BOTH" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TABLE-SCOPE-BOTH:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_ROLE_UNDEFINED" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-ROLE-UNDEFINED:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_ROLE_RADIO_BUTTON" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-ROLE-RADIO-BUTTON:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_ROLE_PUSH_BUTTON" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-ROLE-PUSH-BUTTON:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_ROLE_TEXT_VALUE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-ROLE-TEXT-VALUE:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_ROLE_CHECKBOX" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-ROLE-CHECKBOX:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_STATE_ON" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-STATE-ON:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_STATE_OFF" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-STATE-OFF:CAPS"/>
-    <keyword type="constant" name="POPPLER_STRUCTURE_FORM_STATE_NEUTRAL" link="PopplerStructureElement.html#POPPLER-STRUCTURE-FORM-STATE-NEUTRAL:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_ALIGN_START" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-ALIGN-START:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_ALIGN_CENTER" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-ALIGN-CENTER:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_ALIGN_END" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-ALIGN-END:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_ALIGN_JUSTIFY" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-ALIGN-JUSTIFY:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_DECORATION_NONE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-DECORATION-NONE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_DECORATION_UNDERLINE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-DECORATION-UNDERLINE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_DECORATION_OVERLINE" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-DECORATION-OVERLINE:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_TEXT_DECORATION_LINETHROUGH" link="PopplerStructureElement.html#POPPLER-STRUCTURE-TEXT-DECORATION-LINETHROUGH:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_WRITING_MODE_LR_TB" link="PopplerStructureElement.html#POPPLER-STRUCTURE-WRITING-MODE-LR-TB:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_WRITING_MODE_RL_TB" link="PopplerStructureElement.html#POPPLER-STRUCTURE-WRITING-MODE-RL-TB:CAPS"/>
+    <keyword type="constant" name="POPPLER_STRUCTURE_WRITING_MODE_TB_RL" link="PopplerStructureElement.html#POPPLER-STRUCTURE-WRITING-MODE-TB-RL:CAPS"/>
     <keyword type="constant" name="POPPLER_ERROR_INVALID" link="poppler-Error-handling.html#POPPLER-ERROR-INVALID:CAPS"/>
     <keyword type="constant" name="POPPLER_ERROR_ENCRYPTED" link="poppler-Error-handling.html#POPPLER-ERROR-ENCRYPTED:CAPS"/>
     <keyword type="constant" name="POPPLER_ERROR_OPEN_FILE" link="poppler-Error-handling.html#POPPLER-ERROR-OPEN-FILE:CAPS"/>
     <keyword type="constant" name="POPPLER_ERROR_BAD_CATALOG" link="poppler-Error-handling.html#POPPLER-ERROR-BAD-CATALOG:CAPS"/>
     <keyword type="constant" name="POPPLER_ERROR_DAMAGED" link="poppler-Error-handling.html#POPPLER-ERROR-DAMAGED:CAPS"/>
-    <keyword type="constant" name="POPPLER_BACKEND_UNKNOWN" link="poppler-poppler-features.html#POPPLER-BACKEND-UNKNOWN:CAPS"/>
-    <keyword type="constant" name="POPPLER_BACKEND_SPLASH" link="poppler-poppler-features.html#POPPLER-BACKEND-SPLASH:CAPS"/>
-    <keyword type="constant" name="POPPLER_BACKEND_CAIRO" link="poppler-poppler-features.html#POPPLER-BACKEND-CAIRO:CAPS"/>
-    <keyword type="member" name="PopplerRectangle-struct.x1" link="PopplerPage.html#PopplerRectangle-struct.x1"/>
-    <keyword type="member" name="PopplerRectangle-struct.y1" link="PopplerPage.html#PopplerRectangle-struct.y1"/>
-    <keyword type="member" name="PopplerRectangle-struct.x2" link="PopplerPage.html#PopplerRectangle-struct.x2"/>
-    <keyword type="member" name="PopplerRectangle-struct.y2" link="PopplerPage.html#PopplerRectangle-struct.y2"/>
-    <keyword type="member" name="PopplerPageTransition-struct.type" link="PopplerPage.html#PopplerPageTransition-struct.type"/>
-    <keyword type="member" name="PopplerPageTransition-struct.alignment" link="PopplerPage.html#PopplerPageTransition-struct.alignment"/>
-    <keyword type="member" name="PopplerPageTransition-struct.direction" link="PopplerPage.html#PopplerPageTransition-struct.direction"/>
-    <keyword type="member" name="PopplerPageTransition-struct.duration" link="PopplerPage.html#PopplerPageTransition-struct.duration"/>
-    <keyword type="member" name="PopplerPageTransition-struct.angle" link="PopplerPage.html#PopplerPageTransition-struct.angle"/>
-    <keyword type="member" name="PopplerPageTransition-struct.scale" link="PopplerPage.html#PopplerPageTransition-struct.scale"/>
-    <keyword type="member" name="PopplerPageTransition-struct.rectangular" link="PopplerPage.html#PopplerPageTransition-struct.rectangular"/>
-    <keyword type="member" name="PopplerPageTransition-struct.duration-real" link="PopplerPage.html#PopplerPageTransition-struct.duration-real"/>
-    <keyword type="member" name="PopplerLinkMapping-struct.area" link="PopplerPage.html#PopplerLinkMapping-struct.area"/>
-    <keyword type="member" name="PopplerLinkMapping-struct.action" link="PopplerPage.html#PopplerLinkMapping-struct.action"/>
-    <keyword type="member" name="PopplerImageMapping-struct.area" link="PopplerPage.html#PopplerImageMapping-struct.area"/>
-    <keyword type="member" name="PopplerImageMapping-struct.image-id" link="PopplerPage.html#PopplerImageMapping-struct.image-id"/>
-    <keyword type="member" name="PopplerFormFieldMapping-struct.area" link="PopplerPage.html#PopplerFormFieldMapping-struct.area"/>
-    <keyword type="member" name="PopplerFormFieldMapping-struct.field" link="PopplerPage.html#PopplerFormFieldMapping-struct.field"/>
-    <keyword type="member" name="PopplerAnnotMapping-struct.area" link="PopplerPage.html#PopplerAnnotMapping-struct.area"/>
-    <keyword type="member" name="PopplerAnnotMapping-struct.annot" link="PopplerPage.html#PopplerAnnotMapping-struct.annot"/>
-    <keyword type="member" name="PopplerTextAttributes-struct.font-name" link="PopplerPage.html#PopplerTextAttributes-struct.font-name"/>
-    <keyword type="member" name="PopplerTextAttributes-struct.font-size" link="PopplerPage.html#PopplerTextAttributes-struct.font-size"/>
-    <keyword type="member" name="PopplerTextAttributes-struct.is-underlined" link="PopplerPage.html#PopplerTextAttributes-struct.is-underlined"/>
-    <keyword type="member" name="PopplerTextAttributes-struct.color" link="PopplerPage.html#PopplerTextAttributes-struct.color"/>
-    <keyword type="member" name="PopplerTextAttributes-struct.start-index" link="PopplerPage.html#PopplerTextAttributes-struct.start-index"/>
-    <keyword type="member" name="PopplerTextAttributes-struct.end-index" link="PopplerPage.html#PopplerTextAttributes-struct.end-index"/>
+    <keyword type="constant" name="POPPLER_BACKEND_UNKNOWN" link="poppler-Poppler-Features.html#POPPLER-BACKEND-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="POPPLER_BACKEND_SPLASH" link="poppler-Poppler-Features.html#POPPLER-BACKEND-SPLASH:CAPS"/>
+    <keyword type="constant" name="POPPLER_BACKEND_CAIRO" link="poppler-Poppler-Features.html#POPPLER-BACKEND-CAIRO:CAPS"/>
+    <keyword type="member" name="PopplerPageRange.start-page" link="PopplerDocument.html#PopplerPageRange.start-page"/>
+    <keyword type="member" name="PopplerPageRange.end-page" link="PopplerDocument.html#PopplerPageRange.end-page"/>
+    <keyword type="member" name="PopplerAnnotMapping-struct.area" link="poppler-Poppler-Page.html#PopplerAnnotMapping-struct.area"/>
+    <keyword type="member" name="PopplerAnnotMapping-struct.annot" link="poppler-Poppler-Page.html#PopplerAnnotMapping-struct.annot"/>
+    <keyword type="member" name="PopplerFormFieldMapping-struct.area" link="poppler-Poppler-Page.html#PopplerFormFieldMapping-struct.area"/>
+    <keyword type="member" name="PopplerFormFieldMapping-struct.field" link="poppler-Poppler-Page.html#PopplerFormFieldMapping-struct.field"/>
+    <keyword type="member" name="PopplerImageMapping-struct.area" link="poppler-Poppler-Page.html#PopplerImageMapping-struct.area"/>
+    <keyword type="member" name="PopplerImageMapping-struct.image-id" link="poppler-Poppler-Page.html#PopplerImageMapping-struct.image-id"/>
+    <keyword type="member" name="PopplerLinkMapping-struct.area" link="poppler-Poppler-Page.html#PopplerLinkMapping-struct.area"/>
+    <keyword type="member" name="PopplerLinkMapping-struct.action" link="poppler-Poppler-Page.html#PopplerLinkMapping-struct.action"/>
+    <keyword type="member" name="PopplerPageTransition-struct.type" link="poppler-Poppler-Page.html#PopplerPageTransition-struct.type"/>
+    <keyword type="member" name="PopplerPageTransition-struct.alignment" link="poppler-Poppler-Page.html#PopplerPageTransition-struct.alignment"/>
+    <keyword type="member" name="PopplerPageTransition-struct.direction" link="poppler-Poppler-Page.html#PopplerPageTransition-struct.direction"/>
+    <keyword type="member" name="PopplerPageTransition-struct.duration" link="poppler-Poppler-Page.html#PopplerPageTransition-struct.duration"/>
+    <keyword type="member" name="PopplerPageTransition-struct.angle" link="poppler-Poppler-Page.html#PopplerPageTransition-struct.angle"/>
+    <keyword type="member" name="PopplerPageTransition-struct.scale" link="poppler-Poppler-Page.html#PopplerPageTransition-struct.scale"/>
+    <keyword type="member" name="PopplerPageTransition-struct.rectangular" link="poppler-Poppler-Page.html#PopplerPageTransition-struct.rectangular"/>
+    <keyword type="member" name="PopplerPageTransition-struct.duration-real" link="poppler-Poppler-Page.html#PopplerPageTransition-struct.duration-real"/>
+    <keyword type="member" name="PopplerPoint-struct.x" link="poppler-Poppler-Page.html#PopplerPoint-struct.x"/>
+    <keyword type="member" name="PopplerPoint-struct.y" link="poppler-Poppler-Page.html#PopplerPoint-struct.y"/>
+    <keyword type="member" name="PopplerQuadrilateral-struct.p1" link="poppler-Poppler-Page.html#PopplerQuadrilateral-struct.p1"/>
+    <keyword type="member" name="PopplerQuadrilateral-struct.p2" link="poppler-Poppler-Page.html#PopplerQuadrilateral-struct.p2"/>
+    <keyword type="member" name="PopplerQuadrilateral-struct.p3" link="poppler-Poppler-Page.html#PopplerQuadrilateral-struct.p3"/>
+    <keyword type="member" name="PopplerQuadrilateral-struct.p4" link="poppler-Poppler-Page.html#PopplerQuadrilateral-struct.p4"/>
+    <keyword type="member" name="PopplerRectangle-struct.x1" link="poppler-Poppler-Page.html#PopplerRectangle-struct.x1"/>
+    <keyword type="member" name="PopplerRectangle-struct.y1" link="poppler-Poppler-Page.html#PopplerRectangle-struct.y1"/>
+    <keyword type="member" name="PopplerRectangle-struct.x2" link="poppler-Poppler-Page.html#PopplerRectangle-struct.x2"/>
+    <keyword type="member" name="PopplerRectangle-struct.y2" link="poppler-Poppler-Page.html#PopplerRectangle-struct.y2"/>
+    <keyword type="member" name="PopplerTextAttributes-struct.font-name" link="poppler-Poppler-Page.html#PopplerTextAttributes-struct.font-name"/>
+    <keyword type="member" name="PopplerTextAttributes-struct.font-size" link="poppler-Poppler-Page.html#PopplerTextAttributes-struct.font-size"/>
+    <keyword type="member" name="PopplerTextAttributes-struct.is-underlined" link="poppler-Poppler-Page.html#PopplerTextAttributes-struct.is-underlined"/>
+    <keyword type="member" name="PopplerTextAttributes-struct.color" link="poppler-Poppler-Page.html#PopplerTextAttributes-struct.color"/>
+    <keyword type="member" name="PopplerTextAttributes-struct.start-index" link="poppler-Poppler-Page.html#PopplerTextAttributes-struct.start-index"/>
+    <keyword type="member" name="PopplerTextAttributes-struct.end-index" link="poppler-Poppler-Page.html#PopplerTextAttributes-struct.end-index"/>
     <keyword type="member" name="PopplerDest-struct.type" link="PopplerAction.html#PopplerDest-struct.type"/>
     <keyword type="member" name="PopplerDest-struct.page-num" link="PopplerAction.html#PopplerDest-struct.page-num"/>
     <keyword type="member" name="PopplerDest-struct.left" link="PopplerAction.html#PopplerDest-struct.left"/>
@@ -804,16 +917,53 @@
     <keyword type="member" name="PopplerDest-struct.change-left" link="PopplerAction.html#PopplerDest-struct.change-left"/>
     <keyword type="member" name="PopplerDest-struct.change-top" link="PopplerAction.html#PopplerDest-struct.change-top"/>
     <keyword type="member" name="PopplerDest-struct.change-zoom" link="PopplerAction.html#PopplerDest-struct.change-zoom"/>
+    <keyword type="member" name="PopplerActionAny.type" link="PopplerAction.html#PopplerActionAny.type"/>
+    <keyword type="member" name="PopplerActionAny.title" link="PopplerAction.html#PopplerActionAny.title"/>
+    <keyword type="member" name="PopplerActionGotoDest.type" link="PopplerAction.html#PopplerActionGotoDest.type"/>
+    <keyword type="member" name="PopplerActionGotoDest.title" link="PopplerAction.html#PopplerActionGotoDest.title"/>
+    <keyword type="member" name="PopplerActionGotoDest.dest" link="PopplerAction.html#PopplerActionGotoDest.dest"/>
+    <keyword type="member" name="PopplerActionGotoRemote.type" link="PopplerAction.html#PopplerActionGotoRemote.type"/>
+    <keyword type="member" name="PopplerActionGotoRemote.title" link="PopplerAction.html#PopplerActionGotoRemote.title"/>
+    <keyword type="member" name="PopplerActionGotoRemote.file-name" link="PopplerAction.html#PopplerActionGotoRemote.file-name"/>
+    <keyword type="member" name="PopplerActionGotoRemote.dest" link="PopplerAction.html#PopplerActionGotoRemote.dest"/>
+    <keyword type="member" name="PopplerActionLaunch.type" link="PopplerAction.html#PopplerActionLaunch.type"/>
+    <keyword type="member" name="PopplerActionLaunch.title" link="PopplerAction.html#PopplerActionLaunch.title"/>
+    <keyword type="member" name="PopplerActionLaunch.file-name" link="PopplerAction.html#PopplerActionLaunch.file-name"/>
+    <keyword type="member" name="PopplerActionLaunch.params" link="PopplerAction.html#PopplerActionLaunch.params"/>
+    <keyword type="member" name="PopplerActionUri.type" link="PopplerAction.html#PopplerActionUri.type"/>
+    <keyword type="member" name="PopplerActionUri.title" link="PopplerAction.html#PopplerActionUri.title"/>
+    <keyword type="member" name="PopplerActionUri.uri" link="PopplerAction.html#PopplerActionUri.uri"/>
+    <keyword type="member" name="PopplerActionNamed.type" link="PopplerAction.html#PopplerActionNamed.type"/>
+    <keyword type="member" name="PopplerActionNamed.title" link="PopplerAction.html#PopplerActionNamed.title"/>
+    <keyword type="member" name="PopplerActionNamed.named-dest" link="PopplerAction.html#PopplerActionNamed.named-dest"/>
+    <keyword type="member" name="PopplerActionMovie.type" link="PopplerAction.html#PopplerActionMovie.type"/>
+    <keyword type="member" name="PopplerActionMovie.title" link="PopplerAction.html#PopplerActionMovie.title"/>
+    <keyword type="member" name="PopplerActionMovie.operation" link="PopplerAction.html#PopplerActionMovie.operation"/>
+    <keyword type="member" name="PopplerActionMovie.movie" link="PopplerAction.html#PopplerActionMovie.movie"/>
+    <keyword type="member" name="PopplerActionRendition.type" link="PopplerAction.html#PopplerActionRendition.type"/>
+    <keyword type="member" name="PopplerActionRendition.title" link="PopplerAction.html#PopplerActionRendition.title"/>
+    <keyword type="member" name="PopplerActionRendition.op" link="PopplerAction.html#PopplerActionRendition.op"/>
+    <keyword type="member" name="PopplerActionRendition.media" link="PopplerAction.html#PopplerActionRendition.media"/>
+    <keyword type="member" name="PopplerActionResetForm.type" link="PopplerAction.html#PopplerActionResetForm.type"/>
+    <keyword type="member" name="PopplerActionResetForm.title" link="PopplerAction.html#PopplerActionResetForm.title"/>
+    <keyword type="member" name="PopplerActionResetForm.fields" link="PopplerAction.html#PopplerActionResetForm.fields"/>
+    <keyword type="member" name="PopplerActionResetForm.exclude" link="PopplerAction.html#PopplerActionResetForm.exclude"/>
+    <keyword type="member" name="PopplerActionOCGState.type" link="PopplerAction.html#PopplerActionOCGState.type"/>
+    <keyword type="member" name="PopplerActionOCGState.title" link="PopplerAction.html#PopplerActionOCGState.title"/>
+    <keyword type="member" name="PopplerActionOCGState.state-list" link="PopplerAction.html#PopplerActionOCGState.state-list"/>
+    <keyword type="member" name="PopplerActionJavascript.type" link="PopplerAction.html#PopplerActionJavascript.type"/>
+    <keyword type="member" name="PopplerActionJavascript.title" link="PopplerAction.html#PopplerActionJavascript.title"/>
+    <keyword type="member" name="PopplerActionJavascript.script" link="PopplerAction.html#PopplerActionJavascript.script"/>
     <keyword type="member" name="PopplerActionLayer.action" link="PopplerAction.html#PopplerActionLayer.action"/>
     <keyword type="member" name="PopplerActionLayer.layers" link="PopplerAction.html#PopplerActionLayer.layers"/>
-    <keyword type="member" name="PopplerPoint-struct.x" link="PopplerAnnot.html#PopplerPoint-struct.x"/>
-    <keyword type="member" name="PopplerPoint-struct.y" link="PopplerAnnot.html#PopplerPoint-struct.y"/>
-    <keyword type="member" name="PopplerQuadrilateral-struct.p1" link="PopplerAnnot.html#PopplerQuadrilateral-struct.p1"/>
-    <keyword type="member" name="PopplerQuadrilateral-struct.p2" link="PopplerAnnot.html#PopplerQuadrilateral-struct.p2"/>
-    <keyword type="member" name="PopplerQuadrilateral-struct.p3" link="PopplerAnnot.html#PopplerQuadrilateral-struct.p3"/>
-    <keyword type="member" name="PopplerQuadrilateral-struct.p4" link="PopplerAnnot.html#PopplerQuadrilateral-struct.p4"/>
-    <keyword type="member" name="PopplerColor-struct.red" link="PopplerColor.html#PopplerColor-struct.red"/>
-    <keyword type="member" name="PopplerColor-struct.green" link="PopplerColor.html#PopplerColor-struct.green"/>
-    <keyword type="member" name="PopplerColor-struct.blue" link="PopplerColor.html#PopplerColor-struct.blue"/>
+    <keyword type="member" name="PopplerAttachment-struct.name" link="PopplerAttachment.html#PopplerAttachment-struct.name"/>
+    <keyword type="member" name="PopplerAttachment-struct.description" link="PopplerAttachment.html#PopplerAttachment-struct.description"/>
+    <keyword type="member" name="PopplerAttachment-struct.size" link="PopplerAttachment.html#PopplerAttachment-struct.size"/>
+    <keyword type="member" name="PopplerAttachment-struct.mtime" link="PopplerAttachment.html#PopplerAttachment-struct.mtime"/>
+    <keyword type="member" name="PopplerAttachment-struct.ctime" link="PopplerAttachment.html#PopplerAttachment-struct.ctime"/>
+    <keyword type="member" name="PopplerAttachment-struct.checksum" link="PopplerAttachment.html#PopplerAttachment-struct.checksum"/>
+    <keyword type="member" name="PopplerColor-struct.red" link="poppler-Poppler-Color.html#PopplerColor-struct.red"/>
+    <keyword type="member" name="PopplerColor-struct.green" link="poppler-Poppler-Color.html#PopplerColor-struct.green"/>
+    <keyword type="member" name="PopplerColor-struct.blue" link="poppler-Poppler-Color.html#PopplerColor-struct.blue"/>
   </functions>
 </book>

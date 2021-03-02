@@ -1,6 +1,6 @@
 #include <QtCore/QDebug>
 #include <QtCore/QDir>
-#include <QtCore/QTime>
+#include <QtCore/QElapsedTimer>
 #include <QtWidgets/QApplication>
 #include <QtGui/QImage>
 
@@ -8,60 +8,59 @@
 
 #include <poppler-qt5.h>
 
-int main( int argc, char **argv )
+int main(int argc, char **argv)
 {
-    QApplication a( argc, argv );               // QApplication required!
+    QApplication a(argc, argv); // QApplication required!
 
-    QTime t;
+    QElapsedTimer t;
     t.start();
 
-    QDir directory( argv[1] );
-    foreach ( const QString &fileName, directory.entryList() ) {
-        if (fileName.endsWith("pdf") ) {
-	    qDebug() << "Doing" << fileName.toLatin1().data() << ":";
-	    Poppler::Document *doc = Poppler::Document::load( directory.canonicalPath()+"/"+fileName );
-	    if (!doc) {
-		qWarning() << "doc not loaded";
-	    } else if ( doc->isLocked() ) {
-	        if (! doc->unlock( "", "password" ) ) {
-		    qWarning() << "couldn't unlock document";
-		    delete doc;
-		}
-	    } else {
-		int major = 0, minor = 0;
-		doc->getPdfVersion( &major, &minor );
-		doc->info("Title");
-		doc->info("Subject");
-		doc->info("Author");
-		doc->info("Keywords");
-		doc->info("Creator");
-		doc->info("Producer");
-		doc->date("CreationDate").toString();
-		doc->date("ModDate").toString();
-		doc->numPages();
-		doc->isLinearized();
-		doc->isEncrypted();
-		doc->okToPrint();
-		doc->okToCopy();
-		doc->okToChange();
-		doc->okToAddNotes();
-		doc->pageMode();
+    QDir directory(argv[1]);
+    foreach (const QString &fileName, directory.entryList()) {
+        if (fileName.endsWith(QStringLiteral("pdf"))) {
+            qDebug() << "Doing" << fileName.toLatin1().data() << ":";
+            Poppler::Document *doc = Poppler::Document::load(directory.canonicalPath() + "/" + fileName);
+            if (!doc) {
+                qWarning() << "doc not loaded";
+            } else if (doc->isLocked()) {
+                if (!doc->unlock("", "password")) {
+                    qWarning() << "couldn't unlock document";
+                    delete doc;
+                }
+            } else {
+                int major = 0, minor = 0;
+                doc->getPdfVersion(&major, &minor);
+                doc->info(QStringLiteral("Title"));
+                doc->info(QStringLiteral("Subject"));
+                doc->info(QStringLiteral("Author"));
+                doc->info(QStringLiteral("Keywords"));
+                doc->info(QStringLiteral("Creator"));
+                doc->info(QStringLiteral("Producer"));
+                doc->date(QStringLiteral("CreationDate")).toString();
+                doc->date(QStringLiteral("ModDate")).toString();
+                doc->numPages();
+                doc->isLinearized();
+                doc->isEncrypted();
+                doc->okToPrint();
+                doc->okToCopy();
+                doc->okToChange();
+                doc->okToAddNotes();
+                doc->pageMode();
 
-		for( int index = 0; index < doc->numPages(); ++index ) {
-		    Poppler::Page *page = doc->page( index );
-		    QImage image = page->renderToImage();
-		    page->pageSize();
-		    page->orientation();
-		    delete page;
-		    std::cout << ".";
-		    std::cout.flush();
-		}
-		std::cout << std::endl;
-		delete doc;
-	    }
-	}
+                for (int index = 0; index < doc->numPages(); ++index) {
+                    Poppler::Page *page = doc->page(index);
+                    page->renderToImage();
+                    page->pageSize();
+                    page->orientation();
+                    delete page;
+                    std::cout << ".";
+                    std::cout.flush();
+                }
+                std::cout << std::endl;
+                delete doc;
+            }
+        }
     }
 
-    std::cout << "Elapsed time: " << (t.elapsed()/1000) << "seconds" << std::endl;
-
+    std::cout << "Elapsed time: " << (t.elapsed() / 1000) << "seconds" << std::endl;
 }
