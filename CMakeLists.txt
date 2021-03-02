@@ -528,6 +528,11 @@ if(Boost_FOUND)
   set(poppler_LIBS ${poppler_LIBS} Boost::boost)
 endif()
 
+# [REDPOPPLER]
+set(EXPAT_LIBRARIES /src/libexpat/redbuild/lib/libexpat.a)
+set(poppler_LIBS ${poppler_LIBS} ${FREETYPE_LIBRARIES})
+set(poppler_LIBS ${poppler_LIBS} ${EXPAT_LIBRARIES})
+
 if (GPERF AND RUN_GPERF_IF_PRESENT)
     macro(ADD_GPERF_FILE input)
         add_custom_command(OUTPUT poppler/${input}.c

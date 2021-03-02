@@ -141,6 +141,8 @@ static bool quiet = false;
 static bool progress = false;
 static bool printVersion = false;
 static bool printHelp = false;
+static int rotate = 0; // [[REDPOPPLER]]
+static char customPopplerDataDir[512] = ""; // [[REDPOPPLER]]
 
 static const ArgDesc argDesc[] = { { "-f", argInt, &firstPage, 0, "first page to print" },
                                    { "-l", argInt, &lastPage, 0, "last page to print" },
@@ -148,6 +150,7 @@ static const ArgDesc argDesc[] = { { "-f", argInt, &firstPage, 0, "first page to
                                    { "-e", argFlag, &printOnlyEven, 0, "print only even pages" },
                                    { "-singlefile", argFlag, &singleFile, 0, "write only the first page and do not add digits" },
                                    { "-scale-dimension-before-rotation", argFlag, &scaleDimensionBeforeRotation, 0, "for rotated pdf, resize dimensions before the rotation" },
+                                   { "-C",   argString,   customPopplerDataDir, sizeof(customPopplerDataDir), "specify location of poppler data directory (with font encoding files)"}, // [[REDPOPPLER]]
 
                                    { "-r", argFP, &resolution, 0, "resolution, in DPI (default is 150)" },
                                    { "-rx", argFP, &x_resolution, 0, "X resolution, in DPI (default is 150)" },
@@ -193,6 +196,8 @@ static const ArgDesc argDesc[] = { { "-f", argInt, &firstPage, 0, "first page to
                                    { "-aa", argString, antialiasStr, sizeof(antialiasStr), "enable font anti-aliasing: yes, no" },
                                    { "-aaVector", argString, vectorAntialiasStr, sizeof(vectorAntialiasStr), "enable vector anti-aliasing: yes, no" },
 
+  // [[REDPOPPLER]]
+                                   {"-R", argInt, &rotate, 0, "rotates resulting image 0, 90, 180, or 270 degrees (default is 0)"},
                                    { "-opw", argString, ownerPassword, sizeof(ownerPassword), "owner password (for encrypted files)" },
                                    { "-upw", argString, userPassword, sizeof(userPassword), "user password (for encrypted files)" },
 
@@ -277,15 +282,20 @@ static bool parseJpegOptions()
 
 static auto annotDisplayDecideCbk = [](Annot *annot, void *user_data) { return !hideAnnotations; };
 
-static void savePageSlice(PDFDoc *doc, SplashOutputDev *splashOut, int pg, int x, int y, int w, int h, double pg_w, double pg_h, char *ppmFile)
+static void savePageSlice(PDFDoc *doc, SplashOutputDev *splashOut, int pg, int x, int y, int w, int h, double pg_w, double pg_h, int rotate, char *ppmFile)
 {
+    if (rotate == 90 || rotate == 270) {
+        int tmp = pg_w;
+        pg_w = pg_h;
+        pg_h = tmp;
+    }
     if (w == 0)
         w = (int)ceil(pg_w);
     if (h == 0)
         h = (int)ceil(pg_h);
     w = (x + w > pg_w ? (int)ceil(pg_w - x) : w);
     h = (y + h > pg_h ? (int)ceil(pg_h - y) : h);
-    doc->displayPageSlice(splashOut, pg, x_resolution, y_resolution, 0, !useCropBox, false, false, x, y, w, h, nullptr, nullptr, annotDisplayDecideCbk, nullptr);
+    doc->displayPageSlice(splashOut, pg, x_resolution, y_resolution, rotate, !useCropBox, false, false, x, y, w, h, nullptr, nullptr, annotDisplayDecideCbk, nullptr);
 
     SplashBitmap *bitmap = splashOut->getBitmap();
 
@@ -379,7 +389,7 @@ static void processPageJobs()
 #    endif
         splashOut->startDoc(pageJob.doc);
 
-        savePageSlice(pageJob.doc, splashOut, pageJob.pg, param_x, param_y, param_w, param_h, pageJob.pg_w, pageJob.pg_h, pageJob.ppmFile);
+        savePageSlice(pageJob.doc, splashOut, pageJob.pg, param_x, param_y, param_w, param_h, pageJob.pg_w, pageJob.pg_h, rotate, pageJob.ppmFile);
 
         delete splashOut;
         delete[] pageJob.ppmFile;
@@ -674,7 +684,7 @@ int main(int argc, char *argv[])
         }
 #ifndef UTILS_USE_PTHREADS
         // process job in main thread
-        savePageSlice(doc.get(), splashOut, pg, param_x, param_y, param_w, param_h, pg_w, pg_h, ppmFile);
+        savePageSlice(doc.get(), splashOut, pg, param_x, param_y, param_w, param_h, pg_w, pg_h, rotate, ppmFile);
 
         delete[] ppmFile;
 #else

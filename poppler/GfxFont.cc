@@ -558,6 +558,11 @@ void GfxFont::readFontDescriptor(XRef *xref, Dict *fontDict)
                 error(errSyntaxWarning, -1, "Invalid Font Weight");
         }
 
+        /* [[REDPOPPLER]] */
+        obj2 = obj1.dictLookup("ItalicAngle");
+        if (obj2.isNum()) {
+            italicAngle = obj2.getNum();
+        }
         // look for MissingWidth
         obj2 = obj1.dictLookup("MissingWidth");
         if (obj2.isNum()) {

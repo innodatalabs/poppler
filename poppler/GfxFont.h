@@ -208,7 +208,9 @@ public:
     // Get font weight.
     Weight getWeight() const { return weight; }
 
-    // Get the original font name (ignornig any munging that might have
+    // Get font italic angle. [[REDPOPPLER]]
+    double getItalicAngle() const { return italicAngle; }
+
     // been done to map to a canonical Base-14 font name).
     const GooString *getName() const { return name; }
 
@@ -312,6 +314,7 @@ protected:
     const GooString *name; // font name
     GooString *family; // font family
     Stretch stretch; // font stretch
+    double italicAngle;  // font italic angle [[REDPOPPLER]]
     Weight weight; // font weight
     GfxFontType type; // type of font
     int flags; // font descriptor flags

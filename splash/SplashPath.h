@@ -120,6 +120,9 @@ public:
     // Reserve space for at least n points
     void reserve(int n);
 
+    /* [[REDPOPPLER]] */
+    SplashPathPoint const *getPoints() { return pts; }
+    unsigned char const *getFlags() { return flags; }
 protected:
     SplashPath(SplashPath *path);
     void grow(int nPts);

@@ -140,7 +140,7 @@ set(pdftohtml_SOURCES ${common_srcs}
   HtmlOutputDev.cc
 )
 add_executable(pdftohtml ${pdftohtml_SOURCES})
-target_link_libraries(pdftohtml ${common_libs})
+target_link_libraries(pdftohtml ${common_libs} PNG::PNG)
 install(TARGETS pdftohtml DESTINATION bin)
 install(FILES pdftohtml.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 
