@@ -529,7 +529,10 @@ if(Boost_FOUND)
 endif()
 
 # [REDPOPPLER]
-set(EXPAT_LIBRARIES /src/libexpat/redbuild/lib/libexpat.a)
+if(!WIN32)
+  # expat is needed only for fontconfig (not used on win32)
+  set(EXPAT_LIBRARIES /src/libexpat/redbuild/lib/libexpat.a)
+endif()
 set(poppler_LIBS ${poppler_LIBS} ${FREETYPE_LIBRARIES})
 set(poppler_LIBS ${poppler_LIBS} ${EXPAT_LIBRARIES})
 
